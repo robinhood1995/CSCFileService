@@ -1,0 +1,51 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CSCFileService.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MaxLinesInFiles" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="CycleTimeMinutes" Type="System.Double" Scope="Application">
+      <Value Profile="(Default)">0.5</Value>
+    </Setting>
+    <Setting Name="FileToLookAt" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">*.txt</Value>
+    </Setting>
+    <Setting Name="Emails" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">steveling@fruitgrowers.com</Value>
+    </Setting>
+    <Setting Name="SMTPFROMEMAIL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SMTPSERVER" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">hammerdownrange-com.mail.protection.outlook.com</Value>
+    </Setting>
+    <Setting Name="SMTPPort" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="SMTPUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SMTPPassword" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PickUpFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Interface\Ord</Value>
+    </Setting>
+    <Setting Name="ReportFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Interface\ord\Report</Value>
+    </Setting>
+    <Setting Name="ArchiveFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Interface\ord\Archive</Value>
+    </Setting>
+    <Setting Name="WorkFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Interface\ord\Work</Value>
+    </Setting>
+    <Setting Name="OutPutFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Interface\ord\Out</Value>
+    </Setting>
+    <Setting Name="FilesToImportAtOnce" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EDIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="orderfile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Grade" Type="nvarchar" MaxLength="50" />
+          <Property Name="Flute" Type="nvarchar" MaxLength="50" />
+          <Property Name="Test" Type="nvarchar" MaxLength="50" />
+          <Property Name="DueDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="Width" Type="nvarchar" MaxLength="50" />
+          <Property Name="Length" Type="nvarchar" MaxLength="50" />
+          <Property Name="Quantity" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaxOver" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaxUnder" Type="nvarchar" MaxLength="50" />
+          <Property Name="Boardcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipToName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipToAddress1" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipToAddress2" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipToCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipToState" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipToZip" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipToCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerPO" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerPOLine" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientItem" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoadTag" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstMachineCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PiecesPerPallet" Type="nvarchar" MaxLength="50" />
+          <Property Name="FanFold" Type="nvarchar" MaxLength="50" />
+          <Property Name="FanFoldSheetLength" Type="nvarchar" MaxLength="50" />
+          <Property Name="FanFoldUnitHeight" Type="nvarchar" MaxLength="50" />
+          <Property Name="FanFoldPerforationLength" Type="nvarchar" MaxLength="50" />
+          <Property Name="CSCOrderID" Type="nvarchar" MaxLength="50" />
+          <Property Name="DoNotUpgrade" Type="nvarchar" MaxLength="50" />
+          <Property Name="TagPerUnit" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdhesiveCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="EOL" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Score">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="orderfileID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderfileID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Scores" Type="nvarchar" MaxLength="150" />
+          <Property Name="FILLER" Type="nvarchar" MaxLength="50" />
+          <Property Name="EOL" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SpecialInstruction">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="orderfileID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderfileID" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpecialInstruction1" Type="nvarchar" MaxLength="1000" />
+          <Property Name="SpecialInstruction2" Type="nvarchar" MaxLength="1000" />
+          <Property Name="CustomerOrderNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="ThreePLRefNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="EOL" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="EDIModelStoreContainer">
+          <EntitySet Name="orderfile" EntityType="Self.orderfile" store:Type="Tables" Schema="dbo">
+          </EntitySet>
+          <EntitySet Name="Score" EntityType="Self.Score" store:Type="Tables" Schema="dbo">
+          </EntitySet>
+          <EntitySet Name="SpecialInstruction" EntityType="Self.SpecialInstruction" store:Type="Tables" Schema="dbo">
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EDIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="orderfile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Flute" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Test" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DueDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Width" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Length" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaxOver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaxUnder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Boardcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipToName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipToAddress1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipToAddress2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipToCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipToState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipToZip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipToCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerPO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerPOLine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientItem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoadTag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstMachineCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PiecesPerPallet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FanFold" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FanFoldSheetLength" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FanFoldUnitHeight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FanFoldPerforationLength" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CSCOrderID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DoNotUpgrade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TagPerUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdhesiveCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EOL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="EDIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="orderfiles" EntityType="Self.orderfile" />
+          <EntitySet Name="Scores" EntityType="EDIModel.Score" />
+          <EntitySet Name="SpecialInstructions" EntityType="EDIModel.SpecialInstruction" />
+        </EntityContainer>
+        <EntityType Name="Score">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="orderfileID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderfileID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Scores" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FILLER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EOL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SpecialInstruction">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="orderfileID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderfileID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpecialInstruction1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="SpecialInstruction2" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerOrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThreePLRefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EOL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EDIModelStoreContainer" CdmEntityContainer="EDIEntities">
+          <EntitySetMapping Name="orderfiles">
+            <EntityTypeMapping TypeName="EDIModel.orderfile">
+              <MappingFragment StoreEntitySet="orderfile">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="Flute" ColumnName="Flute" />
+                <ScalarProperty Name="Test" ColumnName="Test" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="MaxOver" ColumnName="MaxOver" />
+                <ScalarProperty Name="MaxUnder" ColumnName="MaxUnder" />
+                <ScalarProperty Name="Boardcode" ColumnName="Boardcode" />
+                <ScalarProperty Name="ShipToName" ColumnName="ShipToName" />
+                <ScalarProperty Name="ShipToAddress1" ColumnName="ShipToAddress1" />
+                <ScalarProperty Name="ShipToAddress2" ColumnName="ShipToAddress2" />
+                <ScalarProperty Name="ShipToCity" ColumnName="ShipToCity" />
+                <ScalarProperty Name="ShipToState" ColumnName="ShipToState" />
+                <ScalarProperty Name="ShipToZip" ColumnName="ShipToZip" />
+                <ScalarProperty Name="ShipToCode" ColumnName="ShipToCode" />
+                <ScalarProperty Name="CustomerPO" ColumnName="CustomerPO" />
+                <ScalarProperty Name="CustomerPOLine" ColumnName="CustomerPOLine" />
+                <ScalarProperty Name="ClientItem" ColumnName="ClientItem" />
+                <ScalarProperty Name="LoadTag" ColumnName="LoadTag" />
+                <ScalarProperty Name="FirstMachineCode" ColumnName="FirstMachineCode" />
+                <ScalarProperty Name="PiecesPerPallet" ColumnName="PiecesPerPallet" />
+                <ScalarProperty Name="FanFold" ColumnName="FanFold" />
+                <ScalarProperty Name="FanFoldSheetLength" ColumnName="FanFoldSheetLength" />
+                <ScalarProperty Name="FanFoldUnitHeight" ColumnName="FanFoldUnitHeight" />
+                <ScalarProperty Name="FanFoldPerforationLength" ColumnName="FanFoldPerforationLength" />
+                <ScalarProperty Name="CSCOrderID" ColumnName="CSCOrderID" />
+                <ScalarProperty Name="DoNotUpgrade" ColumnName="DoNotUpgrade" />
+                <ScalarProperty Name="TagPerUnit" ColumnName="TagPerUnit" />
+                <ScalarProperty Name="AdhesiveCode" ColumnName="AdhesiveCode" />
+                <ScalarProperty Name="EOL" ColumnName="EOL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Scores">
+            <EntityTypeMapping TypeName="EDIModel.Score">
+              <MappingFragment StoreEntitySet="Score">
+                <ScalarProperty Name="EOL" ColumnName="EOL" />
+                <ScalarProperty Name="FILLER" ColumnName="FILLER" />
+                <ScalarProperty Name="Scores" ColumnName="Scores" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="orderfileID" ColumnName="orderfileID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpecialInstructions">
+            <EntityTypeMapping TypeName="EDIModel.SpecialInstruction">
+              <MappingFragment StoreEntitySet="SpecialInstruction">
+                <ScalarProperty Name="EOL" ColumnName="EOL" />
+                <ScalarProperty Name="ThreePLRefNo" ColumnName="ThreePLRefNo" />
+                <ScalarProperty Name="CustomerOrderNumber" ColumnName="CustomerOrderNumber" />
+                <ScalarProperty Name="SpecialInstruction2" ColumnName="SpecialInstruction2" />
+                <ScalarProperty Name="SpecialInstruction1" ColumnName="SpecialInstruction1" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="orderfileID" ColumnName="orderfileID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
