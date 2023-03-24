@@ -112,7 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Compile Include="clsFunctions.cs" />
+    <Compile Include="ClsFunctions.cs" />
     <EntityDeploy Include="EDI.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EDI.Designer.cs</LastGenOutput>

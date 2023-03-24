@@ -25,7 +25,7 @@ namespace CSCFileService
 		/// <param name="SMTPUser"></param>
 		/// <param name="SMTPPassword"></param>
 		/// <exception cref="Exception"></exception>
-		public static void NetEmail(ref string ToEmail, ref string Subject, ref string FileName, ref string FromEmail, ref string SMTPServer, ref int SMTPPort, ref string SMTPUser, ref string SMTPPassword)
+		public static void NetEmail(string ToEmail, string Subject, string FileName, string FromEmail, string SMTPServer, int SMTPPort, string SMTPUser, string SMTPPassword)
 		{
 			try
 			{

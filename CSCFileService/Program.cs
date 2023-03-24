@@ -27,7 +27,7 @@ namespace CSCFileService
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
             {
-                new Service1()
+                new Service()
             };
             ServiceBase.Run(ServicesToRun); 
             _log.Info("Starting service in Prod mode");

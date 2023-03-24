@@ -52,7 +52,7 @@ namespace CSCFileService.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("steveling@fruitgrowers.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("steve.ling@hammerdownrange.com")]
         public string Emails {
             get {
                 return ((string)(this["Emails"]));
@@ -61,7 +61,7 @@ namespace CSCFileService.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("sales@hammerdownrange.com")]
         public string SMTPFROMEMAIL {
             get {
                 return ((string)(this["SMTPFROMEMAIL"]));
@@ -115,15 +115,6 @@ namespace CSCFileService.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Interface\\ord\\Report")]
-        public string ReportFolder {
-            get {
-                return ((string)(this["ReportFolder"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\Interface\\ord\\Archive")]
         public string ArchiveFolder {
             get {
@@ -151,10 +142,28 @@ namespace CSCFileService.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        [global::System.Configuration.DefaultSettingValueAttribute("25")]
         public int FilesToImportAtOnce {
             get {
                 return ((int)(this["FilesToImportAtOnce"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EmailCopy {
+            get {
+                return ((bool)(this["EmailCopy"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        public int PurgeFilesDays {
+            get {
+                return ((int)(this["PurgeFilesDays"]));
             }
         }
     }

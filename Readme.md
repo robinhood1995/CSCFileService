@@ -1,7 +1,4 @@
-This is a file splitter service for windows. You can use this to split a fixed length file
-file and add to the database and then refactor the file into something you need to make it
-unique.
+This is a file splitter service to import Corrugated Supplies Corporation, LLC specific files. It splits a fixed length file
+file and add to the database and then created and adds a unique key to the files for the Kiwiplan ESP / KMC system.
 
 Use at will to re-create your own.
-
-robinhood1995@yahooo.com

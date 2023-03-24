@@ -12,10 +12,10 @@
       <Value Profile="(Default)">*.txt</Value>
     </Setting>
     <Setting Name="Emails" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">steveling@fruitgrowers.com</Value>
+      <Value Profile="(Default)">steve.ling@hammerdownrange.com</Value>
     </Setting>
     <Setting Name="SMTPFROMEMAIL" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">sales@hammerdownrange.com</Value>
     </Setting>
     <Setting Name="SMTPSERVER" Type="System.String" Scope="Application">
       <Value Profile="(Default)">hammerdownrange-com.mail.protection.outlook.com</Value>
@@ -32,9 +32,6 @@
     <Setting Name="PickUpFolder" Type="System.String" Scope="Application">
       <Value Profile="(Default)">C:\Interface\Ord</Value>
     </Setting>
-    <Setting Name="ReportFolder" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\Interface\ord\Report</Value>
-    </Setting>
     <Setting Name="ArchiveFolder" Type="System.String" Scope="Application">
       <Value Profile="(Default)">C:\Interface\ord\Archive</Value>
     </Setting>
@@ -45,7 +42,13 @@
       <Value Profile="(Default)">C:\Interface\ord\Out</Value>
     </Setting>
     <Setting Name="FilesToImportAtOnce" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">100</Value>
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="EmailCopy" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="PurgeFilesDays" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">7</Value>
     </Setting>
   </Settings>
 </SettingsFile>
