@@ -56,11 +56,53 @@ namespace CSCFileService
         private void OnElapsedTime(object source, ElapsedEventArgs e)
         {
             _log.Info("Service is recall");
-            PurgeFiles();
             CheckDirectories();
+            PurgeFiles();
             ProcessFilesDB();
             ChangeFiles();
         }
+
+        #region CheckDirectories
+        public void CheckDirectories()
+        {
+            strWorkFolder = strStorageFolder + @"\CSCFileService";
+            strReportFolder = strWorkFolder + @"\Report";
+            strLogFolder = strWorkFolder + @"\Log";
+
+            _log.Info("Checking if the folders exist");
+            if (!Directory.Exists(Properties.Settings.Default.PickUpFolder))
+            {
+                Directory.CreateDirectory(Properties.Settings.Default.PickUpFolder);
+                _log.Info("Created " + Properties.Settings.Default.PickUpFolder + " folder");
+            }
+            if (!Directory.Exists(Properties.Settings.Default.ArchiveFolder))
+            {
+                Directory.CreateDirectory(Properties.Settings.Default.ArchiveFolder);
+                _log.Info("Created " + Properties.Settings.Default.ArchiveFolder + " folder");
+            }
+            if (!Directory.Exists(strReportFolder))
+            {
+                Directory.CreateDirectory(strReportFolder);
+                _log.Info("Created " + strReportFolder + " folder");
+            }
+            if (!Directory.Exists(strLogFolder))
+            {
+                Directory.CreateDirectory(strLogFolder);
+                _log.Info("Created " + strLogFolder + " folder");
+            }
+            if (!Directory.Exists(Properties.Settings.Default.WorkFolder))
+            {
+                Directory.CreateDirectory(Properties.Settings.Default.WorkFolder);
+                _log.Info("Created " + Properties.Settings.Default.WorkFolder + " folder");
+            }
+            if (!Directory.Exists(Properties.Settings.Default.OutPutFolder))
+            {
+                Directory.CreateDirectory(Properties.Settings.Default.OutPutFolder);
+                _log.Info("Created " + Properties.Settings.Default.OutPutFolder + " folder");
+            }
+            _log.Info("Folders verified");
+        }
+        #endregion 
 
         #region PurgeFiles
         public void PurgeFiles()
@@ -124,42 +166,6 @@ namespace CSCFileService
 
             }
 
-        }
-        #endregion 
-
-        #region CheckDirectories
-        public void CheckDirectories()
-        {
-            strWorkFolder = strStorageFolder + @"\CSCFileService";
-            strReportFolder = strWorkFolder + @"\Report";
-
-            _log.Info("Checking if the folders exist");
-            if (!Directory.Exists(Properties.Settings.Default.PickUpFolder))
-            {
-                Directory.CreateDirectory(Properties.Settings.Default.PickUpFolder);
-                _log.Info("Created " + Properties.Settings.Default.PickUpFolder + " folder");
-            }
-            if (!Directory.Exists(Properties.Settings.Default.ArchiveFolder))
-            {
-                Directory.CreateDirectory(Properties.Settings.Default.ArchiveFolder);
-                _log.Info("Created " + Properties.Settings.Default.ArchiveFolder + " folder");
-            }
-            if (!Directory.Exists(strReportFolder))
-            {
-                Directory.CreateDirectory(strReportFolder);
-                _log.Info("Created " + strReportFolder + " folder");
-            }
-            if (!Directory.Exists(Properties.Settings.Default.WorkFolder))
-            {
-                Directory.CreateDirectory(Properties.Settings.Default.WorkFolder);
-                _log.Info("Created " + Properties.Settings.Default.WorkFolder + " folder");
-            }
-            if (!Directory.Exists(Properties.Settings.Default.OutPutFolder))
-            {
-                Directory.CreateDirectory(Properties.Settings.Default.OutPutFolder);
-                _log.Info("Created " + Properties.Settings.Default.OutPutFolder + " folder");
-            }
-            _log.Info("Folders verified");
         }
         #endregion 
 
