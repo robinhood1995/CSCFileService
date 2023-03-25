@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.serviceProcessInstaller1 = new System.ServiceProcess.ServiceProcessInstaller();
-            this.FileSplitterServiceInstaller = new System.ServiceProcess.ServiceInstaller();
+            this.SFLCSCFileInstall = new System.ServiceProcess.ServiceProcessInstaller();
+            this.SFLCSCFileServiceInstaller = new System.ServiceProcess.ServiceInstaller();
             // 
-            // serviceProcessInstaller1
+            // SFLCSCFileInstall
             // 
-            this.serviceProcessInstaller1.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
-            this.serviceProcessInstaller1.Password = null;
-            this.serviceProcessInstaller1.Username = null;
+            this.SFLCSCFileInstall.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
+            this.SFLCSCFileInstall.Password = null;
+            this.SFLCSCFileInstall.Username = null;
             // 
-            // FileSplitterServiceInstaller
+            // SFLCSCFileServiceInstaller
             // 
-            this.FileSplitterServiceInstaller.ServiceName = "Kiwiplan DSS File Splitter";
-            this.FileSplitterServiceInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
+            this.SFLCSCFileServiceInstaller.ServiceName = "SFL CSC File Splitter";
+            this.SFLCSCFileServiceInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 
             // ProjectInstaller
             // 
             this.Installers.AddRange(new System.Configuration.Install.Installer[] {
-            this.serviceProcessInstaller1,
-            this.FileSplitterServiceInstaller});
+            this.SFLCSCFileInstall,
+            this.SFLCSCFileServiceInstaller});
 
         }
 
         #endregion
 
-        private System.ServiceProcess.ServiceProcessInstaller serviceProcessInstaller1;
-        private System.ServiceProcess.ServiceInstaller FileSplitterServiceInstaller;
+        private System.ServiceProcess.ServiceProcessInstaller SFLCSCFileInstall;
+        private System.ServiceProcess.ServiceInstaller SFLCSCFileServiceInstaller;
     }
 }
