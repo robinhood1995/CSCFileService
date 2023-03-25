@@ -32,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>shuffle.ico</ApplicationIcon>
@@ -79,6 +80,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EDI.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EFNetAppender.cs" />
+    <Compile Include="Log4NetLog.cs">
+      <DependentUpon>EDI.tt</DependentUpon>
     </Compile>
     <Compile Include="orderfile.cs">
       <DependentUpon>EDI.tt</DependentUpon>

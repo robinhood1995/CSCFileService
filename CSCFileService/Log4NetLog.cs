@@ -12,13 +12,14 @@ namespace CSCFileService
     using System;
     using System.Collections.Generic;
     
-    public partial class Score
+    public partial class Log4NetLog
     {
-        public int ID { get; set; }
-        public int orderfileID { get; set; }
-        public string Type { get; set; }
-        public string Scores { get; set; }
-        public string FILLER { get; set; }
-        public string EOL { get; set; }
+        public int Id { get; set; }
+        public System.DateTime Date { get; set; }
+        public string Thread { get; set; }
+        public string Level { get; set; }
+        public string Logger { get; set; }
+        public string Message { get; set; }
+        public string Exception { get; set; }
     }
 }

@@ -5,6 +5,20 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="EDIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Log4NetLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Thread" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Level" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Logger" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Message" Type="varchar" MaxLength="4000" Nullable="false" />
+          <Property Name="Exception" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EDI.dbo.orderfile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="orderfile">
           <Key>
             <PropertyRef Name="ID" />
@@ -44,6 +58,8 @@
           <Property Name="AdhesiveCode" Type="nvarchar" MaxLength="50" />
           <Property Name="EOL" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EDI.dbo.Score' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Score">
           <Key>
             <PropertyRef Name="ID" />
@@ -56,6 +72,8 @@
           <Property Name="FILLER" Type="nvarchar" MaxLength="50" />
           <Property Name="EOL" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EDI.dbo.SpecialInstruction' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="SpecialInstruction">
           <Key>
             <PropertyRef Name="ID" />
@@ -71,11 +89,66 @@
           <Property Name="EOL" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="EDIModelStoreContainer">
-          <EntitySet Name="orderfile" EntityType="Self.orderfile" store:Type="Tables" Schema="dbo">
+          <EntitySet Name="Log4NetLog" EntityType="Self.Log4NetLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orderfile" EntityType="Self.orderfile" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [orderfile].[ID] AS [ID], 
+    [orderfile].[Type] AS [Type], 
+    [orderfile].[Grade] AS [Grade], 
+    [orderfile].[Flute] AS [Flute], 
+    [orderfile].[Test] AS [Test], 
+    [orderfile].[DueDate] AS [DueDate], 
+    [orderfile].[Width] AS [Width], 
+    [orderfile].[Length] AS [Length], 
+    [orderfile].[Quantity] AS [Quantity], 
+    [orderfile].[MaxOver] AS [MaxOver], 
+    [orderfile].[MaxUnder] AS [MaxUnder], 
+    [orderfile].[Boardcode] AS [Boardcode], 
+    [orderfile].[ShipToName] AS [ShipToName], 
+    [orderfile].[ShipToAddress1] AS [ShipToAddress1], 
+    [orderfile].[ShipToAddress2] AS [ShipToAddress2], 
+    [orderfile].[ShipToCity] AS [ShipToCity], 
+    [orderfile].[ShipToState] AS [ShipToState], 
+    [orderfile].[ShipToZip] AS [ShipToZip], 
+    [orderfile].[ShipToCode] AS [ShipToCode], 
+    [orderfile].[CustomerPO] AS [CustomerPO], 
+    [orderfile].[CustomerPOLine] AS [CustomerPOLine], 
+    [orderfile].[ClientItem] AS [ClientItem], 
+    [orderfile].[LoadTag] AS [LoadTag], 
+    [orderfile].[FirstMachineCode] AS [FirstMachineCode], 
+    [orderfile].[PiecesPerPallet] AS [PiecesPerPallet], 
+    [orderfile].[FanFold] AS [FanFold], 
+    [orderfile].[FanFoldSheetLength] AS [FanFoldSheetLength], 
+    [orderfile].[FanFoldUnitHeight] AS [FanFoldUnitHeight], 
+    [orderfile].[FanFoldPerforationLength] AS [FanFoldPerforationLength], 
+    [orderfile].[CSCOrderID] AS [CSCOrderID], 
+    [orderfile].[DoNotUpgrade] AS [DoNotUpgrade], 
+    [orderfile].[TagPerUnit] AS [TagPerUnit], 
+    [orderfile].[AdhesiveCode] AS [AdhesiveCode], 
+    [orderfile].[EOL] AS [EOL]
+    FROM [dbo].[orderfile] AS [orderfile]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Score" EntityType="Self.Score" store:Type="Tables" Schema="dbo">
+          <EntitySet Name="Score" EntityType="Self.Score" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Score].[ID] AS [ID], 
+    [Score].[orderfileID] AS [orderfileID], 
+    [Score].[Type] AS [Type], 
+    [Score].[Scores] AS [Scores], 
+    [Score].[FILLER] AS [FILLER], 
+    [Score].[EOL] AS [EOL]
+    FROM [dbo].[Score] AS [Score]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="SpecialInstruction" EntityType="Self.SpecialInstruction" store:Type="Tables" Schema="dbo">
+          <EntitySet Name="SpecialInstruction" EntityType="Self.SpecialInstruction" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SpecialInstruction].[ID] AS [ID], 
+    [SpecialInstruction].[orderfileID] AS [orderfileID], 
+    [SpecialInstruction].[Type] AS [Type], 
+    [SpecialInstruction].[SpecialInstruction1] AS [SpecialInstruction1], 
+    [SpecialInstruction].[SpecialInstruction2] AS [SpecialInstruction2], 
+    [SpecialInstruction].[CustomerOrderNumber] AS [CustomerOrderNumber], 
+    [SpecialInstruction].[ThreePLRefNo] AS [ThreePLRefNo], 
+    [SpecialInstruction].[EOL] AS [EOL]
+    FROM [dbo].[SpecialInstruction] AS [SpecialInstruction]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -125,6 +198,7 @@
           <EntitySet Name="orderfiles" EntityType="Self.orderfile" />
           <EntitySet Name="Scores" EntityType="EDIModel.Score" />
           <EntitySet Name="SpecialInstructions" EntityType="EDIModel.SpecialInstruction" />
+          <EntitySet Name="Log4NetLog" EntityType="EDIModel.Log4NetLog" />
         </EntityContainer>
         <EntityType Name="Score">
           <Key>
@@ -151,6 +225,18 @@
           <Property Name="CustomerOrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ThreePLRefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EOL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Log4NetLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Thread" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Level" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Logger" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="Exception" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -221,6 +307,19 @@
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="orderfileID" ColumnName="orderfileID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log4NetLog">
+            <EntityTypeMapping TypeName="EDIModel.Log4NetLog">
+              <MappingFragment StoreEntitySet="Log4NetLog">
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Logger" ColumnName="Logger" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Thread" ColumnName="Thread" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

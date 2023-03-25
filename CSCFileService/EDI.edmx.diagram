@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="EDIModel.orderfile" Width="3.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="EDIModel.Score" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="EDIModel.SpecialInstruction" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="EDIModel.Log4NetLog" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

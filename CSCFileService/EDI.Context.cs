@@ -28,5 +28,6 @@ namespace CSCFileService
         public virtual DbSet<orderfile> orderfiles { get; set; }
         public virtual DbSet<Score> Scores { get; set; }
         public virtual DbSet<SpecialInstruction> SpecialInstructions { get; set; }
+        public virtual DbSet<Log4NetLog> Log4NetLog { get; set; }
     }
 }

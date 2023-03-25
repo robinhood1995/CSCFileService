@@ -89,7 +89,7 @@ namespace CSCFileService
                 }
                 else
                 {
-                    _log.Info("This file" + fileInfo.Name.ToString() + " is not older then " + intPurge + " month");
+                    _log.Info("This file" + fileInfo.Name.ToString() + " is not older then " + intPurge + " days");
                 }
 
             }
@@ -104,7 +104,7 @@ namespace CSCFileService
 
                 if (fileInfo.CreationTime < DateTime.Now.AddDays(intPurge * -1))
                 {
-                    _log.Info("Found Log file(s) that are more then " + intPurge + " month old to delete " + fileInfo.ToString());
+                    _log.Info("Found Log file(s) that are more then " + intPurge + " days old to delete " + fileInfo.ToString());
 
                     _log.Info("Verifying that the old file ends with .csv");
                     if (fileInfo.Name.Contains(".csv"))
@@ -119,7 +119,7 @@ namespace CSCFileService
                 }
                 else
                 {
-                    _log.Info("This file" + fileInfo.Name.ToString() + " is not older then " + intPurge + " month");
+                    _log.Info("This file" + fileInfo.Name.ToString() + " is not older then " + intPurge + " days");
                 }
 
             }
@@ -683,7 +683,7 @@ namespace CSCFileService
         #region ChangeFiles
         public class ResultText
         {
-            public string strText { get; set; }    
+            public string StrText { get; set; }    
         }
         public void ChangeFiles()
         {

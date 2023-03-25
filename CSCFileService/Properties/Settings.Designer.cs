@@ -52,7 +52,7 @@ namespace CSCFileService.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("steve.ling@hammerdownrange.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("robinhood1995@yahoo.com")]
         public string Emails {
             get {
                 return ((string)(this["Emails"]));
@@ -61,7 +61,7 @@ namespace CSCFileService.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("sales@hammerdownrange.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("sales@myfflbook.com")]
         public string SMTPFROMEMAIL {
             get {
                 return ((string)(this["SMTPFROMEMAIL"]));
@@ -70,7 +70,7 @@ namespace CSCFileService.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("hammerdownrange-com.mail.protection.outlook.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("myfflbook-com.mail.protection.outlook.com")]
         public string SMTPSERVER {
             get {
                 return ((string)(this["SMTPSERVER"]));

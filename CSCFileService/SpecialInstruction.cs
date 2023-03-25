@@ -11,11 +11,9 @@ namespace CSCFileService
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class SpecialInstruction
     {
-        [Key]
         public int ID { get; set; }
         public int orderfileID { get; set; }
         public string Type { get; set; }

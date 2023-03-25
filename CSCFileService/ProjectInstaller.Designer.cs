@@ -39,6 +39,9 @@
             // 
             // SFLCSCFileServiceInstaller
             // 
+            this.SFLCSCFileServiceInstaller.Description = "This is a file splitter service to import Corrugated Supplies Corporation, LLC sp" +
+    "ecific files. It splits a fixed length file";
+            this.SFLCSCFileServiceInstaller.DisplayName = "SFL CSC File Splitter";
             this.SFLCSCFileServiceInstaller.ServiceName = "SFL CSC File Splitter";
             this.SFLCSCFileServiceInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             // 

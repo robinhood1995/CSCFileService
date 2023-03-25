@@ -12,13 +12,13 @@
       <Value Profile="(Default)">*.txt</Value>
     </Setting>
     <Setting Name="Emails" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">steve.ling@hammerdownrange.com</Value>
+      <Value Profile="(Default)">robinhood1995@yahoo.com</Value>
     </Setting>
     <Setting Name="SMTPFROMEMAIL" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">sales@hammerdownrange.com</Value>
+      <Value Profile="(Default)">sales@myfflbook.com</Value>
     </Setting>
     <Setting Name="SMTPSERVER" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">hammerdownrange-com.mail.protection.outlook.com</Value>
+      <Value Profile="(Default)">myfflbook-com.mail.protection.outlook.com</Value>
     </Setting>
     <Setting Name="SMTPPort" Type="System.String" Scope="Application">
       <Value Profile="(Default)">25</Value>
