@@ -409,7 +409,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CSCFileService"
         "ProductCode" = "8:{04AE0191-3E2B-45D8-965B-D0AD17BB08B3}"
-        "PackageCode" = "8:{A843C1DE-1850-453C-BEFE-D86CEB803B98}"
+        "PackageCode" = "8:{455649BC-6410-4407-9503-9B7B625A4A14}"
         "UpgradeCode" = "8:{A3E553DB-C750-4D95-AD92-141B3554AC8D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
