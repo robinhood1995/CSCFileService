@@ -58,12 +58,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A60354063C20E1CC33E3715DD2E5771E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_4F2DAE11BC3F48BB9E242FC23ABF2643"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -83,6 +77,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_554B2F7C2E89E2958828B26A0871458A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A60354063C20E1CC33E3715DD2E5771E"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -408,15 +408,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CSCFileService"
-        "ProductCode" = "8:{04AE0191-3E2B-45D8-965B-D0AD17BB08B3}"
-        "PackageCode" = "8:{455649BC-6410-4407-9503-9B7B625A4A14}"
+        "ProductCode" = "8:{23C51410-FE08-4860-AFC1-75A4C66DC132}"
+        "PackageCode" = "8:{A1BF09F6-4184-4DE7-B3F9-7B591E670F3D}"
         "UpgradeCode" = "8:{A3E553DB-C750-4D95-AD92-141B3554AC8D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.5.3"
+        "ProductVersion" = "8:1.5.4"
         "Manufacturer" = "8:SFLServicesLLC"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
