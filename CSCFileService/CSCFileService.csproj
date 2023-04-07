@@ -84,7 +84,28 @@
       <DependentUpon>EDI.edmx</DependentUpon>
     </Compile>
     <Compile Include="EFNetAppender.cs" />
+    <Compile Include="ESP.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ESP.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ESP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ESP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ESP.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="espOrder.cs">
+      <DependentUpon>ESP.tt</DependentUpon>
+    </Compile>
     <Compile Include="Log4NetLog.cs">
+      <DependentUpon>EDI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="order.cs">
       <DependentUpon>EDI.tt</DependentUpon>
     </Compile>
     <Compile Include="orderfile.cs">
@@ -137,6 +158,13 @@
     <None Include="EDI.edmx.diagram">
       <DependentUpon>EDI.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="ESP.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ESP.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ESP.edmx.diagram">
+      <DependentUpon>ESP.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -158,6 +186,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EDI.edmx</DependentUpon>
       <LastGenOutput>EDI.cs</LastGenOutput>
+    </Content>
+    <Content Include="ESP.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ESP.edmx</DependentUpon>
+      <LastGenOutput>ESP.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ESP.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ESP.edmx</DependentUpon>
+      <LastGenOutput>ESP.cs</LastGenOutput>
     </Content>
     <Content Include="shuffle.ico" />
   </ItemGroup>

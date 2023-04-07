@@ -13,10 +13,10 @@ namespace CSCFileService
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EDIEntities : DbContext
+    public partial class ESPEntities : DbContext
     {
-        public EDIEntities()
-            : base("name=EDIEntities")
+        public ESPEntities()
+            : base("name=ESPEntities")
         {
         }
     
@@ -25,10 +25,6 @@ namespace CSCFileService
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<orderfile> orderfiles { get; set; }
-        public virtual DbSet<Log4NetLog> Log4NetLog { get; set; }
-        public virtual DbSet<Score> Scores { get; set; }
-        public virtual DbSet<SpecialInstruction> SpecialInstructions { get; set; }
-        public virtual DbSet<order> orders { get; set; }
+        public virtual DbSet<espOrder> espOrders { get; set; }
     }
 }

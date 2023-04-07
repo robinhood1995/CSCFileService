@@ -1,0 +1,1702 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ESPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="espOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mainttime" Type="datetime" />
+          <Property Name="userID" Type="nvarchar" MaxLength="30" />
+          <Property Name="jobnumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="orderdate" Type="datetime" />
+          <Property Name="entrydate" Type="datetime" Nullable="false" />
+          <Property Name="foreignpricing" Type="smallint" />
+          <Property Name="recalcforeignpricing" Type="smallint" />
+          <Property Name="creditoverridedate" Type="datetime" />
+          <Property Name="priority" Type="int" />
+          <Property Name="description" Type="nvarchar" MaxLength="60" />
+          <Property Name="sheetspecnumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="customerPOref" Type="nvarchar" MaxLength="60" />
+          <Property Name="customerPOlinenumber" Type="nvarchar" MaxLength="30" />
+          <Property Name="orderedquantity" Type="int" />
+          <Property Name="unitquantity" Type="int" />
+          <Property Name="plannedquantity" Type="int" />
+          <Property Name="producedquantity" Type="int" />
+          <Property Name="shippedquantity" Type="int" />
+          <Property Name="invoicedquantity" Type="int" />
+          <Property Name="returnedquantity" Type="int" />
+          <Property Name="creditedquantity" Type="int" />
+          <Property Name="quarantinedquantity" Type="int" />
+          <Property Name="scrappedquantity" Type="int" />
+          <Property Name="shippinginstructions" Type="nvarchar" MaxLength="1055" />
+          <Property Name="partiallydeliverable" Type="smallint" />
+          <Property Name="specialinstructions" Type="nvarchar" MaxLength="800" />
+          <Property Name="length" Type="int" />
+          <Property Name="width" Type="int" />
+          <Property Name="autopriceper" Type="money" />
+          <Property Name="autosetupprice" Type="money" />
+          <Property Name="autofreight" Type="money" />
+          <Property Name="autototalprice" Type="money" />
+          <Property Name="taxvalue" Type="money" />
+          <Property Name="priceper" Type="money" />
+          <Property Name="setupprice" Type="money" />
+          <Property Name="pricestate" Type="int" />
+          <Property Name="freight" Type="money" />
+          <Property Name="permittedoverrun" Type="float" />
+          <Property Name="permittedunderrun" Type="float" />
+          <Property Name="shying" Type="int" />
+          <Property Name="earliestduedate" Type="datetime" />
+          <Property Name="duedate" Type="datetime" />
+          <Property Name="originalduedate" Type="datetime" />
+          <Property Name="cancelleddate" Type="datetime" />
+          <Property Name="latestdespatchdate" Type="datetime" />
+          <Property Name="wipvalue" Type="money" />
+          <Property Name="comments" Type="nvarchar" MaxLength="800" />
+          <Property Name="manufacturelength" Type="int" />
+          <Property Name="manufacturewidth" Type="int" />
+          <Property Name="manufactureup" Type="int" />
+          <Property Name="totallength" Type="float" />
+          <Property Name="totalarea" Type="float" />
+          <Property Name="totalweight" Type="float" />
+          <Property Name="verifiedby" Type="nvarchar" MaxLength="30" />
+          <Property Name="manufacturingboardcode" Type="nvarchar" MaxLength="30" />
+          <Property Name="costso01" Type="money" />
+          <Property Name="costso02" Type="money" />
+          <Property Name="costso03" Type="money" />
+          <Property Name="costso04" Type="money" />
+          <Property Name="costso05" Type="money" />
+          <Property Name="costso06" Type="money" />
+          <Property Name="costso07" Type="money" />
+          <Property Name="costso08" Type="money" />
+          <Property Name="costso09" Type="money" />
+          <Property Name="costso10" Type="money" />
+          <Property Name="costso11" Type="money" />
+          <Property Name="costso12" Type="money" />
+          <Property Name="userfieldso1" Type="nvarchar" MaxLength="30" />
+          <Property Name="userfieldso2" Type="nvarchar" MaxLength="30" />
+          <Property Name="userfieldso3" Type="nvarchar" MaxLength="30" />
+          <Property Name="userfieldso4" Type="nvarchar" MaxLength="30" />
+          <Property Name="userfieldso5" Type="nvarchar" MaxLength="30" />
+          <Property Name="iscosted" Type="smallint" />
+          <Property Name="boardstatus" Type="nvarchar" MaxLength="30" />
+          <Property Name="pCSstatus" Type="nvarchar" MaxLength="30" />
+          <Property Name="totalvalue" Type="money" />
+          <Property Name="ischargeable" Type="smallint" />
+          <Property Name="maximumsetups" Type="int" />
+          <Property Name="boardrunspeed" Type="int" />
+          <Property Name="maxoutperknife01" Type="int" />
+          <Property Name="maxoutperknife02" Type="int" />
+          <Property Name="maxoutperknife03" Type="int" />
+          <Property Name="maxoutoncorrugator" Type="int" />
+          <Property Name="allowgradechange" Type="int" />
+          <Property Name="source" Type="nvarchar" MaxLength="30" />
+          <Property Name="manufacturingoverrun" Type="float" />
+          <Property Name="manufacturingunderrun" Type="float" />
+          <Property Name="targetquantity" Type="int" />
+          <Property Name="madecostso1" Type="money" />
+          <Property Name="madecostso2" Type="money" />
+          <Property Name="madecostso3" Type="money" />
+          <Property Name="madecostso4" Type="money" />
+          <Property Name="madecostso5" Type="money" />
+          <Property Name="madecostso6" Type="money" />
+          <Property Name="madecostso7" Type="money" />
+          <Property Name="madecostso8" Type="money" />
+          <Property Name="madecostso9" Type="money" />
+          <Property Name="madecostso10" Type="money" />
+          <Property Name="madecostso11" Type="money" />
+          <Property Name="madecostso12" Type="money" />
+          <Property Name="foldlength" Type="int" />
+          <Property Name="cycle" Type="int" />
+          <Property Name="wascrashedorder" Type="smallint" />
+          <Property Name="componentno" Type="int" />
+          <Property Name="componentcount" Type="int" />
+          <Property Name="taxinclusive" Type="smallint" />
+          <Property Name="comborun" Type="int" />
+          <Property Name="comboquantity" Type="int" />
+          <Property Name="onconsignment" Type="smallint" />
+          <Property Name="confirmationrequired" Type="smallint" />
+          <Property Name="standardcontribution" Type="money" />
+          <Property Name="contribution" Type="money" />
+          <Property Name="isforcastorder" Type="smallint" />
+          <Property Name="actualhours" Type="float" />
+          <Property Name="actuallabourcost" Type="money" />
+          <Property Name="actualtotalarea" Type="float" />
+          <Property Name="actualboardcost" Type="money" />
+          <Property Name="labeldataor01" Type="nvarchar" MaxLength="30" />
+          <Property Name="labeldataor02" Type="nvarchar" MaxLength="30" />
+          <Property Name="labeldataor03" Type="nvarchar" MaxLength="30" />
+          <Property Name="labeldataor04" Type="nvarchar" MaxLength="30" />
+          <Property Name="labeldataor05" Type="nvarchar" MaxLength="30" />
+          <Property Name="labeldataor06" Type="nvarchar" MaxLength="30" />
+          <Property Name="labeldataor07" Type="nvarchar" MaxLength="30" />
+          <Property Name="labeldataor08" Type="nvarchar" MaxLength="30" />
+          <Property Name="labeldataor09" Type="nvarchar" MaxLength="30" />
+          <Property Name="labeldataor10" Type="nvarchar" MaxLength="30" />
+          <Property Name="despatchmode" Type="nvarchar" MaxLength="30" />
+          <Property Name="corrugatorcoating" Type="nvarchar" MaxLength="30" />
+          <Property Name="freightunit" Type="int" />
+          <Property Name="gLCode" Type="nvarchar" MaxLength="30" />
+          <Property Name="jobtype" Type="nvarchar" MaxLength="30" />
+          <Property Name="productCode" Type="nvarchar" MaxLength="30" />
+          <Property Name="autoperunitUOM" Type="nvarchar" MaxLength="30" />
+          <Property Name="perUnitUOM" Type="nvarchar" MaxLength="30" />
+          <Property Name="companyID" Type="int" Nullable="false" />
+          <Property Name="contactID" Type="int" />
+          <Property Name="precostestimateID" Type="int" />
+          <Property Name="exchangerateID" Type="int" />
+          <Property Name="nationalcurrencyID" Type="int" />
+          <Property Name="plantID" Type="int" Nullable="false" />
+          <Property Name="productdesignID" Type="int" />
+          <Property Name="productpriceID" Type="int" />
+          <Property Name="routeID" Type="int" />
+          <Property Name="stocklineID" Type="int" />
+          <Property Name="unitizingspecID" Type="int" />
+          <Property Name="carriercompanyID" Type="int" />
+          <Property Name="componentorderbatchID" Type="int" />
+          <Property Name="firsttaxcodeID" Type="int" />
+          <Property Name="pricingorderbatchID" Type="int" />
+          <Property Name="secondtaxcodeID" Type="int" />
+          <Property Name="shiptoaddressID" Type="int" />
+          <Property Name="thirdtaxcodeID" Type="int" />
+          <Property Name="orderstatus" Type="nvarchar" MaxLength="30" />
+          <Property Name="issetprice" Type="smallint" />
+          <Property Name="usedproductdesign" Type="smallint" />
+          <Property Name="ordertype" Type="int" />
+          <Property Name="transferquantity" Type="int" />
+          <Property Name="salesaddressID" Type="int" />
+          <Property Name="requestedduedate" Type="datetime" />
+          <Property Name="committedduedate" Type="datetime" />
+          <Property Name="plantloadingduedate" Type="datetime" />
+          <Property Name="goodsvalue" Type="money" />
+          <Property Name="totalpriceper" Type="money" />
+          <Property Name="autofreightunit" Type="int" />
+          <Property Name="transfercode" Type="nvarchar" MaxLength="30" />
+          <Property Name="mAPreleasecount" Type="int" />
+          <Property Name="repeattype" Type="int" />
+          <Property Name="callofftype" Type="int" />
+          <Property Name="senttocommson" Type="datetime" />
+          <Property Name="freightcost" Type="money" />
+          <Property Name="versionTimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="topuporderID" Type="int" />
+          <Property Name="shipremaining" Type="smallint" />
+          <Property Name="userfieldso6" Type="nvarchar" MaxLength="30" />
+          <Property Name="userfieldso7" Type="nvarchar" MaxLength="30" />
+          <Property Name="userfieldso8" Type="nvarchar" MaxLength="30" />
+          <Property Name="userfieldso9" Type="nvarchar" MaxLength="30" />
+          <Property Name="userfieldso10" Type="nvarchar" MaxLength="30" />
+          <Property Name="userfieldso11" Type="nvarchar" MaxLength="30" />
+          <Property Name="userfieldso12" Type="nvarchar" MaxLength="30" />
+          <Property Name="calloffpricetype" Type="int" />
+          <Property Name="commission" Type="float" />
+          <Property Name="comboID" Type="int" />
+          <Property Name="tradediscountpercent" Type="float" Nullable="false" />
+          <Property Name="tradediscountvalue" Type="money" />
+          <Property Name="itemisedfreight" Type="smallint" />
+          <Property Name="itemisedsetup" Type="smallint" />
+          <Property Name="orderbasketID" Type="int" />
+          <Property Name="selectedunits" Type="nvarchar" MaxLength="800" />
+          <Property Name="pushinduedate" Type="datetime" />
+          <Property Name="crashinduedate" Type="datetime" />
+          <Property Name="duedaterisk" Type="int" />
+          <Property Name="excludelevy" Type="smallint" />
+          <Property Name="costso13" Type="money" />
+          <Property Name="costso14" Type="money" />
+          <Property Name="costso15" Type="money" />
+          <Property Name="costso16" Type="money" />
+          <Property Name="costso17" Type="money" />
+          <Property Name="costso18" Type="money" />
+          <Property Name="costso19" Type="money" />
+          <Property Name="costso20" Type="money" />
+          <Property Name="madecostso13" Type="money" />
+          <Property Name="madecostso14" Type="money" />
+          <Property Name="madecostso15" Type="money" />
+          <Property Name="madecostso16" Type="money" />
+          <Property Name="madecostso17" Type="money" />
+          <Property Name="madecostso18" Type="money" />
+          <Property Name="madecostso19" Type="money" />
+          <Property Name="madecostso20" Type="money" />
+          <Property Name="eDIFieldso1" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso2" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso3" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso4" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso5" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso6" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso7" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso8" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso9" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso10" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso11" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso12" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso13" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso14" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso15" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso16" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso17" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso18" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso19" Type="nvarchar" MaxLength="255" />
+          <Property Name="eDIFieldso20" Type="nvarchar" MaxLength="255" />
+          <Property Name="prioritysource" Type="int" />
+          <Property Name="productdesignplantID" Type="int" />
+          <Property Name="standardboardID" Type="int" Nullable="false" />
+          <Property Name="usermodifiedfields" Type="int" />
+          <Property Name="designnumber" Type="nvarchar" MaxLength="15" />
+          <Property Name="customerspec" Type="nvarchar" MaxLength="60" />
+          <Property Name="internallength" Type="int" />
+          <Property Name="internalwidth" Type="int" />
+          <Property Name="internaldepth" Type="int" />
+          <Property Name="topflapfactor" Type="int" />
+          <Property Name="bottomflapfactor" Type="int" />
+          <Property Name="yFactor" Type="int" />
+          <Property Name="finishedarea" Type="float" />
+          <Property Name="sumtowidthslots" Type="nvarchar" MaxLength="250" />
+          <Property Name="sumtowidthslotdepth01" Type="int" />
+          <Property Name="sumtowidthslotdepth02" Type="int" />
+          <Property Name="sumtolengthslots" Type="nvarchar" MaxLength="250" />
+          <Property Name="sumtolengthslotdepth01" Type="int" />
+          <Property Name="sumtolengthslotdepth02" Type="int" />
+          <Property Name="pD_createddate" Type="datetime" />
+          <Property Name="orderseparately" Type="smallint" />
+          <Property Name="showpartprice" Type="smallint" />
+          <Property Name="pD_CADfile" Type="nvarchar" MaxLength="100" />
+          <Property Name="pD_CADimportdate" Type="datetime" />
+          <Property Name="pD_Artfile" Type="nvarchar" MaxLength="100" />
+          <Property Name="annualtarget" Type="float" />
+          <Property Name="maximumlevel" Type="float" />
+          <Property Name="pD_userbd01" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_userbd02" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_userbd03" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_userbd04" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_userbd05" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_userbd06" Type="nvarchar" MaxLength="250" />
+          <Property Name="tabwidth" Type="int" />
+          <Property Name="jointabposition" Type="int" />
+          <Property Name="copyofProductDesign" Type="nvarchar" MaxLength="10" />
+          <Property Name="noofsets" Type="int" />
+          <Property Name="noperset" Type="int" />
+          <Property Name="expectedordersize" Type="int" />
+          <Property Name="corrugatortest" Type="int" />
+          <Property Name="convertingtest" Type="int" />
+          <Property Name="bottomflapprintingcode" Type="nvarchar" MaxLength="200" />
+          <Property Name="sortcode" Type="int" />
+          <Property Name="ownershipmask" Type="int" />
+          <Property Name="donotarchive" Type="smallint" />
+          <Property Name="reverseflute" Type="int" />
+          <Property Name="hasconsignmentstock" Type="smallint" />
+          <Property Name="boardtest" Type="int" />
+          <Property Name="pD_analysiscode01" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_analysiscode03" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_analysiscode02" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_analysiscode04" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_analysiscode05" Type="nvarchar" MaxLength="250" />
+          <Property Name="expirydate" Type="datetime" />
+          <Property Name="analysisgroup" Type="nvarchar" MaxLength="30" />
+          <Property Name="exportrebate" Type="nvarchar" MaxLength="30" />
+          <Property Name="glue" Type="nvarchar" MaxLength="30" />
+          <Property Name="holetype" Type="nvarchar" MaxLength="30" />
+          <Property Name="industrycode" Type="nvarchar" MaxLength="30" />
+          <Property Name="specialusage" Type="nvarchar" MaxLength="30" />
+          <Property Name="stamptype" Type="nvarchar" MaxLength="30" />
+          <Property Name="waxing" Type="nvarchar" MaxLength="30" />
+          <Property Name="autogenerated" Type="smallint" />
+          <Property Name="committedleadtime" Type="datetime" />
+          <Property Name="quotecomment" Type="nvarchar" MaxLength="250" />
+          <Property Name="orderalert" Type="nvarchar" MaxLength="250" />
+          <Property Name="scoremirroring" Type="int" />
+          <Property Name="lastmodifieddate" Type="datetime" />
+          <Property Name="isleadtimecontracted" Type="smallint" />
+          <Property Name="maximumorderquantity" Type="int" />
+          <Property Name="palletschargeable" Type="smallint" />
+          <Property Name="ownersalesaddressID" Type="int" />
+          <Property Name="eDIDescription" Type="nvarchar" MaxLength="150" />
+          <Property Name="hotstamping" Type="nvarchar" MaxLength="30" />
+          <Property Name="embossing" Type="nvarchar" MaxLength="30" />
+          <Property Name="laminatingmaterial" Type="nvarchar" MaxLength="30" />
+          <Property Name="windowmaterial1" Type="nvarchar" MaxLength="30" />
+          <Property Name="numprintedpanels" Type="int" />
+          <Property Name="smallestpanellength" Type="int" />
+          <Property Name="largestpanellength" Type="int" />
+          <Property Name="tabpanellength" Type="int" />
+          <Property Name="foldedlength" Type="int" />
+          <Property Name="foldedwidth" Type="int" />
+          <Property Name="tabfirstlast" Type="int" />
+          <Property Name="tabinsideoutside" Type="int" />
+          <Property Name="printlength" Type="int" />
+          <Property Name="pD_userproperty1" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_userproperty2" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_userproperty3" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_userproperty4" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_userproperty5" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_userproperty6" Type="nvarchar" MaxLength="250" />
+          <Property Name="deliveredarea" Type="float" />
+          <Property Name="productbarcode" Type="nvarchar" MaxLength="30" />
+          <Property Name="artversion" Type="nvarchar" MaxLength="20" />
+          <Property Name="windowcutofflength1" Type="int" />
+          <Property Name="windowrollwidth1" Type="int" />
+          <Property Name="windownumberperitem1" Type="int" />
+          <Property Name="windowinside1" Type="smallint" />
+          <Property Name="laminatelength" Type="int" />
+          <Property Name="laminatenumberperitem" Type="int" />
+          <Property Name="stockeditem" Type="smallint" />
+          <Property Name="daystowarehouse" Type="int" />
+          <Property Name="windowmaterial2" Type="nvarchar" MaxLength="30" />
+          <Property Name="windowcutofflength2" Type="int" />
+          <Property Name="windowrollwidth2" Type="int" />
+          <Property Name="windownumberperitem2" Type="int" />
+          <Property Name="windowinside2" Type="smallint" />
+          <Property Name="uOM" Type="nvarchar" MaxLength="30" />
+          <Property Name="quotedcost" Type="money" />
+          <Property Name="quoteddate" Type="datetime" />
+          <Property Name="intendedplatetype" Type="nvarchar" MaxLength="30" />
+          <Property Name="numberofcalloffs" Type="int" />
+          <Property Name="pD_userbd07" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_userbd08" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_userbd09" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_userbd10" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_userbd11" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_userbd12" Type="nvarchar" MaxLength="250" />
+          <Property Name="calloffbytopup" Type="smallint" />
+          <Property Name="isassortment" Type="smallint" />
+          <Property Name="salesboardfinishedweight" Type="float" />
+          <Property Name="salesboardfinishedpaperweight" Type="float" />
+          <Property Name="salesboarddeliveredweight" Type="float" />
+          <Property Name="salesboarddeliveredpaperweight" Type="float" />
+          <Property Name="pD_CADdrawingnumber" Type="nvarchar" MaxLength="30" />
+          <Property Name="pD_CADuserfield1" Type="nvarchar" MaxLength="255" />
+          <Property Name="pD_CADuserfield2" Type="nvarchar" MaxLength="255" />
+          <Property Name="pD_CADuserfield3" Type="nvarchar" MaxLength="255" />
+          <Property Name="pD_CADuserfield4" Type="nvarchar" MaxLength="255" />
+          <Property Name="pD_CADuserfield5" Type="nvarchar" MaxLength="255" />
+          <Property Name="pD_CADuserfield6" Type="nvarchar" MaxLength="255" />
+          <Property Name="pD_CADuserfield7" Type="nvarchar" MaxLength="255" />
+          <Property Name="pD_CADuserfield8" Type="nvarchar" MaxLength="255" />
+          <Property Name="usephysicalpallet" Type="smallint" />
+          <Property Name="pD_userdatetimefield01" Type="datetime" />
+          <Property Name="pD_userdatetimefield02" Type="datetime" />
+          <Property Name="pD_userdatetimefield03" Type="datetime" />
+          <Property Name="pD_userdatetimefield04" Type="datetime" />
+          <Property Name="pD_userdatetimefield05" Type="datetime" />
+          <Property Name="pD_userdatetimefield06" Type="datetime" />
+          <Property Name="pD_userdatetimefield07" Type="datetime" />
+          <Property Name="pD_userdatetimefield08" Type="datetime" />
+          <Property Name="pD_userdatetimefield09" Type="datetime" />
+          <Property Name="certificationdate" Type="datetime" />
+          <Property Name="productioncycle" Type="int" />
+          <Property Name="samplenumber" Type="nvarchar" MaxLength="30" />
+          <Property Name="corrugatorinhouselabel" Type="nvarchar" MaxLength="2" />
+          <Property Name="convertinginhouselabel" Type="nvarchar" MaxLength="2" />
+          <Property Name="pDP_userproperty01" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userproperty02" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userproperty03" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userproperty04" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userproperty05" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userproperty06" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_analysiscode01" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_analysiscode02" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_analysiscode03" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_analysiscode04" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userfield01" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userfield02" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userfield03" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userfield04" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userfield05" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userfield06" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userfield07" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userfield08" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userfield09" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userfield10" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userfield11" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_userfield12" Type="nvarchar" MaxLength="250" />
+          <Property Name="dischargedirection" Type="nvarchar" MaxLength="1" />
+          <Property Name="stackdestination" Type="nvarchar" MaxLength="1" />
+          <Property Name="sheetsinstack" Type="int" />
+          <Property Name="stackcount" Type="int" />
+          <Property Name="rotateoffcorrugator" Type="int" />
+          <Property Name="cSClabelsperunit" Type="int" />
+          <Property Name="mfgboardblankweight" Type="float" />
+          <Property Name="mfgboardblankpaperweight" Type="float" />
+          <Property Name="mfgboarddeliveredpaperweight" Type="float" />
+          <Property Name="pDP_corrugatortest" Type="int" />
+          <Property Name="pDP_convertingtest" Type="float" />
+          <Property Name="defaultboardsupplymethod" Type="int" />
+          <Property Name="defaultorderunscoredboard" Type="smallint" />
+          <Property Name="pDP_createddate" Type="datetime" />
+          <Property Name="trimwaste" Type="int" />
+          <Property Name="starchtypekey" Type="nvarchar" MaxLength="5" />
+          <Property Name="deliveredweight" Type="float" />
+          <Property Name="finishedweight" Type="float" />
+          <Property Name="defaultsuppresscorrugatorscores" Type="smallint" />
+          <Property Name="coatingcount" Type="int" />
+          <Property Name="insidecoatingcount" Type="int" />
+          <Property Name="inkcount" Type="int" />
+          <Property Name="insideinkcount" Type="int" />
+          <Property Name="outsideprintdifficulty" Type="int" />
+          <Property Name="insideprintdifficulty" Type="int" />
+          <Property Name="insideinktypelist" Type="nvarchar" MaxLength="30" />
+          <Property Name="outsideinktypelist" Type="nvarchar" MaxLength="30" />
+          <Property Name="insidecoatingtypelist" Type="nvarchar" MaxLength="30" />
+          <Property Name="outsidecoatingtypelist" Type="nvarchar" MaxLength="30" />
+          <Property Name="coverage" Type="nvarchar" MaxLength="30" />
+          <Property Name="pCSoperations" Type="nvarchar" MaxLength="50" />
+          <Property Name="pDP_userdatetimefield01" Type="datetime" />
+          <Property Name="pDP_userdatetimefield02" Type="datetime" />
+          <Property Name="pDP_userdatetimefield03" Type="datetime" />
+          <Property Name="pDP_userdatetimefield04" Type="datetime" />
+          <Property Name="pDP_userdatetimefield05" Type="datetime" />
+          <Property Name="pDP_userdatetimefield06" Type="datetime" />
+          <Property Name="pDP_userdatetimefield07" Type="datetime" />
+          <Property Name="pDP_userdatetimefield08" Type="datetime" />
+          <Property Name="pDP_userdatetimefield09" Type="datetime" />
+          <Property Name="routename" Type="nvarchar" MaxLength="25" />
+          <Property Name="minimumquantity" Type="int" />
+          <Property Name="isdefaultroute" Type="smallint" />
+          <Property Name="averagetrimwaste" Type="float" />
+          <Property Name="accumrunwaste" Type="float" />
+          <Property Name="accumsetupwaste" Type="float" />
+          <Property Name="startlength" Type="int" />
+          <Property Name="startwidth" Type="int" />
+          <Property Name="boardarea" Type="float" />
+          <Property Name="printingplate" Type="nvarchar" MaxLength="10" />
+          <Property Name="printingplatetype" Type="nvarchar" MaxLength="30" />
+          <Property Name="knife" Type="nvarchar" MaxLength="10" />
+          <Property Name="knifetype" Type="nvarchar" MaxLength="30" />
+          <Property Name="knifelength" Type="int" />
+          <Property Name="knifewidth" Type="int" />
+          <Property Name="widthwisenoup" Type="int" />
+          <Property Name="lengthwisenoup" Type="int" />
+          <Property Name="userrt01" Type="nvarchar" MaxLength="255" />
+          <Property Name="userrt02" Type="nvarchar" MaxLength="255" />
+          <Property Name="knockoutwaste" Type="float" />
+          <Property Name="closurecodekey" Type="nvarchar" MaxLength="2" />
+          <Property Name="laminatewidth" Type="int" />
+          <Property Name="pDP_analysiscode05" Type="nvarchar" MaxLength="250" />
+          <Property Name="mfgboarddeliveredweight" Type="float" />
+          <Property Name="pDP_ordereddate" Type="datetime" />
+          <Property Name="freightcodeID" Type="int" />
+          <Property Name="slotwidthcode" Type="nvarchar" MaxLength="100" />
+          <Property Name="tapeID" Type="int" />
+          <Property Name="bottomflaptypeID" Type="int" />
+          <Property Name="topflaptypeID" Type="int" />
+          <Property Name="structureID" Type="int" />
+          <Property Name="taxproductgroupID" Type="int" />
+          <Property Name="standardflaplengthtypeID" Type="int" />
+          <Property Name="owningplantID" Type="int" />
+          <Property Name="outworkcompanyID" Type="int" />
+          <Property Name="lastaddressID" Type="int" />
+          <Property Name="styleID" Type="int" />
+          <Property Name="slotwidthID" Type="int" />
+          <Property Name="externalreferenceID" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_plantartfile" Type="nvarchar" MaxLength="100" />
+          <Property Name="pDP_plantcadfile" Type="nvarchar" MaxLength="100" />
+          <Property Name="pDP_plantcaddrawingnumber" Type="nvarchar" MaxLength="30" />
+          <Property Name="pDP_plantcadimportdate" Type="datetime" />
+          <Property Name="pDP_plantcaduserfield1" Type="nvarchar" MaxLength="255" />
+          <Property Name="pDP_plantcaduserfield2" Type="nvarchar" MaxLength="255" />
+          <Property Name="pDP_plantcaduserfield3" Type="nvarchar" MaxLength="255" />
+          <Property Name="pDP_plantcaduserfield4" Type="nvarchar" MaxLength="255" />
+          <Property Name="pDP_plantcaduserfield5" Type="nvarchar" MaxLength="255" />
+          <Property Name="pDP_plantcaduserfield6" Type="nvarchar" MaxLength="255" />
+          <Property Name="pDP_plantcaduserfield7" Type="nvarchar" MaxLength="255" />
+          <Property Name="pDP_plantcaduserfield8" Type="nvarchar" MaxLength="255" />
+          <Property Name="isboardsupplied" Type="smallint" />
+          <Property Name="iscompletefarmoutfromsupplier" Type="smallint" />
+          <Property Name="iscompletefarmout" Type="smallint" />
+          <Property Name="haspostcorrugateoutwork" Type="smallint" />
+          <Property Name="isoutworkexpectedfromsupplier" Type="smallint" />
+          <Property Name="suppresscorrugatorscores" Type="smallint" />
+          <Property Name="widthwisestarttrim" Type="int" />
+          <Property Name="widthwiseendtrim" Type="int" />
+          <Property Name="fSCcompliant" Type="smallint" />
+          <Property Name="fourthTaxCodeID" Type="int" />
+          <Property Name="fifthTaxCodeID" Type="int" />
+          <Property Name="sixthTaxCodeID" Type="int" />
+          <Property Name="inTransitAddressID" Type="int" />
+          <Property Name="inTransitCompanyID" Type="int" />
+          <Property Name="allowpartialcorrugatorschedule" Type="int" Nullable="false" />
+          <Property Name="userdatetimefield01" Type="datetime" />
+          <Property Name="userdatetimefield02" Type="datetime" />
+          <Property Name="userdatetimefield03" Type="datetime" />
+          <Property Name="userdatetimefield04" Type="datetime" />
+          <Property Name="userdatetimefield05" Type="datetime" />
+          <Property Name="company_comments" Type="nvarchar" MaxLength="255" />
+          <Property Name="address_comments" Type="nvarchar" MaxLength="255" />
+          <Property Name="address_shippinginstructions" Type="nvarchar" MaxLength="255" />
+          <Property Name="pD_comments" Type="nvarchar" MaxLength="600" />
+          <Property Name="pD_quotecomment" Type="nvarchar" MaxLength="250" />
+          <Property Name="pD_shippinginstructions" Type="nvarchar" MaxLength="600" />
+          <Property Name="pD_orderalert" Type="nvarchar" MaxLength="250" />
+          <Property Name="pDP_shippinginstructions" Type="nvarchar" MaxLength="600" />
+          <Property Name="pDP_orderalert" Type="nvarchar" MaxLength="250" />
+          <Property Name="route_specialinstructions" Type="nvarchar" MaxLength="600" />
+          <Property Name="acceptfullunitsonly" Type="smallint" Nullable="false" />
+          <Property Name="route_boardsupplymethod" Type="int" Nullable="false" />
+          <Property Name="shippingsetnumber" Type="nvarchar" MaxLength="11" />
+          <Property Name="combopriceallowed" Type="bit" Nullable="false" />
+          <Property Name="fastdespatchloadavailable" Type="int" Nullable="false" />
+          <Property Name="isprepaid" Type="bit" Nullable="false" />
+          <Property Name="setpricingmethod" Type="int" Nullable="false" />
+          <Property Name="requiredcorrugator" Type="int" />
+          <Property Name="preprintOrderQuantityID" Type="int" />
+          <Property Name="farmOutDelivery" Type="int" Nullable="false" />
+          <Property Name="pICitemcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="universalproductcode" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <Association Name="espOrder_fk175">
+          <End Role="espOrder" Type="Self.espOrder" Multiplicity="0..1" />
+          <End Role="espOrder1" Type="Self.espOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="espOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="espOrder1">
+              <PropertyRef Name="topuporderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ESPModelStoreContainer">
+          <EntitySet Name="espOrder" EntityType="Self.espOrder" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="espOrder_fk175" Association="Self.espOrder_fk175">
+            <End Role="espOrder" EntitySet="espOrder" />
+            <End Role="espOrder1" EntitySet="espOrder" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ESPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ESPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="espOrders" EntityType="ESPModel.espOrder" />
+          <AssociationSet Name="espOrder_fk175" Association="ESPModel.espOrder_fk175">
+            <End Role="espOrder" EntitySet="espOrders" />
+            <End Role="espOrder1" EntitySet="espOrders" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="espOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mainttime" Type="DateTime" Precision="3" />
+          <Property Name="userID" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="jobnumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="orderdate" Type="DateTime" Precision="3" />
+          <Property Name="entrydate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="foreignpricing" Type="Int16" />
+          <Property Name="recalcforeignpricing" Type="Int16" />
+          <Property Name="creditoverridedate" Type="DateTime" Precision="3" />
+          <Property Name="priority" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="sheetspecnumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="customerPOref" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="customerPOlinenumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="orderedquantity" Type="Int32" />
+          <Property Name="unitquantity" Type="Int32" />
+          <Property Name="plannedquantity" Type="Int32" />
+          <Property Name="producedquantity" Type="Int32" />
+          <Property Name="shippedquantity" Type="Int32" />
+          <Property Name="invoicedquantity" Type="Int32" />
+          <Property Name="returnedquantity" Type="Int32" />
+          <Property Name="creditedquantity" Type="Int32" />
+          <Property Name="quarantinedquantity" Type="Int32" />
+          <Property Name="scrappedquantity" Type="Int32" />
+          <Property Name="shippinginstructions" Type="String" MaxLength="1055" FixedLength="false" Unicode="true" />
+          <Property Name="partiallydeliverable" Type="Int16" />
+          <Property Name="specialinstructions" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="length" Type="Int32" />
+          <Property Name="width" Type="Int32" />
+          <Property Name="autopriceper" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="autosetupprice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="autofreight" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="autototalprice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="taxvalue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="priceper" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="setupprice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="pricestate" Type="Int32" />
+          <Property Name="freight" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="permittedoverrun" Type="Double" />
+          <Property Name="permittedunderrun" Type="Double" />
+          <Property Name="shying" Type="Int32" />
+          <Property Name="earliestduedate" Type="DateTime" Precision="3" />
+          <Property Name="duedate" Type="DateTime" Precision="3" />
+          <Property Name="originalduedate" Type="DateTime" Precision="3" />
+          <Property Name="cancelleddate" Type="DateTime" Precision="3" />
+          <Property Name="latestdespatchdate" Type="DateTime" Precision="3" />
+          <Property Name="wipvalue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="comments" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="manufacturelength" Type="Int32" />
+          <Property Name="manufacturewidth" Type="Int32" />
+          <Property Name="manufactureup" Type="Int32" />
+          <Property Name="totallength" Type="Double" />
+          <Property Name="totalarea" Type="Double" />
+          <Property Name="totalweight" Type="Double" />
+          <Property Name="verifiedby" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="manufacturingboardcode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="costso01" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso02" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso03" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso04" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso05" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso06" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso07" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso08" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso09" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso10" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso11" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso12" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="userfieldso1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="userfieldso2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="userfieldso3" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="userfieldso4" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="userfieldso5" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="iscosted" Type="Int16" />
+          <Property Name="boardstatus" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="pCSstatus" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="totalvalue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ischargeable" Type="Int16" />
+          <Property Name="maximumsetups" Type="Int32" />
+          <Property Name="boardrunspeed" Type="Int32" />
+          <Property Name="maxoutperknife01" Type="Int32" />
+          <Property Name="maxoutperknife02" Type="Int32" />
+          <Property Name="maxoutperknife03" Type="Int32" />
+          <Property Name="maxoutoncorrugator" Type="Int32" />
+          <Property Name="allowgradechange" Type="Int32" />
+          <Property Name="source" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="manufacturingoverrun" Type="Double" />
+          <Property Name="manufacturingunderrun" Type="Double" />
+          <Property Name="targetquantity" Type="Int32" />
+          <Property Name="madecostso1" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso2" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso3" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso4" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso5" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso6" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso7" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso8" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso9" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso10" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso11" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso12" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="foldlength" Type="Int32" />
+          <Property Name="cycle" Type="Int32" />
+          <Property Name="wascrashedorder" Type="Int16" />
+          <Property Name="componentno" Type="Int32" />
+          <Property Name="componentcount" Type="Int32" />
+          <Property Name="taxinclusive" Type="Int16" />
+          <Property Name="comborun" Type="Int32" />
+          <Property Name="comboquantity" Type="Int32" />
+          <Property Name="onconsignment" Type="Int16" />
+          <Property Name="confirmationrequired" Type="Int16" />
+          <Property Name="standardcontribution" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="contribution" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="isforcastorder" Type="Int16" />
+          <Property Name="actualhours" Type="Double" />
+          <Property Name="actuallabourcost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="actualtotalarea" Type="Double" />
+          <Property Name="actualboardcost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="labeldataor01" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="labeldataor02" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="labeldataor03" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="labeldataor04" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="labeldataor05" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="labeldataor06" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="labeldataor07" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="labeldataor08" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="labeldataor09" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="labeldataor10" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="despatchmode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="corrugatorcoating" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="freightunit" Type="Int32" />
+          <Property Name="gLCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="jobtype" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="productCode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="autoperunitUOM" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="perUnitUOM" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="companyID" Type="Int32" Nullable="false" />
+          <Property Name="contactID" Type="Int32" />
+          <Property Name="precostestimateID" Type="Int32" />
+          <Property Name="exchangerateID" Type="Int32" />
+          <Property Name="nationalcurrencyID" Type="Int32" />
+          <Property Name="plantID" Type="Int32" Nullable="false" />
+          <Property Name="productdesignID" Type="Int32" />
+          <Property Name="productpriceID" Type="Int32" />
+          <Property Name="routeID" Type="Int32" />
+          <Property Name="stocklineID" Type="Int32" />
+          <Property Name="unitizingspecID" Type="Int32" />
+          <Property Name="carriercompanyID" Type="Int32" />
+          <Property Name="componentorderbatchID" Type="Int32" />
+          <Property Name="firsttaxcodeID" Type="Int32" />
+          <Property Name="pricingorderbatchID" Type="Int32" />
+          <Property Name="secondtaxcodeID" Type="Int32" />
+          <Property Name="shiptoaddressID" Type="Int32" />
+          <Property Name="thirdtaxcodeID" Type="Int32" />
+          <Property Name="orderstatus" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="issetprice" Type="Int16" />
+          <Property Name="usedproductdesign" Type="Int16" />
+          <Property Name="ordertype" Type="Int32" />
+          <Property Name="transferquantity" Type="Int32" />
+          <Property Name="salesaddressID" Type="Int32" />
+          <Property Name="requestedduedate" Type="DateTime" Precision="3" />
+          <Property Name="committedduedate" Type="DateTime" Precision="3" />
+          <Property Name="plantloadingduedate" Type="DateTime" Precision="3" />
+          <Property Name="goodsvalue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="totalpriceper" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="autofreightunit" Type="Int32" />
+          <Property Name="transfercode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="mAPreleasecount" Type="Int32" />
+          <Property Name="repeattype" Type="Int32" />
+          <Property Name="callofftype" Type="Int32" />
+          <Property Name="senttocommson" Type="DateTime" Precision="3" />
+          <Property Name="freightcost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="versionTimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="topuporderID" Type="Int32" />
+          <Property Name="shipremaining" Type="Int16" />
+          <Property Name="userfieldso6" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="userfieldso7" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="userfieldso8" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="userfieldso9" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="userfieldso10" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="userfieldso11" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="userfieldso12" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="calloffpricetype" Type="Int32" />
+          <Property Name="commission" Type="Double" />
+          <Property Name="comboID" Type="Int32" />
+          <Property Name="tradediscountpercent" Type="Double" Nullable="false" />
+          <Property Name="tradediscountvalue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="itemisedfreight" Type="Int16" />
+          <Property Name="itemisedsetup" Type="Int16" />
+          <Property Name="orderbasketID" Type="Int32" />
+          <Property Name="selectedunits" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Name="pushinduedate" Type="DateTime" Precision="3" />
+          <Property Name="crashinduedate" Type="DateTime" Precision="3" />
+          <Property Name="duedaterisk" Type="Int32" />
+          <Property Name="excludelevy" Type="Int16" />
+          <Property Name="costso13" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso14" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso15" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso16" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso17" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso18" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso19" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="costso20" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso13" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso14" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso15" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso16" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso17" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso18" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso19" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="madecostso20" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="eDIFieldso1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso4" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso5" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso6" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso7" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso8" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso9" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso10" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso11" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso12" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso13" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso14" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso15" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso16" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso17" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso18" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso19" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="eDIFieldso20" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="prioritysource" Type="Int32" />
+          <Property Name="productdesignplantID" Type="Int32" />
+          <Property Name="standardboardID" Type="Int32" Nullable="false" />
+          <Property Name="usermodifiedfields" Type="Int32" />
+          <Property Name="designnumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="customerspec" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="internallength" Type="Int32" />
+          <Property Name="internalwidth" Type="Int32" />
+          <Property Name="internaldepth" Type="Int32" />
+          <Property Name="topflapfactor" Type="Int32" />
+          <Property Name="bottomflapfactor" Type="Int32" />
+          <Property Name="yFactor" Type="Int32" />
+          <Property Name="finishedarea" Type="Double" />
+          <Property Name="sumtowidthslots" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="sumtowidthslotdepth01" Type="Int32" />
+          <Property Name="sumtowidthslotdepth02" Type="Int32" />
+          <Property Name="sumtolengthslots" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="sumtolengthslotdepth01" Type="Int32" />
+          <Property Name="sumtolengthslotdepth02" Type="Int32" />
+          <Property Name="pD_createddate" Type="DateTime" Precision="3" />
+          <Property Name="orderseparately" Type="Int16" />
+          <Property Name="showpartprice" Type="Int16" />
+          <Property Name="pD_CADfile" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="pD_CADimportdate" Type="DateTime" Precision="3" />
+          <Property Name="pD_Artfile" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="annualtarget" Type="Double" />
+          <Property Name="maximumlevel" Type="Double" />
+          <Property Name="pD_userbd01" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_userbd02" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_userbd03" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_userbd04" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_userbd05" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_userbd06" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="tabwidth" Type="Int32" />
+          <Property Name="jointabposition" Type="Int32" />
+          <Property Name="copyofProductDesign" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="noofsets" Type="Int32" />
+          <Property Name="noperset" Type="Int32" />
+          <Property Name="expectedordersize" Type="Int32" />
+          <Property Name="corrugatortest" Type="Int32" />
+          <Property Name="convertingtest" Type="Int32" />
+          <Property Name="bottomflapprintingcode" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="sortcode" Type="Int32" />
+          <Property Name="ownershipmask" Type="Int32" />
+          <Property Name="donotarchive" Type="Int16" />
+          <Property Name="reverseflute" Type="Int32" />
+          <Property Name="hasconsignmentstock" Type="Int16" />
+          <Property Name="boardtest" Type="Int32" />
+          <Property Name="pD_analysiscode01" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_analysiscode03" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_analysiscode02" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_analysiscode04" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_analysiscode05" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="expirydate" Type="DateTime" Precision="3" />
+          <Property Name="analysisgroup" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="exportrebate" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="glue" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="holetype" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="industrycode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="specialusage" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="stamptype" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="waxing" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="autogenerated" Type="Int16" />
+          <Property Name="committedleadtime" Type="DateTime" Precision="3" />
+          <Property Name="quotecomment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="orderalert" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="scoremirroring" Type="Int32" />
+          <Property Name="lastmodifieddate" Type="DateTime" Precision="3" />
+          <Property Name="isleadtimecontracted" Type="Int16" />
+          <Property Name="maximumorderquantity" Type="Int32" />
+          <Property Name="palletschargeable" Type="Int16" />
+          <Property Name="ownersalesaddressID" Type="Int32" />
+          <Property Name="eDIDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="hotstamping" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="embossing" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="laminatingmaterial" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="windowmaterial1" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="numprintedpanels" Type="Int32" />
+          <Property Name="smallestpanellength" Type="Int32" />
+          <Property Name="largestpanellength" Type="Int32" />
+          <Property Name="tabpanellength" Type="Int32" />
+          <Property Name="foldedlength" Type="Int32" />
+          <Property Name="foldedwidth" Type="Int32" />
+          <Property Name="tabfirstlast" Type="Int32" />
+          <Property Name="tabinsideoutside" Type="Int32" />
+          <Property Name="printlength" Type="Int32" />
+          <Property Name="pD_userproperty1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_userproperty2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_userproperty3" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_userproperty4" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_userproperty5" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_userproperty6" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="deliveredarea" Type="Double" />
+          <Property Name="productbarcode" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="artversion" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="windowcutofflength1" Type="Int32" />
+          <Property Name="windowrollwidth1" Type="Int32" />
+          <Property Name="windownumberperitem1" Type="Int32" />
+          <Property Name="windowinside1" Type="Int16" />
+          <Property Name="laminatelength" Type="Int32" />
+          <Property Name="laminatenumberperitem" Type="Int32" />
+          <Property Name="stockeditem" Type="Int16" />
+          <Property Name="daystowarehouse" Type="Int32" />
+          <Property Name="windowmaterial2" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="windowcutofflength2" Type="Int32" />
+          <Property Name="windowrollwidth2" Type="Int32" />
+          <Property Name="windownumberperitem2" Type="Int32" />
+          <Property Name="windowinside2" Type="Int16" />
+          <Property Name="uOM" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="quotedcost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="quoteddate" Type="DateTime" Precision="3" />
+          <Property Name="intendedplatetype" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="numberofcalloffs" Type="Int32" />
+          <Property Name="pD_userbd07" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_userbd08" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_userbd09" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_userbd10" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_userbd11" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_userbd12" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="calloffbytopup" Type="Int16" />
+          <Property Name="isassortment" Type="Int16" />
+          <Property Name="salesboardfinishedweight" Type="Double" />
+          <Property Name="salesboardfinishedpaperweight" Type="Double" />
+          <Property Name="salesboarddeliveredweight" Type="Double" />
+          <Property Name="salesboarddeliveredpaperweight" Type="Double" />
+          <Property Name="pD_CADdrawingnumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="pD_CADuserfield1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pD_CADuserfield2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pD_CADuserfield3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pD_CADuserfield4" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pD_CADuserfield5" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pD_CADuserfield6" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pD_CADuserfield7" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pD_CADuserfield8" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="usephysicalpallet" Type="Int16" />
+          <Property Name="pD_userdatetimefield01" Type="DateTime" Precision="3" />
+          <Property Name="pD_userdatetimefield02" Type="DateTime" Precision="3" />
+          <Property Name="pD_userdatetimefield03" Type="DateTime" Precision="3" />
+          <Property Name="pD_userdatetimefield04" Type="DateTime" Precision="3" />
+          <Property Name="pD_userdatetimefield05" Type="DateTime" Precision="3" />
+          <Property Name="pD_userdatetimefield06" Type="DateTime" Precision="3" />
+          <Property Name="pD_userdatetimefield07" Type="DateTime" Precision="3" />
+          <Property Name="pD_userdatetimefield08" Type="DateTime" Precision="3" />
+          <Property Name="pD_userdatetimefield09" Type="DateTime" Precision="3" />
+          <Property Name="certificationdate" Type="DateTime" Precision="3" />
+          <Property Name="productioncycle" Type="Int32" />
+          <Property Name="samplenumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="corrugatorinhouselabel" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="convertinginhouselabel" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userproperty01" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userproperty02" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userproperty03" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userproperty04" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userproperty05" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userproperty06" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_analysiscode01" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_analysiscode02" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_analysiscode03" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_analysiscode04" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userfield01" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userfield02" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userfield03" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userfield04" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userfield05" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userfield06" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userfield07" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userfield08" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userfield09" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userfield10" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userfield11" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userfield12" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="dischargedirection" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="stackdestination" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="sheetsinstack" Type="Int32" />
+          <Property Name="stackcount" Type="Int32" />
+          <Property Name="rotateoffcorrugator" Type="Int32" />
+          <Property Name="cSClabelsperunit" Type="Int32" />
+          <Property Name="mfgboardblankweight" Type="Double" />
+          <Property Name="mfgboardblankpaperweight" Type="Double" />
+          <Property Name="mfgboarddeliveredpaperweight" Type="Double" />
+          <Property Name="pDP_corrugatortest" Type="Int32" />
+          <Property Name="pDP_convertingtest" Type="Double" />
+          <Property Name="defaultboardsupplymethod" Type="Int32" />
+          <Property Name="defaultorderunscoredboard" Type="Int16" />
+          <Property Name="pDP_createddate" Type="DateTime" Precision="3" />
+          <Property Name="trimwaste" Type="Int32" />
+          <Property Name="starchtypekey" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="deliveredweight" Type="Double" />
+          <Property Name="finishedweight" Type="Double" />
+          <Property Name="defaultsuppresscorrugatorscores" Type="Int16" />
+          <Property Name="coatingcount" Type="Int32" />
+          <Property Name="insidecoatingcount" Type="Int32" />
+          <Property Name="inkcount" Type="Int32" />
+          <Property Name="insideinkcount" Type="Int32" />
+          <Property Name="outsideprintdifficulty" Type="Int32" />
+          <Property Name="insideprintdifficulty" Type="Int32" />
+          <Property Name="insideinktypelist" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="outsideinktypelist" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="insidecoatingtypelist" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="outsidecoatingtypelist" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="coverage" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="pCSoperations" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_userdatetimefield01" Type="DateTime" Precision="3" />
+          <Property Name="pDP_userdatetimefield02" Type="DateTime" Precision="3" />
+          <Property Name="pDP_userdatetimefield03" Type="DateTime" Precision="3" />
+          <Property Name="pDP_userdatetimefield04" Type="DateTime" Precision="3" />
+          <Property Name="pDP_userdatetimefield05" Type="DateTime" Precision="3" />
+          <Property Name="pDP_userdatetimefield06" Type="DateTime" Precision="3" />
+          <Property Name="pDP_userdatetimefield07" Type="DateTime" Precision="3" />
+          <Property Name="pDP_userdatetimefield08" Type="DateTime" Precision="3" />
+          <Property Name="pDP_userdatetimefield09" Type="DateTime" Precision="3" />
+          <Property Name="routename" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="minimumquantity" Type="Int32" />
+          <Property Name="isdefaultroute" Type="Int16" />
+          <Property Name="averagetrimwaste" Type="Double" />
+          <Property Name="accumrunwaste" Type="Double" />
+          <Property Name="accumsetupwaste" Type="Double" />
+          <Property Name="startlength" Type="Int32" />
+          <Property Name="startwidth" Type="Int32" />
+          <Property Name="boardarea" Type="Double" />
+          <Property Name="printingplate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="printingplatetype" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="knife" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="knifetype" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="knifelength" Type="Int32" />
+          <Property Name="knifewidth" Type="Int32" />
+          <Property Name="widthwisenoup" Type="Int32" />
+          <Property Name="lengthwisenoup" Type="Int32" />
+          <Property Name="userrt01" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="userrt02" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="knockoutwaste" Type="Double" />
+          <Property Name="closurecodekey" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="laminatewidth" Type="Int32" />
+          <Property Name="pDP_analysiscode05" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="mfgboarddeliveredweight" Type="Double" />
+          <Property Name="pDP_ordereddate" Type="DateTime" Precision="3" />
+          <Property Name="freightcodeID" Type="Int32" />
+          <Property Name="slotwidthcode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="tapeID" Type="Int32" />
+          <Property Name="bottomflaptypeID" Type="Int32" />
+          <Property Name="topflaptypeID" Type="Int32" />
+          <Property Name="structureID" Type="Int32" />
+          <Property Name="taxproductgroupID" Type="Int32" />
+          <Property Name="standardflaplengthtypeID" Type="Int32" />
+          <Property Name="owningplantID" Type="Int32" />
+          <Property Name="outworkcompanyID" Type="Int32" />
+          <Property Name="lastaddressID" Type="Int32" />
+          <Property Name="styleID" Type="Int32" />
+          <Property Name="slotwidthID" Type="Int32" />
+          <Property Name="externalreferenceID" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_plantartfile" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_plantcadfile" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_plantcaddrawingnumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_plantcadimportdate" Type="DateTime" Precision="3" />
+          <Property Name="pDP_plantcaduserfield1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_plantcaduserfield2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_plantcaduserfield3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_plantcaduserfield4" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_plantcaduserfield5" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_plantcaduserfield6" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_plantcaduserfield7" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_plantcaduserfield8" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="isboardsupplied" Type="Int16" />
+          <Property Name="iscompletefarmoutfromsupplier" Type="Int16" />
+          <Property Name="iscompletefarmout" Type="Int16" />
+          <Property Name="haspostcorrugateoutwork" Type="Int16" />
+          <Property Name="isoutworkexpectedfromsupplier" Type="Int16" />
+          <Property Name="suppresscorrugatorscores" Type="Int16" />
+          <Property Name="widthwisestarttrim" Type="Int32" />
+          <Property Name="widthwiseendtrim" Type="Int32" />
+          <Property Name="fSCcompliant" Type="Int16" />
+          <Property Name="fourthTaxCodeID" Type="Int32" />
+          <Property Name="fifthTaxCodeID" Type="Int32" />
+          <Property Name="sixthTaxCodeID" Type="Int32" />
+          <Property Name="inTransitAddressID" Type="Int32" />
+          <Property Name="inTransitCompanyID" Type="Int32" />
+          <Property Name="allowpartialcorrugatorschedule" Type="Int32" Nullable="false" />
+          <Property Name="userdatetimefield01" Type="DateTime" Precision="3" />
+          <Property Name="userdatetimefield02" Type="DateTime" Precision="3" />
+          <Property Name="userdatetimefield03" Type="DateTime" Precision="3" />
+          <Property Name="userdatetimefield04" Type="DateTime" Precision="3" />
+          <Property Name="userdatetimefield05" Type="DateTime" Precision="3" />
+          <Property Name="company_comments" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="address_comments" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="address_shippinginstructions" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="pD_comments" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="pD_quotecomment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pD_shippinginstructions" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="pD_orderalert" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_shippinginstructions" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="pDP_orderalert" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="route_specialinstructions" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+          <Property Name="acceptfullunitsonly" Type="Int16" Nullable="false" />
+          <Property Name="route_boardsupplymethod" Type="Int32" Nullable="false" />
+          <Property Name="shippingsetnumber" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="combopriceallowed" Type="Boolean" Nullable="false" />
+          <Property Name="fastdespatchloadavailable" Type="Int32" Nullable="false" />
+          <Property Name="isprepaid" Type="Boolean" Nullable="false" />
+          <Property Name="setpricingmethod" Type="Int32" Nullable="false" />
+          <Property Name="requiredcorrugator" Type="Int32" />
+          <Property Name="preprintOrderQuantityID" Type="Int32" />
+          <Property Name="farmOutDelivery" Type="Int32" Nullable="false" />
+          <Property Name="pICitemcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="universalproductcode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="espOrder1" Relationship="ESPModel.espOrder_fk175" FromRole="espOrder" ToRole="espOrder1" />
+          <NavigationProperty Name="espOrder2" Relationship="ESPModel.espOrder_fk175" FromRole="espOrder1" ToRole="espOrder" />
+        </EntityType>
+        <Association Name="espOrder_fk175">
+          <End Type="ESPModel.espOrder" Role="espOrder" Multiplicity="0..1" />
+          <End Type="ESPModel.espOrder" Role="espOrder1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="espOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="espOrder1">
+              <PropertyRef Name="topuporderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ESPModelStoreContainer" CdmEntityContainer="ESPEntities">
+          <EntitySetMapping Name="espOrders">
+            <EntityTypeMapping TypeName="ESPModel.espOrder">
+              <MappingFragment StoreEntitySet="espOrder">
+                <ScalarProperty Name="universalproductcode" ColumnName="universalproductcode" />
+                <ScalarProperty Name="pICitemcode" ColumnName="pICitemcode" />
+                <ScalarProperty Name="farmOutDelivery" ColumnName="farmOutDelivery" />
+                <ScalarProperty Name="preprintOrderQuantityID" ColumnName="preprintOrderQuantityID" />
+                <ScalarProperty Name="requiredcorrugator" ColumnName="requiredcorrugator" />
+                <ScalarProperty Name="setpricingmethod" ColumnName="setpricingmethod" />
+                <ScalarProperty Name="isprepaid" ColumnName="isprepaid" />
+                <ScalarProperty Name="fastdespatchloadavailable" ColumnName="fastdespatchloadavailable" />
+                <ScalarProperty Name="combopriceallowed" ColumnName="combopriceallowed" />
+                <ScalarProperty Name="shippingsetnumber" ColumnName="shippingsetnumber" />
+                <ScalarProperty Name="route_boardsupplymethod" ColumnName="route_boardsupplymethod" />
+                <ScalarProperty Name="acceptfullunitsonly" ColumnName="acceptfullunitsonly" />
+                <ScalarProperty Name="route_specialinstructions" ColumnName="route_specialinstructions" />
+                <ScalarProperty Name="pDP_orderalert" ColumnName="pDP_orderalert" />
+                <ScalarProperty Name="pDP_shippinginstructions" ColumnName="pDP_shippinginstructions" />
+                <ScalarProperty Name="pD_orderalert" ColumnName="pD_orderalert" />
+                <ScalarProperty Name="pD_shippinginstructions" ColumnName="pD_shippinginstructions" />
+                <ScalarProperty Name="pD_quotecomment" ColumnName="pD_quotecomment" />
+                <ScalarProperty Name="pD_comments" ColumnName="pD_comments" />
+                <ScalarProperty Name="address_shippinginstructions" ColumnName="address_shippinginstructions" />
+                <ScalarProperty Name="address_comments" ColumnName="address_comments" />
+                <ScalarProperty Name="company_comments" ColumnName="company_comments" />
+                <ScalarProperty Name="userdatetimefield05" ColumnName="userdatetimefield05" />
+                <ScalarProperty Name="userdatetimefield04" ColumnName="userdatetimefield04" />
+                <ScalarProperty Name="userdatetimefield03" ColumnName="userdatetimefield03" />
+                <ScalarProperty Name="userdatetimefield02" ColumnName="userdatetimefield02" />
+                <ScalarProperty Name="userdatetimefield01" ColumnName="userdatetimefield01" />
+                <ScalarProperty Name="allowpartialcorrugatorschedule" ColumnName="allowpartialcorrugatorschedule" />
+                <ScalarProperty Name="inTransitCompanyID" ColumnName="inTransitCompanyID" />
+                <ScalarProperty Name="inTransitAddressID" ColumnName="inTransitAddressID" />
+                <ScalarProperty Name="sixthTaxCodeID" ColumnName="sixthTaxCodeID" />
+                <ScalarProperty Name="fifthTaxCodeID" ColumnName="fifthTaxCodeID" />
+                <ScalarProperty Name="fourthTaxCodeID" ColumnName="fourthTaxCodeID" />
+                <ScalarProperty Name="fSCcompliant" ColumnName="fSCcompliant" />
+                <ScalarProperty Name="widthwiseendtrim" ColumnName="widthwiseendtrim" />
+                <ScalarProperty Name="widthwisestarttrim" ColumnName="widthwisestarttrim" />
+                <ScalarProperty Name="suppresscorrugatorscores" ColumnName="suppresscorrugatorscores" />
+                <ScalarProperty Name="isoutworkexpectedfromsupplier" ColumnName="isoutworkexpectedfromsupplier" />
+                <ScalarProperty Name="haspostcorrugateoutwork" ColumnName="haspostcorrugateoutwork" />
+                <ScalarProperty Name="iscompletefarmout" ColumnName="iscompletefarmout" />
+                <ScalarProperty Name="iscompletefarmoutfromsupplier" ColumnName="iscompletefarmoutfromsupplier" />
+                <ScalarProperty Name="isboardsupplied" ColumnName="isboardsupplied" />
+                <ScalarProperty Name="pDP_plantcaduserfield8" ColumnName="pDP_plantcaduserfield8" />
+                <ScalarProperty Name="pDP_plantcaduserfield7" ColumnName="pDP_plantcaduserfield7" />
+                <ScalarProperty Name="pDP_plantcaduserfield6" ColumnName="pDP_plantcaduserfield6" />
+                <ScalarProperty Name="pDP_plantcaduserfield5" ColumnName="pDP_plantcaduserfield5" />
+                <ScalarProperty Name="pDP_plantcaduserfield4" ColumnName="pDP_plantcaduserfield4" />
+                <ScalarProperty Name="pDP_plantcaduserfield3" ColumnName="pDP_plantcaduserfield3" />
+                <ScalarProperty Name="pDP_plantcaduserfield2" ColumnName="pDP_plantcaduserfield2" />
+                <ScalarProperty Name="pDP_plantcaduserfield1" ColumnName="pDP_plantcaduserfield1" />
+                <ScalarProperty Name="pDP_plantcadimportdate" ColumnName="pDP_plantcadimportdate" />
+                <ScalarProperty Name="pDP_plantcaddrawingnumber" ColumnName="pDP_plantcaddrawingnumber" />
+                <ScalarProperty Name="pDP_plantcadfile" ColumnName="pDP_plantcadfile" />
+                <ScalarProperty Name="pDP_plantartfile" ColumnName="pDP_plantartfile" />
+                <ScalarProperty Name="externalreferenceID" ColumnName="externalreferenceID" />
+                <ScalarProperty Name="slotwidthID" ColumnName="slotwidthID" />
+                <ScalarProperty Name="styleID" ColumnName="styleID" />
+                <ScalarProperty Name="lastaddressID" ColumnName="lastaddressID" />
+                <ScalarProperty Name="outworkcompanyID" ColumnName="outworkcompanyID" />
+                <ScalarProperty Name="owningplantID" ColumnName="owningplantID" />
+                <ScalarProperty Name="standardflaplengthtypeID" ColumnName="standardflaplengthtypeID" />
+                <ScalarProperty Name="taxproductgroupID" ColumnName="taxproductgroupID" />
+                <ScalarProperty Name="structureID" ColumnName="structureID" />
+                <ScalarProperty Name="topflaptypeID" ColumnName="topflaptypeID" />
+                <ScalarProperty Name="bottomflaptypeID" ColumnName="bottomflaptypeID" />
+                <ScalarProperty Name="tapeID" ColumnName="tapeID" />
+                <ScalarProperty Name="slotwidthcode" ColumnName="slotwidthcode" />
+                <ScalarProperty Name="freightcodeID" ColumnName="freightcodeID" />
+                <ScalarProperty Name="pDP_ordereddate" ColumnName="pDP_ordereddate" />
+                <ScalarProperty Name="mfgboarddeliveredweight" ColumnName="mfgboarddeliveredweight" />
+                <ScalarProperty Name="pDP_analysiscode05" ColumnName="pDP_analysiscode05" />
+                <ScalarProperty Name="laminatewidth" ColumnName="laminatewidth" />
+                <ScalarProperty Name="closurecodekey" ColumnName="closurecodekey" />
+                <ScalarProperty Name="knockoutwaste" ColumnName="knockoutwaste" />
+                <ScalarProperty Name="userrt02" ColumnName="userrt02" />
+                <ScalarProperty Name="userrt01" ColumnName="userrt01" />
+                <ScalarProperty Name="lengthwisenoup" ColumnName="lengthwisenoup" />
+                <ScalarProperty Name="widthwisenoup" ColumnName="widthwisenoup" />
+                <ScalarProperty Name="knifewidth" ColumnName="knifewidth" />
+                <ScalarProperty Name="knifelength" ColumnName="knifelength" />
+                <ScalarProperty Name="knifetype" ColumnName="knifetype" />
+                <ScalarProperty Name="knife" ColumnName="knife" />
+                <ScalarProperty Name="printingplatetype" ColumnName="printingplatetype" />
+                <ScalarProperty Name="printingplate" ColumnName="printingplate" />
+                <ScalarProperty Name="boardarea" ColumnName="boardarea" />
+                <ScalarProperty Name="startwidth" ColumnName="startwidth" />
+                <ScalarProperty Name="startlength" ColumnName="startlength" />
+                <ScalarProperty Name="accumsetupwaste" ColumnName="accumsetupwaste" />
+                <ScalarProperty Name="accumrunwaste" ColumnName="accumrunwaste" />
+                <ScalarProperty Name="averagetrimwaste" ColumnName="averagetrimwaste" />
+                <ScalarProperty Name="isdefaultroute" ColumnName="isdefaultroute" />
+                <ScalarProperty Name="minimumquantity" ColumnName="minimumquantity" />
+                <ScalarProperty Name="routename" ColumnName="routename" />
+                <ScalarProperty Name="pDP_userdatetimefield09" ColumnName="pDP_userdatetimefield09" />
+                <ScalarProperty Name="pDP_userdatetimefield08" ColumnName="pDP_userdatetimefield08" />
+                <ScalarProperty Name="pDP_userdatetimefield07" ColumnName="pDP_userdatetimefield07" />
+                <ScalarProperty Name="pDP_userdatetimefield06" ColumnName="pDP_userdatetimefield06" />
+                <ScalarProperty Name="pDP_userdatetimefield05" ColumnName="pDP_userdatetimefield05" />
+                <ScalarProperty Name="pDP_userdatetimefield04" ColumnName="pDP_userdatetimefield04" />
+                <ScalarProperty Name="pDP_userdatetimefield03" ColumnName="pDP_userdatetimefield03" />
+                <ScalarProperty Name="pDP_userdatetimefield02" ColumnName="pDP_userdatetimefield02" />
+                <ScalarProperty Name="pDP_userdatetimefield01" ColumnName="pDP_userdatetimefield01" />
+                <ScalarProperty Name="pCSoperations" ColumnName="pCSoperations" />
+                <ScalarProperty Name="coverage" ColumnName="coverage" />
+                <ScalarProperty Name="outsidecoatingtypelist" ColumnName="outsidecoatingtypelist" />
+                <ScalarProperty Name="insidecoatingtypelist" ColumnName="insidecoatingtypelist" />
+                <ScalarProperty Name="outsideinktypelist" ColumnName="outsideinktypelist" />
+                <ScalarProperty Name="insideinktypelist" ColumnName="insideinktypelist" />
+                <ScalarProperty Name="insideprintdifficulty" ColumnName="insideprintdifficulty" />
+                <ScalarProperty Name="outsideprintdifficulty" ColumnName="outsideprintdifficulty" />
+                <ScalarProperty Name="insideinkcount" ColumnName="insideinkcount" />
+                <ScalarProperty Name="inkcount" ColumnName="inkcount" />
+                <ScalarProperty Name="insidecoatingcount" ColumnName="insidecoatingcount" />
+                <ScalarProperty Name="coatingcount" ColumnName="coatingcount" />
+                <ScalarProperty Name="defaultsuppresscorrugatorscores" ColumnName="defaultsuppresscorrugatorscores" />
+                <ScalarProperty Name="finishedweight" ColumnName="finishedweight" />
+                <ScalarProperty Name="deliveredweight" ColumnName="deliveredweight" />
+                <ScalarProperty Name="starchtypekey" ColumnName="starchtypekey" />
+                <ScalarProperty Name="trimwaste" ColumnName="trimwaste" />
+                <ScalarProperty Name="pDP_createddate" ColumnName="pDP_createddate" />
+                <ScalarProperty Name="defaultorderunscoredboard" ColumnName="defaultorderunscoredboard" />
+                <ScalarProperty Name="defaultboardsupplymethod" ColumnName="defaultboardsupplymethod" />
+                <ScalarProperty Name="pDP_convertingtest" ColumnName="pDP_convertingtest" />
+                <ScalarProperty Name="pDP_corrugatortest" ColumnName="pDP_corrugatortest" />
+                <ScalarProperty Name="mfgboarddeliveredpaperweight" ColumnName="mfgboarddeliveredpaperweight" />
+                <ScalarProperty Name="mfgboardblankpaperweight" ColumnName="mfgboardblankpaperweight" />
+                <ScalarProperty Name="mfgboardblankweight" ColumnName="mfgboardblankweight" />
+                <ScalarProperty Name="cSClabelsperunit" ColumnName="cSClabelsperunit" />
+                <ScalarProperty Name="rotateoffcorrugator" ColumnName="rotateoffcorrugator" />
+                <ScalarProperty Name="stackcount" ColumnName="stackcount" />
+                <ScalarProperty Name="sheetsinstack" ColumnName="sheetsinstack" />
+                <ScalarProperty Name="stackdestination" ColumnName="stackdestination" />
+                <ScalarProperty Name="dischargedirection" ColumnName="dischargedirection" />
+                <ScalarProperty Name="pDP_userfield12" ColumnName="pDP_userfield12" />
+                <ScalarProperty Name="pDP_userfield11" ColumnName="pDP_userfield11" />
+                <ScalarProperty Name="pDP_userfield10" ColumnName="pDP_userfield10" />
+                <ScalarProperty Name="pDP_userfield09" ColumnName="pDP_userfield09" />
+                <ScalarProperty Name="pDP_userfield08" ColumnName="pDP_userfield08" />
+                <ScalarProperty Name="pDP_userfield07" ColumnName="pDP_userfield07" />
+                <ScalarProperty Name="pDP_userfield06" ColumnName="pDP_userfield06" />
+                <ScalarProperty Name="pDP_userfield05" ColumnName="pDP_userfield05" />
+                <ScalarProperty Name="pDP_userfield04" ColumnName="pDP_userfield04" />
+                <ScalarProperty Name="pDP_userfield03" ColumnName="pDP_userfield03" />
+                <ScalarProperty Name="pDP_userfield02" ColumnName="pDP_userfield02" />
+                <ScalarProperty Name="pDP_userfield01" ColumnName="pDP_userfield01" />
+                <ScalarProperty Name="pDP_analysiscode04" ColumnName="pDP_analysiscode04" />
+                <ScalarProperty Name="pDP_analysiscode03" ColumnName="pDP_analysiscode03" />
+                <ScalarProperty Name="pDP_analysiscode02" ColumnName="pDP_analysiscode02" />
+                <ScalarProperty Name="pDP_analysiscode01" ColumnName="pDP_analysiscode01" />
+                <ScalarProperty Name="pDP_userproperty06" ColumnName="pDP_userproperty06" />
+                <ScalarProperty Name="pDP_userproperty05" ColumnName="pDP_userproperty05" />
+                <ScalarProperty Name="pDP_userproperty04" ColumnName="pDP_userproperty04" />
+                <ScalarProperty Name="pDP_userproperty03" ColumnName="pDP_userproperty03" />
+                <ScalarProperty Name="pDP_userproperty02" ColumnName="pDP_userproperty02" />
+                <ScalarProperty Name="pDP_userproperty01" ColumnName="pDP_userproperty01" />
+                <ScalarProperty Name="convertinginhouselabel" ColumnName="convertinginhouselabel" />
+                <ScalarProperty Name="corrugatorinhouselabel" ColumnName="corrugatorinhouselabel" />
+                <ScalarProperty Name="samplenumber" ColumnName="samplenumber" />
+                <ScalarProperty Name="productioncycle" ColumnName="productioncycle" />
+                <ScalarProperty Name="certificationdate" ColumnName="certificationdate" />
+                <ScalarProperty Name="pD_userdatetimefield09" ColumnName="pD_userdatetimefield09" />
+                <ScalarProperty Name="pD_userdatetimefield08" ColumnName="pD_userdatetimefield08" />
+                <ScalarProperty Name="pD_userdatetimefield07" ColumnName="pD_userdatetimefield07" />
+                <ScalarProperty Name="pD_userdatetimefield06" ColumnName="pD_userdatetimefield06" />
+                <ScalarProperty Name="pD_userdatetimefield05" ColumnName="pD_userdatetimefield05" />
+                <ScalarProperty Name="pD_userdatetimefield04" ColumnName="pD_userdatetimefield04" />
+                <ScalarProperty Name="pD_userdatetimefield03" ColumnName="pD_userdatetimefield03" />
+                <ScalarProperty Name="pD_userdatetimefield02" ColumnName="pD_userdatetimefield02" />
+                <ScalarProperty Name="pD_userdatetimefield01" ColumnName="pD_userdatetimefield01" />
+                <ScalarProperty Name="usephysicalpallet" ColumnName="usephysicalpallet" />
+                <ScalarProperty Name="pD_CADuserfield8" ColumnName="pD_CADuserfield8" />
+                <ScalarProperty Name="pD_CADuserfield7" ColumnName="pD_CADuserfield7" />
+                <ScalarProperty Name="pD_CADuserfield6" ColumnName="pD_CADuserfield6" />
+                <ScalarProperty Name="pD_CADuserfield5" ColumnName="pD_CADuserfield5" />
+                <ScalarProperty Name="pD_CADuserfield4" ColumnName="pD_CADuserfield4" />
+                <ScalarProperty Name="pD_CADuserfield3" ColumnName="pD_CADuserfield3" />
+                <ScalarProperty Name="pD_CADuserfield2" ColumnName="pD_CADuserfield2" />
+                <ScalarProperty Name="pD_CADuserfield1" ColumnName="pD_CADuserfield1" />
+                <ScalarProperty Name="pD_CADdrawingnumber" ColumnName="pD_CADdrawingnumber" />
+                <ScalarProperty Name="salesboarddeliveredpaperweight" ColumnName="salesboarddeliveredpaperweight" />
+                <ScalarProperty Name="salesboarddeliveredweight" ColumnName="salesboarddeliveredweight" />
+                <ScalarProperty Name="salesboardfinishedpaperweight" ColumnName="salesboardfinishedpaperweight" />
+                <ScalarProperty Name="salesboardfinishedweight" ColumnName="salesboardfinishedweight" />
+                <ScalarProperty Name="isassortment" ColumnName="isassortment" />
+                <ScalarProperty Name="calloffbytopup" ColumnName="calloffbytopup" />
+                <ScalarProperty Name="pD_userbd12" ColumnName="pD_userbd12" />
+                <ScalarProperty Name="pD_userbd11" ColumnName="pD_userbd11" />
+                <ScalarProperty Name="pD_userbd10" ColumnName="pD_userbd10" />
+                <ScalarProperty Name="pD_userbd09" ColumnName="pD_userbd09" />
+                <ScalarProperty Name="pD_userbd08" ColumnName="pD_userbd08" />
+                <ScalarProperty Name="pD_userbd07" ColumnName="pD_userbd07" />
+                <ScalarProperty Name="numberofcalloffs" ColumnName="numberofcalloffs" />
+                <ScalarProperty Name="intendedplatetype" ColumnName="intendedplatetype" />
+                <ScalarProperty Name="quoteddate" ColumnName="quoteddate" />
+                <ScalarProperty Name="quotedcost" ColumnName="quotedcost" />
+                <ScalarProperty Name="uOM" ColumnName="uOM" />
+                <ScalarProperty Name="windowinside2" ColumnName="windowinside2" />
+                <ScalarProperty Name="windownumberperitem2" ColumnName="windownumberperitem2" />
+                <ScalarProperty Name="windowrollwidth2" ColumnName="windowrollwidth2" />
+                <ScalarProperty Name="windowcutofflength2" ColumnName="windowcutofflength2" />
+                <ScalarProperty Name="windowmaterial2" ColumnName="windowmaterial2" />
+                <ScalarProperty Name="daystowarehouse" ColumnName="daystowarehouse" />
+                <ScalarProperty Name="stockeditem" ColumnName="stockeditem" />
+                <ScalarProperty Name="laminatenumberperitem" ColumnName="laminatenumberperitem" />
+                <ScalarProperty Name="laminatelength" ColumnName="laminatelength" />
+                <ScalarProperty Name="windowinside1" ColumnName="windowinside1" />
+                <ScalarProperty Name="windownumberperitem1" ColumnName="windownumberperitem1" />
+                <ScalarProperty Name="windowrollwidth1" ColumnName="windowrollwidth1" />
+                <ScalarProperty Name="windowcutofflength1" ColumnName="windowcutofflength1" />
+                <ScalarProperty Name="artversion" ColumnName="artversion" />
+                <ScalarProperty Name="productbarcode" ColumnName="productbarcode" />
+                <ScalarProperty Name="deliveredarea" ColumnName="deliveredarea" />
+                <ScalarProperty Name="pD_userproperty6" ColumnName="pD_userproperty6" />
+                <ScalarProperty Name="pD_userproperty5" ColumnName="pD_userproperty5" />
+                <ScalarProperty Name="pD_userproperty4" ColumnName="pD_userproperty4" />
+                <ScalarProperty Name="pD_userproperty3" ColumnName="pD_userproperty3" />
+                <ScalarProperty Name="pD_userproperty2" ColumnName="pD_userproperty2" />
+                <ScalarProperty Name="pD_userproperty1" ColumnName="pD_userproperty1" />
+                <ScalarProperty Name="printlength" ColumnName="printlength" />
+                <ScalarProperty Name="tabinsideoutside" ColumnName="tabinsideoutside" />
+                <ScalarProperty Name="tabfirstlast" ColumnName="tabfirstlast" />
+                <ScalarProperty Name="foldedwidth" ColumnName="foldedwidth" />
+                <ScalarProperty Name="foldedlength" ColumnName="foldedlength" />
+                <ScalarProperty Name="tabpanellength" ColumnName="tabpanellength" />
+                <ScalarProperty Name="largestpanellength" ColumnName="largestpanellength" />
+                <ScalarProperty Name="smallestpanellength" ColumnName="smallestpanellength" />
+                <ScalarProperty Name="numprintedpanels" ColumnName="numprintedpanels" />
+                <ScalarProperty Name="windowmaterial1" ColumnName="windowmaterial1" />
+                <ScalarProperty Name="laminatingmaterial" ColumnName="laminatingmaterial" />
+                <ScalarProperty Name="embossing" ColumnName="embossing" />
+                <ScalarProperty Name="hotstamping" ColumnName="hotstamping" />
+                <ScalarProperty Name="eDIDescription" ColumnName="eDIDescription" />
+                <ScalarProperty Name="ownersalesaddressID" ColumnName="ownersalesaddressID" />
+                <ScalarProperty Name="palletschargeable" ColumnName="palletschargeable" />
+                <ScalarProperty Name="maximumorderquantity" ColumnName="maximumorderquantity" />
+                <ScalarProperty Name="isleadtimecontracted" ColumnName="isleadtimecontracted" />
+                <ScalarProperty Name="lastmodifieddate" ColumnName="lastmodifieddate" />
+                <ScalarProperty Name="scoremirroring" ColumnName="scoremirroring" />
+                <ScalarProperty Name="orderalert" ColumnName="orderalert" />
+                <ScalarProperty Name="quotecomment" ColumnName="quotecomment" />
+                <ScalarProperty Name="committedleadtime" ColumnName="committedleadtime" />
+                <ScalarProperty Name="autogenerated" ColumnName="autogenerated" />
+                <ScalarProperty Name="waxing" ColumnName="waxing" />
+                <ScalarProperty Name="stamptype" ColumnName="stamptype" />
+                <ScalarProperty Name="specialusage" ColumnName="specialusage" />
+                <ScalarProperty Name="industrycode" ColumnName="industrycode" />
+                <ScalarProperty Name="holetype" ColumnName="holetype" />
+                <ScalarProperty Name="glue" ColumnName="glue" />
+                <ScalarProperty Name="exportrebate" ColumnName="exportrebate" />
+                <ScalarProperty Name="analysisgroup" ColumnName="analysisgroup" />
+                <ScalarProperty Name="expirydate" ColumnName="expirydate" />
+                <ScalarProperty Name="pD_analysiscode05" ColumnName="pD_analysiscode05" />
+                <ScalarProperty Name="pD_analysiscode04" ColumnName="pD_analysiscode04" />
+                <ScalarProperty Name="pD_analysiscode02" ColumnName="pD_analysiscode02" />
+                <ScalarProperty Name="pD_analysiscode03" ColumnName="pD_analysiscode03" />
+                <ScalarProperty Name="pD_analysiscode01" ColumnName="pD_analysiscode01" />
+                <ScalarProperty Name="boardtest" ColumnName="boardtest" />
+                <ScalarProperty Name="hasconsignmentstock" ColumnName="hasconsignmentstock" />
+                <ScalarProperty Name="reverseflute" ColumnName="reverseflute" />
+                <ScalarProperty Name="donotarchive" ColumnName="donotarchive" />
+                <ScalarProperty Name="ownershipmask" ColumnName="ownershipmask" />
+                <ScalarProperty Name="sortcode" ColumnName="sortcode" />
+                <ScalarProperty Name="bottomflapprintingcode" ColumnName="bottomflapprintingcode" />
+                <ScalarProperty Name="convertingtest" ColumnName="convertingtest" />
+                <ScalarProperty Name="corrugatortest" ColumnName="corrugatortest" />
+                <ScalarProperty Name="expectedordersize" ColumnName="expectedordersize" />
+                <ScalarProperty Name="noperset" ColumnName="noperset" />
+                <ScalarProperty Name="noofsets" ColumnName="noofsets" />
+                <ScalarProperty Name="copyofProductDesign" ColumnName="copyofProductDesign" />
+                <ScalarProperty Name="jointabposition" ColumnName="jointabposition" />
+                <ScalarProperty Name="tabwidth" ColumnName="tabwidth" />
+                <ScalarProperty Name="pD_userbd06" ColumnName="pD_userbd06" />
+                <ScalarProperty Name="pD_userbd05" ColumnName="pD_userbd05" />
+                <ScalarProperty Name="pD_userbd04" ColumnName="pD_userbd04" />
+                <ScalarProperty Name="pD_userbd03" ColumnName="pD_userbd03" />
+                <ScalarProperty Name="pD_userbd02" ColumnName="pD_userbd02" />
+                <ScalarProperty Name="pD_userbd01" ColumnName="pD_userbd01" />
+                <ScalarProperty Name="maximumlevel" ColumnName="maximumlevel" />
+                <ScalarProperty Name="annualtarget" ColumnName="annualtarget" />
+                <ScalarProperty Name="pD_Artfile" ColumnName="pD_Artfile" />
+                <ScalarProperty Name="pD_CADimportdate" ColumnName="pD_CADimportdate" />
+                <ScalarProperty Name="pD_CADfile" ColumnName="pD_CADfile" />
+                <ScalarProperty Name="showpartprice" ColumnName="showpartprice" />
+                <ScalarProperty Name="orderseparately" ColumnName="orderseparately" />
+                <ScalarProperty Name="pD_createddate" ColumnName="pD_createddate" />
+                <ScalarProperty Name="sumtolengthslotdepth02" ColumnName="sumtolengthslotdepth02" />
+                <ScalarProperty Name="sumtolengthslotdepth01" ColumnName="sumtolengthslotdepth01" />
+                <ScalarProperty Name="sumtolengthslots" ColumnName="sumtolengthslots" />
+                <ScalarProperty Name="sumtowidthslotdepth02" ColumnName="sumtowidthslotdepth02" />
+                <ScalarProperty Name="sumtowidthslotdepth01" ColumnName="sumtowidthslotdepth01" />
+                <ScalarProperty Name="sumtowidthslots" ColumnName="sumtowidthslots" />
+                <ScalarProperty Name="finishedarea" ColumnName="finishedarea" />
+                <ScalarProperty Name="yFactor" ColumnName="yFactor" />
+                <ScalarProperty Name="bottomflapfactor" ColumnName="bottomflapfactor" />
+                <ScalarProperty Name="topflapfactor" ColumnName="topflapfactor" />
+                <ScalarProperty Name="internaldepth" ColumnName="internaldepth" />
+                <ScalarProperty Name="internalwidth" ColumnName="internalwidth" />
+                <ScalarProperty Name="internallength" ColumnName="internallength" />
+                <ScalarProperty Name="customerspec" ColumnName="customerspec" />
+                <ScalarProperty Name="designnumber" ColumnName="designnumber" />
+                <ScalarProperty Name="usermodifiedfields" ColumnName="usermodifiedfields" />
+                <ScalarProperty Name="standardboardID" ColumnName="standardboardID" />
+                <ScalarProperty Name="productdesignplantID" ColumnName="productdesignplantID" />
+                <ScalarProperty Name="prioritysource" ColumnName="prioritysource" />
+                <ScalarProperty Name="eDIFieldso20" ColumnName="eDIFieldso20" />
+                <ScalarProperty Name="eDIFieldso19" ColumnName="eDIFieldso19" />
+                <ScalarProperty Name="eDIFieldso18" ColumnName="eDIFieldso18" />
+                <ScalarProperty Name="eDIFieldso17" ColumnName="eDIFieldso17" />
+                <ScalarProperty Name="eDIFieldso16" ColumnName="eDIFieldso16" />
+                <ScalarProperty Name="eDIFieldso15" ColumnName="eDIFieldso15" />
+                <ScalarProperty Name="eDIFieldso14" ColumnName="eDIFieldso14" />
+                <ScalarProperty Name="eDIFieldso13" ColumnName="eDIFieldso13" />
+                <ScalarProperty Name="eDIFieldso12" ColumnName="eDIFieldso12" />
+                <ScalarProperty Name="eDIFieldso11" ColumnName="eDIFieldso11" />
+                <ScalarProperty Name="eDIFieldso10" ColumnName="eDIFieldso10" />
+                <ScalarProperty Name="eDIFieldso9" ColumnName="eDIFieldso9" />
+                <ScalarProperty Name="eDIFieldso8" ColumnName="eDIFieldso8" />
+                <ScalarProperty Name="eDIFieldso7" ColumnName="eDIFieldso7" />
+                <ScalarProperty Name="eDIFieldso6" ColumnName="eDIFieldso6" />
+                <ScalarProperty Name="eDIFieldso5" ColumnName="eDIFieldso5" />
+                <ScalarProperty Name="eDIFieldso4" ColumnName="eDIFieldso4" />
+                <ScalarProperty Name="eDIFieldso3" ColumnName="eDIFieldso3" />
+                <ScalarProperty Name="eDIFieldso2" ColumnName="eDIFieldso2" />
+                <ScalarProperty Name="eDIFieldso1" ColumnName="eDIFieldso1" />
+                <ScalarProperty Name="madecostso20" ColumnName="madecostso20" />
+                <ScalarProperty Name="madecostso19" ColumnName="madecostso19" />
+                <ScalarProperty Name="madecostso18" ColumnName="madecostso18" />
+                <ScalarProperty Name="madecostso17" ColumnName="madecostso17" />
+                <ScalarProperty Name="madecostso16" ColumnName="madecostso16" />
+                <ScalarProperty Name="madecostso15" ColumnName="madecostso15" />
+                <ScalarProperty Name="madecostso14" ColumnName="madecostso14" />
+                <ScalarProperty Name="madecostso13" ColumnName="madecostso13" />
+                <ScalarProperty Name="costso20" ColumnName="costso20" />
+                <ScalarProperty Name="costso19" ColumnName="costso19" />
+                <ScalarProperty Name="costso18" ColumnName="costso18" />
+                <ScalarProperty Name="costso17" ColumnName="costso17" />
+                <ScalarProperty Name="costso16" ColumnName="costso16" />
+                <ScalarProperty Name="costso15" ColumnName="costso15" />
+                <ScalarProperty Name="costso14" ColumnName="costso14" />
+                <ScalarProperty Name="costso13" ColumnName="costso13" />
+                <ScalarProperty Name="excludelevy" ColumnName="excludelevy" />
+                <ScalarProperty Name="duedaterisk" ColumnName="duedaterisk" />
+                <ScalarProperty Name="crashinduedate" ColumnName="crashinduedate" />
+                <ScalarProperty Name="pushinduedate" ColumnName="pushinduedate" />
+                <ScalarProperty Name="selectedunits" ColumnName="selectedunits" />
+                <ScalarProperty Name="orderbasketID" ColumnName="orderbasketID" />
+                <ScalarProperty Name="itemisedsetup" ColumnName="itemisedsetup" />
+                <ScalarProperty Name="itemisedfreight" ColumnName="itemisedfreight" />
+                <ScalarProperty Name="tradediscountvalue" ColumnName="tradediscountvalue" />
+                <ScalarProperty Name="tradediscountpercent" ColumnName="tradediscountpercent" />
+                <ScalarProperty Name="comboID" ColumnName="comboID" />
+                <ScalarProperty Name="commission" ColumnName="commission" />
+                <ScalarProperty Name="calloffpricetype" ColumnName="calloffpricetype" />
+                <ScalarProperty Name="userfieldso12" ColumnName="userfieldso12" />
+                <ScalarProperty Name="userfieldso11" ColumnName="userfieldso11" />
+                <ScalarProperty Name="userfieldso10" ColumnName="userfieldso10" />
+                <ScalarProperty Name="userfieldso9" ColumnName="userfieldso9" />
+                <ScalarProperty Name="userfieldso8" ColumnName="userfieldso8" />
+                <ScalarProperty Name="userfieldso7" ColumnName="userfieldso7" />
+                <ScalarProperty Name="userfieldso6" ColumnName="userfieldso6" />
+                <ScalarProperty Name="shipremaining" ColumnName="shipremaining" />
+                <ScalarProperty Name="topuporderID" ColumnName="topuporderID" />
+                <ScalarProperty Name="versionTimeStamp" ColumnName="versionTimeStamp" />
+                <ScalarProperty Name="freightcost" ColumnName="freightcost" />
+                <ScalarProperty Name="senttocommson" ColumnName="senttocommson" />
+                <ScalarProperty Name="callofftype" ColumnName="callofftype" />
+                <ScalarProperty Name="repeattype" ColumnName="repeattype" />
+                <ScalarProperty Name="mAPreleasecount" ColumnName="mAPreleasecount" />
+                <ScalarProperty Name="transfercode" ColumnName="transfercode" />
+                <ScalarProperty Name="autofreightunit" ColumnName="autofreightunit" />
+                <ScalarProperty Name="totalpriceper" ColumnName="totalpriceper" />
+                <ScalarProperty Name="goodsvalue" ColumnName="goodsvalue" />
+                <ScalarProperty Name="plantloadingduedate" ColumnName="plantloadingduedate" />
+                <ScalarProperty Name="committedduedate" ColumnName="committedduedate" />
+                <ScalarProperty Name="requestedduedate" ColumnName="requestedduedate" />
+                <ScalarProperty Name="salesaddressID" ColumnName="salesaddressID" />
+                <ScalarProperty Name="transferquantity" ColumnName="transferquantity" />
+                <ScalarProperty Name="ordertype" ColumnName="ordertype" />
+                <ScalarProperty Name="usedproductdesign" ColumnName="usedproductdesign" />
+                <ScalarProperty Name="issetprice" ColumnName="issetprice" />
+                <ScalarProperty Name="orderstatus" ColumnName="orderstatus" />
+                <ScalarProperty Name="thirdtaxcodeID" ColumnName="thirdtaxcodeID" />
+                <ScalarProperty Name="shiptoaddressID" ColumnName="shiptoaddressID" />
+                <ScalarProperty Name="secondtaxcodeID" ColumnName="secondtaxcodeID" />
+                <ScalarProperty Name="pricingorderbatchID" ColumnName="pricingorderbatchID" />
+                <ScalarProperty Name="firsttaxcodeID" ColumnName="firsttaxcodeID" />
+                <ScalarProperty Name="componentorderbatchID" ColumnName="componentorderbatchID" />
+                <ScalarProperty Name="carriercompanyID" ColumnName="carriercompanyID" />
+                <ScalarProperty Name="unitizingspecID" ColumnName="unitizingspecID" />
+                <ScalarProperty Name="stocklineID" ColumnName="stocklineID" />
+                <ScalarProperty Name="routeID" ColumnName="routeID" />
+                <ScalarProperty Name="productpriceID" ColumnName="productpriceID" />
+                <ScalarProperty Name="productdesignID" ColumnName="productdesignID" />
+                <ScalarProperty Name="plantID" ColumnName="plantID" />
+                <ScalarProperty Name="nationalcurrencyID" ColumnName="nationalcurrencyID" />
+                <ScalarProperty Name="exchangerateID" ColumnName="exchangerateID" />
+                <ScalarProperty Name="precostestimateID" ColumnName="precostestimateID" />
+                <ScalarProperty Name="contactID" ColumnName="contactID" />
+                <ScalarProperty Name="companyID" ColumnName="companyID" />
+                <ScalarProperty Name="perUnitUOM" ColumnName="perUnitUOM" />
+                <ScalarProperty Name="autoperunitUOM" ColumnName="autoperunitUOM" />
+                <ScalarProperty Name="productCode" ColumnName="productCode" />
+                <ScalarProperty Name="jobtype" ColumnName="jobtype" />
+                <ScalarProperty Name="gLCode" ColumnName="gLCode" />
+                <ScalarProperty Name="freightunit" ColumnName="freightunit" />
+                <ScalarProperty Name="corrugatorcoating" ColumnName="corrugatorcoating" />
+                <ScalarProperty Name="despatchmode" ColumnName="despatchmode" />
+                <ScalarProperty Name="labeldataor10" ColumnName="labeldataor10" />
+                <ScalarProperty Name="labeldataor09" ColumnName="labeldataor09" />
+                <ScalarProperty Name="labeldataor08" ColumnName="labeldataor08" />
+                <ScalarProperty Name="labeldataor07" ColumnName="labeldataor07" />
+                <ScalarProperty Name="labeldataor06" ColumnName="labeldataor06" />
+                <ScalarProperty Name="labeldataor05" ColumnName="labeldataor05" />
+                <ScalarProperty Name="labeldataor04" ColumnName="labeldataor04" />
+                <ScalarProperty Name="labeldataor03" ColumnName="labeldataor03" />
+                <ScalarProperty Name="labeldataor02" ColumnName="labeldataor02" />
+                <ScalarProperty Name="labeldataor01" ColumnName="labeldataor01" />
+                <ScalarProperty Name="actualboardcost" ColumnName="actualboardcost" />
+                <ScalarProperty Name="actualtotalarea" ColumnName="actualtotalarea" />
+                <ScalarProperty Name="actuallabourcost" ColumnName="actuallabourcost" />
+                <ScalarProperty Name="actualhours" ColumnName="actualhours" />
+                <ScalarProperty Name="isforcastorder" ColumnName="isforcastorder" />
+                <ScalarProperty Name="contribution" ColumnName="contribution" />
+                <ScalarProperty Name="standardcontribution" ColumnName="standardcontribution" />
+                <ScalarProperty Name="confirmationrequired" ColumnName="confirmationrequired" />
+                <ScalarProperty Name="onconsignment" ColumnName="onconsignment" />
+                <ScalarProperty Name="comboquantity" ColumnName="comboquantity" />
+                <ScalarProperty Name="comborun" ColumnName="comborun" />
+                <ScalarProperty Name="taxinclusive" ColumnName="taxinclusive" />
+                <ScalarProperty Name="componentcount" ColumnName="componentcount" />
+                <ScalarProperty Name="componentno" ColumnName="componentno" />
+                <ScalarProperty Name="wascrashedorder" ColumnName="wascrashedorder" />
+                <ScalarProperty Name="cycle" ColumnName="cycle" />
+                <ScalarProperty Name="foldlength" ColumnName="foldlength" />
+                <ScalarProperty Name="madecostso12" ColumnName="madecostso12" />
+                <ScalarProperty Name="madecostso11" ColumnName="madecostso11" />
+                <ScalarProperty Name="madecostso10" ColumnName="madecostso10" />
+                <ScalarProperty Name="madecostso9" ColumnName="madecostso9" />
+                <ScalarProperty Name="madecostso8" ColumnName="madecostso8" />
+                <ScalarProperty Name="madecostso7" ColumnName="madecostso7" />
+                <ScalarProperty Name="madecostso6" ColumnName="madecostso6" />
+                <ScalarProperty Name="madecostso5" ColumnName="madecostso5" />
+                <ScalarProperty Name="madecostso4" ColumnName="madecostso4" />
+                <ScalarProperty Name="madecostso3" ColumnName="madecostso3" />
+                <ScalarProperty Name="madecostso2" ColumnName="madecostso2" />
+                <ScalarProperty Name="madecostso1" ColumnName="madecostso1" />
+                <ScalarProperty Name="targetquantity" ColumnName="targetquantity" />
+                <ScalarProperty Name="manufacturingunderrun" ColumnName="manufacturingunderrun" />
+                <ScalarProperty Name="manufacturingoverrun" ColumnName="manufacturingoverrun" />
+                <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="allowgradechange" ColumnName="allowgradechange" />
+                <ScalarProperty Name="maxoutoncorrugator" ColumnName="maxoutoncorrugator" />
+                <ScalarProperty Name="maxoutperknife03" ColumnName="maxoutperknife03" />
+                <ScalarProperty Name="maxoutperknife02" ColumnName="maxoutperknife02" />
+                <ScalarProperty Name="maxoutperknife01" ColumnName="maxoutperknife01" />
+                <ScalarProperty Name="boardrunspeed" ColumnName="boardrunspeed" />
+                <ScalarProperty Name="maximumsetups" ColumnName="maximumsetups" />
+                <ScalarProperty Name="ischargeable" ColumnName="ischargeable" />
+                <ScalarProperty Name="totalvalue" ColumnName="totalvalue" />
+                <ScalarProperty Name="pCSstatus" ColumnName="pCSstatus" />
+                <ScalarProperty Name="boardstatus" ColumnName="boardstatus" />
+                <ScalarProperty Name="iscosted" ColumnName="iscosted" />
+                <ScalarProperty Name="userfieldso5" ColumnName="userfieldso5" />
+                <ScalarProperty Name="userfieldso4" ColumnName="userfieldso4" />
+                <ScalarProperty Name="userfieldso3" ColumnName="userfieldso3" />
+                <ScalarProperty Name="userfieldso2" ColumnName="userfieldso2" />
+                <ScalarProperty Name="userfieldso1" ColumnName="userfieldso1" />
+                <ScalarProperty Name="costso12" ColumnName="costso12" />
+                <ScalarProperty Name="costso11" ColumnName="costso11" />
+                <ScalarProperty Name="costso10" ColumnName="costso10" />
+                <ScalarProperty Name="costso09" ColumnName="costso09" />
+                <ScalarProperty Name="costso08" ColumnName="costso08" />
+                <ScalarProperty Name="costso07" ColumnName="costso07" />
+                <ScalarProperty Name="costso06" ColumnName="costso06" />
+                <ScalarProperty Name="costso05" ColumnName="costso05" />
+                <ScalarProperty Name="costso04" ColumnName="costso04" />
+                <ScalarProperty Name="costso03" ColumnName="costso03" />
+                <ScalarProperty Name="costso02" ColumnName="costso02" />
+                <ScalarProperty Name="costso01" ColumnName="costso01" />
+                <ScalarProperty Name="manufacturingboardcode" ColumnName="manufacturingboardcode" />
+                <ScalarProperty Name="verifiedby" ColumnName="verifiedby" />
+                <ScalarProperty Name="totalweight" ColumnName="totalweight" />
+                <ScalarProperty Name="totalarea" ColumnName="totalarea" />
+                <ScalarProperty Name="totallength" ColumnName="totallength" />
+                <ScalarProperty Name="manufactureup" ColumnName="manufactureup" />
+                <ScalarProperty Name="manufacturewidth" ColumnName="manufacturewidth" />
+                <ScalarProperty Name="manufacturelength" ColumnName="manufacturelength" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="wipvalue" ColumnName="wipvalue" />
+                <ScalarProperty Name="latestdespatchdate" ColumnName="latestdespatchdate" />
+                <ScalarProperty Name="cancelleddate" ColumnName="cancelleddate" />
+                <ScalarProperty Name="originalduedate" ColumnName="originalduedate" />
+                <ScalarProperty Name="duedate" ColumnName="duedate" />
+                <ScalarProperty Name="earliestduedate" ColumnName="earliestduedate" />
+                <ScalarProperty Name="shying" ColumnName="shying" />
+                <ScalarProperty Name="permittedunderrun" ColumnName="permittedunderrun" />
+                <ScalarProperty Name="permittedoverrun" ColumnName="permittedoverrun" />
+                <ScalarProperty Name="freight" ColumnName="freight" />
+                <ScalarProperty Name="pricestate" ColumnName="pricestate" />
+                <ScalarProperty Name="setupprice" ColumnName="setupprice" />
+                <ScalarProperty Name="priceper" ColumnName="priceper" />
+                <ScalarProperty Name="taxvalue" ColumnName="taxvalue" />
+                <ScalarProperty Name="autototalprice" ColumnName="autototalprice" />
+                <ScalarProperty Name="autofreight" ColumnName="autofreight" />
+                <ScalarProperty Name="autosetupprice" ColumnName="autosetupprice" />
+                <ScalarProperty Name="autopriceper" ColumnName="autopriceper" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="length" ColumnName="length" />
+                <ScalarProperty Name="specialinstructions" ColumnName="specialinstructions" />
+                <ScalarProperty Name="partiallydeliverable" ColumnName="partiallydeliverable" />
+                <ScalarProperty Name="shippinginstructions" ColumnName="shippinginstructions" />
+                <ScalarProperty Name="scrappedquantity" ColumnName="scrappedquantity" />
+                <ScalarProperty Name="quarantinedquantity" ColumnName="quarantinedquantity" />
+                <ScalarProperty Name="creditedquantity" ColumnName="creditedquantity" />
+                <ScalarProperty Name="returnedquantity" ColumnName="returnedquantity" />
+                <ScalarProperty Name="invoicedquantity" ColumnName="invoicedquantity" />
+                <ScalarProperty Name="shippedquantity" ColumnName="shippedquantity" />
+                <ScalarProperty Name="producedquantity" ColumnName="producedquantity" />
+                <ScalarProperty Name="plannedquantity" ColumnName="plannedquantity" />
+                <ScalarProperty Name="unitquantity" ColumnName="unitquantity" />
+                <ScalarProperty Name="orderedquantity" ColumnName="orderedquantity" />
+                <ScalarProperty Name="customerPOlinenumber" ColumnName="customerPOlinenumber" />
+                <ScalarProperty Name="customerPOref" ColumnName="customerPOref" />
+                <ScalarProperty Name="sheetspecnumber" ColumnName="sheetspecnumber" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="priority" ColumnName="priority" />
+                <ScalarProperty Name="creditoverridedate" ColumnName="creditoverridedate" />
+                <ScalarProperty Name="recalcforeignpricing" ColumnName="recalcforeignpricing" />
+                <ScalarProperty Name="foreignpricing" ColumnName="foreignpricing" />
+                <ScalarProperty Name="entrydate" ColumnName="entrydate" />
+                <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+                <ScalarProperty Name="jobnumber" ColumnName="jobnumber" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="mainttime" ColumnName="mainttime" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -17,13 +17,51 @@
           <Property Name="Message" Type="varchar" MaxLength="4000" Nullable="false" />
           <Property Name="Exception" Type="varchar" MaxLength="2000" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EDI.dbo.orderfile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="orderfile">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Grade" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Flute" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Test" Type="nvarchar" MaxLength="2000" />
+          <Property Name="DueDate" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Width" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Length" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Quantity" Type="nvarchar" MaxLength="2000" />
+          <Property Name="MaxOver" Type="nvarchar" MaxLength="2000" />
+          <Property Name="MaxUnder" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Boardcode" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ShipToName" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ShipToAddress1" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ShipToAddress2" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ShipToCity" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ShipToState" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ShipToZip" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ShipToCode" Type="nvarchar" MaxLength="2000" />
+          <Property Name="CustomerPO" Type="nvarchar" MaxLength="2000" />
+          <Property Name="CustomerPOLine" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ClientItem" Type="nvarchar" MaxLength="2000" />
+          <Property Name="LoadTag" Type="nvarchar" MaxLength="2000" />
+          <Property Name="FirstMachineCode" Type="nvarchar" MaxLength="2000" />
+          <Property Name="PiecesPerPallet" Type="nvarchar" MaxLength="2000" />
+          <Property Name="FanFold" Type="nvarchar" MaxLength="2000" />
+          <Property Name="FanFoldSheetLength" Type="nvarchar" MaxLength="2000" />
+          <Property Name="FanFoldUnitHeight" Type="nvarchar" MaxLength="2000" />
+          <Property Name="FanFoldPerforationLength" Type="nvarchar" MaxLength="2000" />
+          <Property Name="CSCOrderID" Type="nvarchar" MaxLength="2000" />
+          <Property Name="DoNotUpgrade" Type="nvarchar" MaxLength="2000" />
+          <Property Name="TagPerUnit" Type="nvarchar" MaxLength="2000" />
+          <Property Name="AdhesiveCode" Type="nvarchar" MaxLength="2000" />
+          <Property Name="EOL" Type="nvarchar" MaxLength="2000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="orderfileID" Type="int" Nullable="false" />
           <Property Name="Type" Type="nvarchar" MaxLength="50" />
           <Property Name="Grade" Type="nvarchar" MaxLength="50" />
           <Property Name="Flute" Type="nvarchar" MaxLength="50" />
@@ -56,14 +94,11 @@ warning 6002: The table/view 'EDI.dbo.orderfile' does not have a primary key def
           <Property Name="DoNotUpgrade" Type="nvarchar" MaxLength="50" />
           <Property Name="TagPerUnit" Type="nvarchar" MaxLength="50" />
           <Property Name="AdhesiveCode" Type="nvarchar" MaxLength="50" />
-          <Property Name="EOL" Type="nvarchar" MaxLength="50" />
+          <Property Name="EOL" Type="nvarchar" MaxLength="2000" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EDI.dbo.Score' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Score">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="orderfileID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="orderfileID" Type="int" Nullable="false" />
@@ -72,12 +107,9 @@ warning 6002: The table/view 'EDI.dbo.Score' does not have a primary key defined
           <Property Name="FILLER" Type="nvarchar" MaxLength="50" />
           <Property Name="EOL" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'EDI.dbo.SpecialInstruction' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="SpecialInstruction">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="orderfileID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="orderfileID" Type="int" Nullable="false" />
@@ -90,66 +122,10 @@ warning 6002: The table/view 'EDI.dbo.SpecialInstruction' does not have a primar
         </EntityType>
         <EntityContainer Name="EDIModelStoreContainer">
           <EntitySet Name="Log4NetLog" EntityType="Self.Log4NetLog" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="orderfile" EntityType="Self.orderfile" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [orderfile].[ID] AS [ID], 
-    [orderfile].[Type] AS [Type], 
-    [orderfile].[Grade] AS [Grade], 
-    [orderfile].[Flute] AS [Flute], 
-    [orderfile].[Test] AS [Test], 
-    [orderfile].[DueDate] AS [DueDate], 
-    [orderfile].[Width] AS [Width], 
-    [orderfile].[Length] AS [Length], 
-    [orderfile].[Quantity] AS [Quantity], 
-    [orderfile].[MaxOver] AS [MaxOver], 
-    [orderfile].[MaxUnder] AS [MaxUnder], 
-    [orderfile].[Boardcode] AS [Boardcode], 
-    [orderfile].[ShipToName] AS [ShipToName], 
-    [orderfile].[ShipToAddress1] AS [ShipToAddress1], 
-    [orderfile].[ShipToAddress2] AS [ShipToAddress2], 
-    [orderfile].[ShipToCity] AS [ShipToCity], 
-    [orderfile].[ShipToState] AS [ShipToState], 
-    [orderfile].[ShipToZip] AS [ShipToZip], 
-    [orderfile].[ShipToCode] AS [ShipToCode], 
-    [orderfile].[CustomerPO] AS [CustomerPO], 
-    [orderfile].[CustomerPOLine] AS [CustomerPOLine], 
-    [orderfile].[ClientItem] AS [ClientItem], 
-    [orderfile].[LoadTag] AS [LoadTag], 
-    [orderfile].[FirstMachineCode] AS [FirstMachineCode], 
-    [orderfile].[PiecesPerPallet] AS [PiecesPerPallet], 
-    [orderfile].[FanFold] AS [FanFold], 
-    [orderfile].[FanFoldSheetLength] AS [FanFoldSheetLength], 
-    [orderfile].[FanFoldUnitHeight] AS [FanFoldUnitHeight], 
-    [orderfile].[FanFoldPerforationLength] AS [FanFoldPerforationLength], 
-    [orderfile].[CSCOrderID] AS [CSCOrderID], 
-    [orderfile].[DoNotUpgrade] AS [DoNotUpgrade], 
-    [orderfile].[TagPerUnit] AS [TagPerUnit], 
-    [orderfile].[AdhesiveCode] AS [AdhesiveCode], 
-    [orderfile].[EOL] AS [EOL]
-    FROM [dbo].[orderfile] AS [orderfile]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Score" EntityType="Self.Score" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Score].[ID] AS [ID], 
-    [Score].[orderfileID] AS [orderfileID], 
-    [Score].[Type] AS [Type], 
-    [Score].[Scores] AS [Scores], 
-    [Score].[FILLER] AS [FILLER], 
-    [Score].[EOL] AS [EOL]
-    FROM [dbo].[Score] AS [Score]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="SpecialInstruction" EntityType="Self.SpecialInstruction" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [SpecialInstruction].[ID] AS [ID], 
-    [SpecialInstruction].[orderfileID] AS [orderfileID], 
-    [SpecialInstruction].[Type] AS [Type], 
-    [SpecialInstruction].[SpecialInstruction1] AS [SpecialInstruction1], 
-    [SpecialInstruction].[SpecialInstruction2] AS [SpecialInstruction2], 
-    [SpecialInstruction].[CustomerOrderNumber] AS [CustomerOrderNumber], 
-    [SpecialInstruction].[ThreePLRefNo] AS [ThreePLRefNo], 
-    [SpecialInstruction].[EOL] AS [EOL]
-    FROM [dbo].[SpecialInstruction] AS [SpecialInstruction]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="orderfile" EntityType="Self.orderfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Score" EntityType="Self.Score" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecialInstruction" EntityType="Self.SpecialInstruction" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -160,6 +136,89 @@ warning 6002: The table/view 'EDI.dbo.SpecialInstruction' does not have a primar
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Flute" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Test" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="DueDate" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Width" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Length" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="MaxOver" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="MaxUnder" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Boardcode" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ShipToName" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ShipToAddress1" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ShipToAddress2" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ShipToCity" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ShipToState" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ShipToZip" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ShipToCode" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerPO" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerPOLine" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ClientItem" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="LoadTag" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="FirstMachineCode" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="PiecesPerPallet" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="FanFold" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="FanFoldSheetLength" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="FanFoldUnitHeight" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="FanFoldPerforationLength" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="CSCOrderID" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="DoNotUpgrade" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="TagPerUnit" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="AdhesiveCode" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="EOL" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EDIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="orderfiles" EntityType="Self.orderfile" />
+          <EntitySet Name="Log4NetLog" EntityType="EDIModel.Log4NetLog" />
+          <EntitySet Name="Scores" EntityType="EDIModel.Score" />
+          <EntitySet Name="SpecialInstructions" EntityType="EDIModel.SpecialInstruction" />
+          <EntitySet Name="orders" EntityType="EDIModel.order" />
+        </EntityContainer>
+        <EntityType Name="Log4NetLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Thread" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Level" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Logger" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="Exception" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Score">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderfileID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Scores" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FILLER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EOL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SpecialInstruction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderfileID" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpecialInstruction1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="SpecialInstruction2" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerOrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ThreePLRefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EOL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="orderfileID" Type="Int32" Nullable="false" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Grade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Flute" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -192,51 +251,7 @@ warning 6002: The table/view 'EDI.dbo.SpecialInstruction' does not have a primar
           <Property Name="DoNotUpgrade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TagPerUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AdhesiveCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EOL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityContainer Name="EDIEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="orderfiles" EntityType="Self.orderfile" />
-          <EntitySet Name="Scores" EntityType="EDIModel.Score" />
-          <EntitySet Name="SpecialInstructions" EntityType="EDIModel.SpecialInstruction" />
-          <EntitySet Name="Log4NetLog" EntityType="EDIModel.Log4NetLog" />
-        </EntityContainer>
-        <EntityType Name="Score">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="orderfileID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="orderfileID" Type="Int32" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Scores" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="FILLER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EOL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SpecialInstruction">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="orderfileID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="orderfileID" Type="Int32" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SpecialInstruction1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="SpecialInstruction2" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerOrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ThreePLRefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="EOL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Log4NetLog">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Thread" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Level" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Logger" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Message" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="Exception" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="EOL" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -284,6 +299,19 @@ warning 6002: The table/view 'EDI.dbo.SpecialInstruction' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Log4NetLog">
+            <EntityTypeMapping TypeName="EDIModel.Log4NetLog">
+              <MappingFragment StoreEntitySet="Log4NetLog">
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Logger" ColumnName="Logger" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Thread" ColumnName="Thread" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Scores">
             <EntityTypeMapping TypeName="EDIModel.Score">
               <MappingFragment StoreEntitySet="Score">
@@ -310,16 +338,44 @@ warning 6002: The table/view 'EDI.dbo.SpecialInstruction' does not have a primar
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Log4NetLog">
-            <EntityTypeMapping TypeName="EDIModel.Log4NetLog">
-              <MappingFragment StoreEntitySet="Log4NetLog">
-                <ScalarProperty Name="Exception" ColumnName="Exception" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="Logger" ColumnName="Logger" />
-                <ScalarProperty Name="Level" ColumnName="Level" />
-                <ScalarProperty Name="Thread" ColumnName="Thread" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="EDIModel.order">
+              <MappingFragment StoreEntitySet="orders">
+                <ScalarProperty Name="EOL" ColumnName="EOL" />
+                <ScalarProperty Name="AdhesiveCode" ColumnName="AdhesiveCode" />
+                <ScalarProperty Name="TagPerUnit" ColumnName="TagPerUnit" />
+                <ScalarProperty Name="DoNotUpgrade" ColumnName="DoNotUpgrade" />
+                <ScalarProperty Name="CSCOrderID" ColumnName="CSCOrderID" />
+                <ScalarProperty Name="FanFoldPerforationLength" ColumnName="FanFoldPerforationLength" />
+                <ScalarProperty Name="FanFoldUnitHeight" ColumnName="FanFoldUnitHeight" />
+                <ScalarProperty Name="FanFoldSheetLength" ColumnName="FanFoldSheetLength" />
+                <ScalarProperty Name="FanFold" ColumnName="FanFold" />
+                <ScalarProperty Name="PiecesPerPallet" ColumnName="PiecesPerPallet" />
+                <ScalarProperty Name="FirstMachineCode" ColumnName="FirstMachineCode" />
+                <ScalarProperty Name="LoadTag" ColumnName="LoadTag" />
+                <ScalarProperty Name="ClientItem" ColumnName="ClientItem" />
+                <ScalarProperty Name="CustomerPOLine" ColumnName="CustomerPOLine" />
+                <ScalarProperty Name="CustomerPO" ColumnName="CustomerPO" />
+                <ScalarProperty Name="ShipToCode" ColumnName="ShipToCode" />
+                <ScalarProperty Name="ShipToZip" ColumnName="ShipToZip" />
+                <ScalarProperty Name="ShipToState" ColumnName="ShipToState" />
+                <ScalarProperty Name="ShipToCity" ColumnName="ShipToCity" />
+                <ScalarProperty Name="ShipToAddress2" ColumnName="ShipToAddress2" />
+                <ScalarProperty Name="ShipToAddress1" ColumnName="ShipToAddress1" />
+                <ScalarProperty Name="ShipToName" ColumnName="ShipToName" />
+                <ScalarProperty Name="Boardcode" ColumnName="Boardcode" />
+                <ScalarProperty Name="MaxUnder" ColumnName="MaxUnder" />
+                <ScalarProperty Name="MaxOver" ColumnName="MaxOver" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="Test" ColumnName="Test" />
+                <ScalarProperty Name="Flute" ColumnName="Flute" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="orderfileID" ColumnName="orderfileID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

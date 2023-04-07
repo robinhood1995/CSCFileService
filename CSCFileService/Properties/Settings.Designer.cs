@@ -25,28 +25,10 @@ namespace CSCFileService.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public int MaxLinesInFiles {
-            get {
-                return ((int)(this["MaxLinesInFiles"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.5")]
-        public double CycleTimeMinutes {
-            get {
-                return ((double)(this["CycleTimeMinutes"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("*.txt")]
-        public string FileToLookAt {
+        public string FilePatternToLookAt {
             get {
-                return ((string)(this["FileToLookAt"]));
+                return ((string)(this["FilePatternToLookAt"]));
             }
         }
         
@@ -164,6 +146,15 @@ namespace CSCFileService.Properties {
         public int PurgeFilesDays {
             get {
                 return ((int)(this["PurgeFilesDays"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public double CycleTimeMinutes {
+            get {
+                return ((double)(this["CycleTimeMinutes"]));
             }
         }
     }
