@@ -5,15 +5,6 @@
     <Setting Name="FilePatternToLookAt" Type="System.String" Scope="Application">
       <Value Profile="(Default)">*.txt</Value>
     </Setting>
-    <Setting Name="Emails" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">robinhood1995@yahoo.com</Value>
-    </Setting>
-    <Setting Name="SMTPFROMEMAIL" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">sales@myfflbook.com</Value>
-    </Setting>
-    <Setting Name="SMTPSERVER" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">myfflbook-com.mail.protection.outlook.com</Value>
-    </Setting>
     <Setting Name="SMTPPort" Type="System.String" Scope="Application">
       <Value Profile="(Default)">25</Value>
     </Setting>
@@ -22,18 +13,6 @@
     </Setting>
     <Setting Name="SMTPPassword" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="PickUpFolder" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\Interface\Ord</Value>
-    </Setting>
-    <Setting Name="ArchiveFolder" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\Interface\ord\Archive</Value>
-    </Setting>
-    <Setting Name="WorkFolder" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\Interface\ord\Work</Value>
-    </Setting>
-    <Setting Name="OutPutFolder" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\Interface\ord\Out</Value>
     </Setting>
     <Setting Name="FilesToImportAtOnce" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">25</Value>
@@ -46,6 +25,27 @@
     </Setting>
     <Setting Name="CycleTimeMinutes" Type="System.Double" Scope="Application">
       <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="Emails" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">steveling@fruitgrowers.com</Value>
+    </Setting>
+    <Setting Name="SMTPFROMEMAIL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">sales@fruitgrowers.com</Value>
+    </Setting>
+    <Setting Name="SMTPSERVER" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">mail1.fgs1.local</Value>
+    </Setting>
+    <Setting Name="PickUpFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\\fgs1.local\fgsc\Apps\Kiwi\Prod\EDI\850Order\</Value>
+    </Setting>
+    <Setting Name="ArchiveFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\\fgs1.local\fgsc\Apps\Kiwi\Prod\EDI\850FanfoldOrder\ArchiveB4S2</Value>
+    </Setting>
+    <Setting Name="WorkFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\\fgs1.local\fgsc\Apps\Kiwi\Prod\EDI\850FanfoldOrder\Work</Value>
+    </Setting>
+    <Setting Name="OutPutFolder" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\\fgs1.local\fgsc\Apps\Kiwi\Prod\EDI\850FanfoldOrder</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -408,15 +408,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CSCFileService"
-        "ProductCode" = "8:{1965B072-6C0D-428C-B102-49E05D260044}"
-        "PackageCode" = "8:{BE01EEAE-F94B-4DE6-9229-DB3769B7F989}"
+        "ProductCode" = "8:{F5804F13-5F09-48D2-870D-4ABFC6B719F0}"
+        "PackageCode" = "8:{133515B2-C3DA-4DD5-AE5E-BD81B350223A}"
         "UpgradeCode" = "8:{A3E553DB-C750-4D95-AD92-141B3554AC8D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.6.1"
+        "ProductVersion" = "8:2.0.0"
         "Manufacturer" = "8:SFLServicesLLC"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -930,7 +930,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_4F2DAE11BC3F48BB9E242FC23ABF2643"
             {
-            "SourcePath" = "8:..\\CSCFileService\\obj\\Release\\CSCFileService.exe"
+            "SourcePath" = "8:..\\CSCFileService\\obj\\Debug\\CSCFileService.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E3DBF2BDC7454CCEBF879B963E78E04A"

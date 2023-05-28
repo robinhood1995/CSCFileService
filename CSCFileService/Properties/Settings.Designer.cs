@@ -34,33 +34,6 @@ namespace CSCFileService.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("robinhood1995@yahoo.com")]
-        public string Emails {
-            get {
-                return ((string)(this["Emails"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("sales@myfflbook.com")]
-        public string SMTPFROMEMAIL {
-            get {
-                return ((string)(this["SMTPFROMEMAIL"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("myfflbook-com.mail.protection.outlook.com")]
-        public string SMTPSERVER {
-            get {
-                return ((string)(this["SMTPSERVER"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("25")]
         public string SMTPPort {
             get {
@@ -83,42 +56,6 @@ namespace CSCFileService.Properties {
         public string SMTPPassword {
             get {
                 return ((string)(this["SMTPPassword"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Interface\\Ord")]
-        public string PickUpFolder {
-            get {
-                return ((string)(this["PickUpFolder"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Interface\\ord\\Archive")]
-        public string ArchiveFolder {
-            get {
-                return ((string)(this["ArchiveFolder"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Interface\\ord\\Work")]
-        public string WorkFolder {
-            get {
-                return ((string)(this["WorkFolder"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Interface\\ord\\Out")]
-        public string OutPutFolder {
-            get {
-                return ((string)(this["OutPutFolder"]));
             }
         }
         
@@ -155,6 +92,69 @@ namespace CSCFileService.Properties {
         public double CycleTimeMinutes {
             get {
                 return ((double)(this["CycleTimeMinutes"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("steveling@fruitgrowers.com")]
+        public string Emails {
+            get {
+                return ((string)(this["Emails"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("sales@fruitgrowers.com")]
+        public string SMTPFROMEMAIL {
+            get {
+                return ((string)(this["SMTPFROMEMAIL"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("mail1.fgs1.local")]
+        public string SMTPSERVER {
+            get {
+                return ((string)(this["SMTPSERVER"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\fgs1.local\\fgsc\\Apps\\Kiwi\\Prod\\EDI\\850Order\\")]
+        public string PickUpFolder {
+            get {
+                return ((string)(this["PickUpFolder"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\fgs1.local\\fgsc\\Apps\\Kiwi\\Prod\\EDI\\850FanfoldOrder\\ArchiveB4S2")]
+        public string ArchiveFolder {
+            get {
+                return ((string)(this["ArchiveFolder"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\fgs1.local\\fgsc\\Apps\\Kiwi\\Prod\\EDI\\850FanfoldOrder\\Work")]
+        public string WorkFolder {
+            get {
+                return ((string)(this["WorkFolder"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\fgs1.local\\fgsc\\Apps\\Kiwi\\Prod\\EDI\\850FanfoldOrder")]
+        public string OutPutFolder {
+            get {
+                return ((string)(this["OutPutFolder"]));
             }
         }
     }
