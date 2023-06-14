@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_18B0D20F09EE3E91C11700273ADC2853"
+        "MsmKey" = "8:_1072BA126D78B7032135FF28C46FCC00"
         "OwnerKey" = "8:_4F2DAE11BC3F48BB9E242FC23ABF2643"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -23,18 +23,6 @@
         {
         "MsmKey" = "8:_4F2DAE11BC3F48BB9E242FC23ABF2643"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_554B2F7C2E89E2958828B26A0871458A"
-        "OwnerKey" = "8:_4F2DAE11BC3F48BB9E242FC23ABF2643"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_554B2F7C2E89E2958828B26A0871458A"
-        "OwnerKey" = "8:_18B0D20F09EE3E91C11700273ADC2853"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -47,6 +35,18 @@
         {
         "MsmKey" = "8:_AAC6FA11579AF322DC5C1835A8E51959"
         "OwnerKey" = "8:_4F2DAE11BC3F48BB9E242FC23ABF2643"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CE7F930EB74A42A26E633452EEE66685"
+        "OwnerKey" = "8:_4F2DAE11BC3F48BB9E242FC23ABF2643"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CE7F930EB74A42A26E633452EEE66685"
+        "OwnerKey" = "8:_1072BA126D78B7032135FF28C46FCC00"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -70,13 +70,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_18B0D20F09EE3E91C11700273ADC2853"
+        "OwnerKey" = "8:_1072BA126D78B7032135FF28C46FCC00"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_554B2F7C2E89E2958828B26A0871458A"
+        "OwnerKey" = "8:_CE7F930EB74A42A26E633452EEE66685"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -208,51 +208,20 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_18B0D20F09EE3E91C11700273ADC2853"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1072BA126D78B7032135FF28C46FCC00"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_18B0D20F09EE3E91C11700273ADC2853"
+                    "_1072BA126D78B7032135FF28C46FCC00"
                     {
                     "Name" = "8:EntityFramework.SqlServer.dll"
                     "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:EntityFramework.SqlServer.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_E3DBF2BDC7454CCEBF879B963E78E04A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_554B2F7C2E89E2958828B26A0871458A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_554B2F7C2E89E2958828B26A0871458A"
-                    {
-                    "Name" = "8:EntityFramework.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:EntityFramework.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E3DBF2BDC7454CCEBF879B963E78E04A"
@@ -315,6 +284,37 @@
                     }
                 }
             "SourcePath" = "8:log4net.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_E3DBF2BDC7454CCEBF879B963E78E04A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CE7F930EB74A42A26E633452EEE66685"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_CE7F930EB74A42A26E633452EEE66685"
+                    {
+                    "Name" = "8:EntityFramework.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:EntityFramework.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E3DBF2BDC7454CCEBF879B963E78E04A"
@@ -408,15 +408,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:CSCFileService"
-        "ProductCode" = "8:{F5804F13-5F09-48D2-870D-4ABFC6B719F0}"
-        "PackageCode" = "8:{133515B2-C3DA-4DD5-AE5E-BD81B350223A}"
+        "ProductCode" = "8:{61CA9CFB-4B33-47EC-A208-1FA2FD501F4E}"
+        "PackageCode" = "8:{97738215-688A-4CC8-B541-6015B639954F}"
         "UpgradeCode" = "8:{A3E553DB-C750-4D95-AD92-141B3554AC8D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:2.0.0"
+        "ProductVersion" = "8:2.0.5"
         "Manufacturer" = "8:SFLServicesLLC"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -930,7 +930,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_4F2DAE11BC3F48BB9E242FC23ABF2643"
             {
-            "SourcePath" = "8:..\\CSCFileService\\obj\\Debug\\CSCFileService.exe"
+            "SourcePath" = "8:..\\CSCFileService\\obj\\Release\\CSCFileService.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_E3DBF2BDC7454CCEBF879B963E78E04A"

@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CSCFileService")]
-[assembly: AssemblyDescription("File processor for Corrugated Supplies Corporation LLC")]
+[assembly: AssemblyTitle("CSCHistory")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("SFL Services, LLC")]
-[assembly: AssemblyProduct("CSCFileService")]
-[assembly: AssemblyCopyright("Copyright ©  2015 - 2023")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("CSCHistory")]
+[assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("6f6f7790-d74a-404f-8b42-1516b7cc750b")]
+[assembly: Guid("2bd38c29-f724-44dd-83e3-cc0641b9e21a")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,6 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.5.0")]
-[assembly: AssemblyFileVersion("2.0.5.0")]
-[assembly: log4net.Config.XmlConfigurator(Watch = true)] 
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

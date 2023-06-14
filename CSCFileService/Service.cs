@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.SqlServer;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -13,7 +14,12 @@ using System.ServiceProcess;
 using System.Text;
 using System.Timers;
 using System.Web.Configuration;
+using System.Web.Routing;
+using System.Xml.Linq;
+using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.FileIO;
+using Microsoft.VisualBasic.Logging;
+using static System.Net.Mime.MediaTypeNames;
 
 //dotnet tool install --global dotnet-ef
 //dotnet ef migrations add CreateInitial
@@ -88,7 +94,7 @@ namespace CSCFileService
                 PurgeFiles();
             }
             ProcessFilesDB();
-            ChangeFiles();
+            //ChangeFiles();
         }
 
 #region CheckDirectories
@@ -323,6 +329,7 @@ namespace CSCFileService
                 if (PickUpFiles.Length > 0)
                 {
                     var csv = new StringBuilder();
+                    var flf = new StringBuilder();
                     var newLine = "";
                     string fullReportOutput = ReportDirPath  + "\\" + "orderfile" + ".csv";
 
@@ -359,8 +366,8 @@ namespace CSCFileService
                                 _log.Debug("Deleted the work file it already exists ");
                                 _log.Debug(WorkDirPath);
                             }
-                            File.Copy(fullPath, WorkFullPath);
-                            _log.Debug($"Copied the original file {filename} to the work folder {ArchiveDirPath}");
+                            //File.Copy(fullPath, WorkFullPath);
+                            //_log.Debug($"Copied the original file {filename} to the work folder {WorkDirPath}");
 
                             _log.Debug("Calling the streamreader function");
                             //var reader = File.OpenText(fullPath);
@@ -390,6 +397,7 @@ namespace CSCFileService
                                         //Set parser to Fixed Length Width
                                         parser.TextFieldType = FieldType.FixedWidth;
                                         //parser.HasFieldsEnclosedInQuotes = false;
+                                        parser.TrimWhiteSpace = true;
 
                                         //Setting variables for re-use
                                         string[] currentRowFieldsA;
@@ -404,17 +412,18 @@ namespace CSCFileService
                                         string color = "";
                                         while (parser.PeekChars(1) != null)
                                         {
-                                            try
-                                            {
 
-                                                //https://stackoverflow.com/questions/7583770/unable-to-update-the-entityset-because-it-has-a-definingquery-and-no-updatefu
-                                                //Parsing row with a A Record 
-                                                //Add the row to the .CSV file
-                                                //This is to set the lenght of each field in the Fixed Length File
-                                                parser.SetFieldWidths(1, 25, 10, 10, 6, 6, 6, 6, 3, 3, 60, 30, 30, 30, 20, 2, 10, 3, 25, 3, 25, 2, 20, 4, 1, 10, 10, 10, 10, 1, 1, 10);
-                                                //parser.SetFieldWidths(-1);
-                                                //Read all the fields in the row
+                                            //https://stackoverflow.com/questions/7583770/unable-to-update-the-entityset-because-it-has-a-definingquery-and-no-updatefu
+                                            //Parsing row with a A Record 
+                                            //Add the row to the .CSV file
+                                            //This is to set the lenght of each field in the Fixed Length File
+                                            parser.SetFieldWidths(1, 25, 10, 10, 6, 6, 6, 6, 3, 3, 60, 30, 30, 30, 20, 2, 10, 3, 25, 3, 25, 2, 20, 4, 1, 10, 10, 10, 10, 1, 1, 10);
+                                            //parser.SetFieldWidths(-1);
+                                            //Read all the fields in the row
+                                            try 
+                                            {
                                                 currentRowFieldsA = parser.ReadFields();
+
                                                 if (!(currentRowFieldsA == null))
                                                 {
                                                     if (currentRowFieldsA[0].Contains('A'))
@@ -433,71 +442,125 @@ namespace CSCFileService
                                                 {
                                                     if (currentRowFieldsA[0].Contains('A'))
                                                     {
-                                                        try
-                                                        {
-                                                            //Set variables
-                                                            flute = currentRowFieldsA[2];
-                                                            width = currentRowFieldsA[5];
-                                                            grade = currentRowFieldsA[1];
-                                                            string EOL = filename.ToString();
+                                                        //Set variables
+                                                        flute = currentRowFieldsA[2];
+                                                        width = currentRowFieldsA[5];
+                                                        grade = currentRowFieldsA[1];
+                                                        string EOL = filename.ToString();
 
-                                                            //Adding to the database 
-                                                            using (var context = new EDIEntities())
-                                                            {
-                                                                var ord = new orderfile()
-                                                                {
-                                                                    Type = currentRowFieldsA[0],
-                                                                    Grade = currentRowFieldsA[1],
-                                                                    Flute = currentRowFieldsA[2],
-                                                                    Test = currentRowFieldsA[3],
-                                                                    DueDate = currentRowFieldsA[4],
-                                                                    Width = currentRowFieldsA[5],
-                                                                    Length = currentRowFieldsA[6],
-                                                                    Quantity = currentRowFieldsA[7],
-                                                                    MaxOver = currentRowFieldsA[8],
-                                                                    MaxUnder = currentRowFieldsA[9],
-                                                                    Boardcode = currentRowFieldsA[10],
-                                                                    ShipToName = currentRowFieldsA[11],
-                                                                    ShipToAddress1 = currentRowFieldsA[12],
-                                                                    ShipToAddress2 = currentRowFieldsA[13],
-                                                                    ShipToCity = currentRowFieldsA[14],
-                                                                    ShipToState = currentRowFieldsA[15],
-                                                                    ShipToZip = currentRowFieldsA[16],
-                                                                    ShipToCode = currentRowFieldsA[17],
-                                                                    CustomerPO = currentRowFieldsA[18],
-                                                                    CustomerPOLine = currentRowFieldsA[19],
-                                                                    ClientItem = currentRowFieldsA[2] + "|" + currentRowFieldsA[1] + "|" + currentRowFieldsA[5],
-                                                                    LoadTag = currentRowFieldsA[21],
-                                                                    FirstMachineCode = currentRowFieldsA[22],
-                                                                    PiecesPerPallet = currentRowFieldsA[23],
-                                                                    FanFold = currentRowFieldsA[24],
-                                                                    FanFoldSheetLength = currentRowFieldsA[25],
-                                                                    FanFoldUnitHeight = currentRowFieldsA[26],
-                                                                    FanFoldPerforationLength = currentRowFieldsA[27],
-                                                                    CSCOrderID = currentRowFieldsA[28],
-                                                                    DoNotUpgrade = currentRowFieldsA[29],
-                                                                    TagPerUnit = currentRowFieldsA[30],
-                                                                    AdhesiveCode = currentRowFieldsA[31],
-                                                                    EOL = String.Format("{0}", filename),
-                                                                };
-                                                                context.orderfiles.Add(ord);
-                                                                context.SaveChanges();
-                                                                idAInserted = ord.ID;
-                                                            }
-                                                        }
-                                                        catch (Exception ex)
+                                                        //Adding to the database 
+                                                        using (var context = new EDIEntities())
                                                         {
-                                                            _log.Error("File " + filename);
-                                                            _log.Error(ex.Message);
+                                                            var ord = new orderfile()
+                                                            {
+                                                                Type = currentRowFieldsA[0],
+                                                                Grade = currentRowFieldsA[1],
+                                                                Flute = currentRowFieldsA[2],
+                                                                Test = currentRowFieldsA[3],
+                                                                DueDate = currentRowFieldsA[4],
+                                                                Width = currentRowFieldsA[5],
+                                                                Length = currentRowFieldsA[6],
+                                                                Quantity = currentRowFieldsA[7],
+                                                                MaxOver = currentRowFieldsA[8],
+                                                                MaxUnder = currentRowFieldsA[9],
+                                                                Boardcode = currentRowFieldsA[10],
+                                                                ShipToName = currentRowFieldsA[11],
+                                                                ShipToAddress1 = currentRowFieldsA[12],
+                                                                ShipToAddress2 = currentRowFieldsA[13],
+                                                                ShipToCity = currentRowFieldsA[14],
+                                                                ShipToState = currentRowFieldsA[15],
+                                                                ShipToZip = currentRowFieldsA[16],
+                                                                ShipToCode = currentRowFieldsA[17],
+                                                                CustomerPO = currentRowFieldsA[18],
+                                                                CustomerPOLine = currentRowFieldsA[19],
+                                                                ClientItem = currentRowFieldsA[2] + "|" + currentRowFieldsA[1] + "|" + currentRowFieldsA[5],
+                                                                LoadTag = currentRowFieldsA[21],
+                                                                FirstMachineCode = currentRowFieldsA[22],
+                                                                PiecesPerPallet = currentRowFieldsA[23],
+                                                                FanFold = currentRowFieldsA[24],
+                                                                FanFoldSheetLength = currentRowFieldsA[25],
+                                                                FanFoldUnitHeight = currentRowFieldsA[26],
+                                                                FanFoldPerforationLength = currentRowFieldsA[27],
+                                                                CSCOrderID = currentRowFieldsA[28],
+                                                                DoNotUpgrade = currentRowFieldsA[29],
+                                                                TagPerUnit = currentRowFieldsA[30],
+                                                                AdhesiveCode = currentRowFieldsA[31],
+                                                                EOL = String.Format("{0}", filename),
+                                                            };
+                                                            context.orderfiles.Add(ord);
+                                                            context.SaveChanges();
+                                                            idAInserted = ord.ID;
                                                         }
+
+                                                        //Adding the the output file
+                                                        using (var context = new EDIEntities())
+                                                        {
+                                                            var chgFileA = context.orderfiles.Where(s => s.ID == idAInserted).ToList();
+
+                                                            flf.AppendLine(
+                                                                chgFileA[0].Type.PadRight(1, ' ') +
+                                                                chgFileA[0].Grade.PadRight(25, ' ') +
+                                                                chgFileA[0].Flute.PadRight(10, ' ') +
+                                                                chgFileA[0].Test.PadRight(10, ' ') +
+                                                                chgFileA[0].DueDate.PadRight(6, ' ') +
+                                                                chgFileA[0].Width.PadRight(6, ' ') +
+                                                                chgFileA[0].Length.PadRight(6, ' ') +
+                                                                chgFileA[0].Quantity.PadRight(6, ' ') +
+                                                                chgFileA[0].MaxOver.PadRight(3, ' ') +
+                                                                chgFileA[0].MaxUnder.PadRight(3, ' ') +
+                                                                chgFileA[0].Boardcode.PadRight(60, ' ') +
+                                                                chgFileA[0].ShipToName.PadRight(30, ' ') +
+                                                                chgFileA[0].ShipToAddress1.PadRight(30, ' ') +
+                                                                chgFileA[0].ShipToAddress2.PadRight(30, ' ') +
+                                                                chgFileA[0].ShipToCity.PadRight(20, ' ') +
+                                                                chgFileA[0].ShipToState.PadRight(2, ' ') +
+                                                                chgFileA[0].ShipToZip.PadRight(10, ' ') +
+                                                                chgFileA[0].ShipToCode.PadRight(3, ' ') +
+                                                                chgFileA[0].CustomerPO.PadRight(25, ' ') +
+                                                                chgFileA[0].CustomerPOLine.PadRight(3, ' ') +
+                                                                chgFileA[0].ClientItem.PadRight(25, ' ') +
+                                                                chgFileA[0].LoadTag.PadRight(2, ' ') +
+                                                                chgFileA[0].FirstMachineCode.PadRight(20, ' ') +
+                                                                chgFileA[0].PiecesPerPallet.PadRight(4, ' ') +
+                                                                chgFileA[0].FanFold.PadRight(1, ' ') +
+                                                                chgFileA[0].FanFoldSheetLength.PadRight(10, ' ') +
+                                                                chgFileA[0].FanFoldUnitHeight.PadRight(10, ' ') +
+                                                                chgFileA[0].FanFoldPerforationLength.PadRight(10, ' ') +
+                                                                chgFileA[0].CSCOrderID.PadRight(10, ' ') +
+                                                                chgFileA[0].DoNotUpgrade.PadRight(1, ' ') +
+                                                                chgFileA[0].TagPerUnit.PadRight(1, ' ') +
+                                                                chgFileA[0].AdhesiveCode.PadRight(10, ' ')
+                                                                );
+                                                        }
+
                                                     }
                                                 }
-                                                //Parsing row with a X Record
-                                                //Add the row to the .CSV file
-                                                //This is to set the lenght of each field in the Fixed Length File
-                                                parser.SetFieldWidths(1, 136, 18);
-                                                //Read all the fields in the row
+                                            }
+                                            catch (MalformedLineException ex)
+                                            {
+                                                _log.Error("File " + filename);
+                                                _log.Error(ex.Message);
+                                                //Emailed as could not process the files
+                                                ClsFunctions.NetEmail(Properties.Settings.Default.Emails, "Error File",
+                                                                filename.ToString(),
+                                                                Properties.Settings.Default.SMTPFROMEMAIL,
+                                                                Properties.Settings.Default.SMTPSERVER,
+                                                                Int32.Parse(Properties.Settings.Default.SMTPPort),
+                                                                Properties.Settings.Default.SMTPUser,
+                                                                Properties.Settings.Default.SMTPPassword);
+                                            }
+                                                                                                
+                                               
+                                            //Parsing row with a X Record
+                                            //Add the row to the .CSV file
+                                            //This is to set the lenght of each field in the Fixed Length File
+                                            //parser.SetFieldWidths(1, 136, 18);
+                                            parser.SetFieldWidths(1, -1);
+                                            //Read all the fields in the row
+                                            try
+                                            { 
                                                 currentRowFieldsX = parser.ReadFields();
+
                                                 if (!(currentRowFieldsX == null))
                                                 {
                                                     if (currentRowFieldsX[0].Contains('X'))
@@ -513,80 +576,115 @@ namespace CSCFileService
 
                                                 //Read the line to get the variables
                                                 if (!(currentRowFieldsX == null))
+                                            {
+                                                if (currentRowFieldsX[0].Contains('X'))
                                                 {
-                                                    if (currentRowFieldsX[0].Contains('X'))
+                                                    //Set variables
+                                                    scores = currentRowFieldsX[1];
+
+                                                    //Adding to the database 
+                                                    using (var context = new EDIEntities())
                                                     {
-                                                        try
+                                                        var scr = new Score()
                                                         {
-                                                            //Set variables
-                                                            scores = currentRowFieldsX[1];
+                                                            orderfileID = idAInserted,
+                                                            Type = currentRowFieldsX[0],
+                                                            Scores = currentRowFieldsX[1],
+                                                            //FILLER = currentRowFieldsX[2],
+                                                            EOL = String.Format("{0}", filename),
+                                                        };
+                                                        context.Scores.Add(scr);
+                                                        context.SaveChanges();
+                                                        idXInserted = scr.ID;
 
-                                                            //Adding to the database 
-                                                            using (var context = new EDIEntities())
+                                                        //Add to unique code if there are scores
+                                                        if (currentRowFieldsX[1].Length > 0)
+                                                        {
+                                                            //Look to see if any other orders had it before to re-use the code
+                                                            var lookup = (from o in context.orderfiles
+                                                                            join s in context.Scores
+                                                                            on o.ID equals s.orderfileID into r1
+                                                                            from s in r1.DefaultIfEmpty()
+                                                                            select new
+                                                                            {
+                                                                                ClientItem = o.ClientItem,
+                                                                                Flute = o.Flute,
+                                                                                Width = o.Width,
+                                                                                Grade = o.Grade,
+                                                                                ScoresID = s.ID,
+                                                                                Scores = s.Scores,
+                                                                            })
+                                                                            .Where(s => s.Flute == flute &&
+                                                                            s.Width == width &&
+                                                                            s.Grade == grade &&
+                                                                            s.Scores == scores)
+                                                                            .ToList();
+
+                                                            var upd = context.orderfiles.Where(o => o.ID == idAInserted).FirstOrDefault();
+                                                            if (lookup.Count > 1)
                                                             {
-                                                                var scr = new Score()
-                                                                {
-                                                                    orderfileID = idAInserted,
-                                                                    Type = currentRowFieldsX[0],
-                                                                    Scores = currentRowFieldsX[1],
-                                                                    //FILLER = currentRowFields[2],
-                                                                    EOL = String.Format("{0}", filename),
-                                                                };
-                                                                context.Scores.Add(scr);
-                                                                context.SaveChanges();
-                                                                idXInserted = scr.ID;
+                                                                flf.Replace(upd.ClientItem.PadRight(25,' '), lookup[0].ClientItem.PadRight(25,' '));
+                                                                upd.ClientItem = String.Format("{0}", lookup[0].ClientItem);
 
-                                                                //Add to unique code if there are scores
-                                                                if (currentRowFieldsX[1].Length > 0)
-                                                                {
-                                                                    //Look to see if any other orders had it before to re-use the code
-                                                                    var lookup = (from o in context.orderfiles
-                                                                                  join s in context.Scores
-                                                                                  on o.ID equals s.orderfileID into r1
-                                                                                  from s in r1.DefaultIfEmpty()
-                                                                                  select new
-                                                                                  {
-                                                                                      ClientItem = o.ClientItem,
-                                                                                      Flute = o.Flute,
-                                                                                      Width = o.Width,
-                                                                                      Grade = o.Grade,
-                                                                                      ScoresID = s.ID,
-                                                                                      Scores = s.Scores,
-                                                                                  })
-                                                                                  .Where(s => s.Flute == flute &&
-                                                                                  s.Width == width &&
-                                                                                  s.Grade == grade &&
-                                                                                  s.Scores == scores)
-                                                                                  .ToList();
-
-                                                                    var upd = context.orderfiles.Where(o => o.ID == idAInserted).FirstOrDefault();
-                                                                    if (lookup.Count>1)
-                                                                    {
-                                                                        upd.ClientItem = upd.ClientItem + "|" + String.Format("{0}", lookup[0].ClientItem);
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        upd.ClientItem = upd.ClientItem + "|" + String.Format("{0}", idXInserted);
-                                                                    }
-                                                                    //context.orderfiles.Add(upd);
-                                                                    context.SaveChanges();
-                                                                }
                                                             }
-                                                        }
-                                                        catch (Exception ex)
-                                                        {
-                                                            _log.Error("File " + filename);
-                                                            _log.Error(ex.Message);
+                                                            else
+                                                            {
+                                                                upd.ClientItem = upd.ClientItem + "|" + String.Format("{0}", idXInserted);
+                                                            }
+                                                            //context.orderfiles.Add(upd);
+                                                            context.SaveChanges();
                                                         }
                                                     }
-                                                }
 
-                                                //Parsing row with a Z Record
-                                                //Add the row to the .CSV file
-                                                //This is to set the lenght of each field in the Fixed Length File
-                                                parser.SetFieldWidths(1, 510, 510, 50, 50);
-                                                //Read all the fields in the row
+                                                    //Adding to the output file
+                                                    using (var context = new EDIEntities())
+                                                    {
+                                                        var chgFileX = context.Scores.Where(s => s.orderfileID == idAInserted).ToList();
+
+                                                        flf.AppendLine(
+                                                            chgFileX[0].Type.PadRight(1, ' ') +
+                                                            chgFileX[0].Scores.PadRight(136, ' ') +
+                                                            " ".PadRight(18, ' ')
+                                                            );
+                                                    }
+                                                }
+                                            }
+                                            }
+                                            catch (MalformedLineException ex)
+                                            {
+                                                _log.Error("File " + filename);
+                                                _log.Error(ex.Message);
+                                                //Adding the error to the database
+                                                using (var context = new EDIEntities())
+                                                {
+                                                    var scr = new Score()
+                                                    {
+                                                        orderfileID = idAInserted,
+                                                        Type = "X",
+                                                        Scores = "Error in file structure",
+                                                        FILLER = "",
+                                                        EOL = String.Format("{0}", filename),
+                                                    };
+                                                    context.Scores.Add(scr);
+                                                    context.SaveChanges();
+                                                }
+                                                //Adding the error to the file
+                                                flf.AppendLine("X" +
+                                                "Error in file structure".PadRight(136, ' ') +
+                                                " ".PadRight(18, ' ')
+                                                );
+                                            }
+                                                                                           
+
+                                            //Parsing row with a Z Record
+                                            //Add the row to the .CSV file
+                                            //This is to set the lenght of each field in the Fixed Length File
+                                            parser.SetFieldWidths(1, 510, 510, 50, 50);
+                                            //Read all the fields in the row
+                                            try 
+                                            { 
                                                 currentRowFieldsZ = parser.ReadFields();
+
                                                 if (!(currentRowFieldsZ == null))
                                                 {
                                                     if (currentRowFieldsZ[0].Contains('Z'))
@@ -605,124 +703,121 @@ namespace CSCFileService
                                                 {
                                                     if (currentRowFieldsZ[0].Contains('Z'))
                                                     {
-                                                        try
+                                                        //Set variables
+                                                        specialinstructions = currentRowFieldsZ[1];
+                                                        color = currentRowFieldsZ[2];
+
+                                                        //Adding to the database 
+                                                        using (var context = new EDIEntities())
                                                         {
-                                                            //Set variables
-                                                            specialinstructions = currentRowFieldsZ[1];
-                                                            color = currentRowFieldsZ[2];
-
-                                                            //Adding to the database 
-                                                            using (var context = new EDIEntities())
+                                                            var sp = new SpecialInstruction()
                                                             {
-                                                                var sp = new SpecialInstruction()
-                                                                {
-                                                                    orderfileID = idAInserted,
-                                                                    Type = currentRowFieldsZ[0],
-                                                                    SpecialInstruction1 = currentRowFieldsZ[1],
-                                                                    SpecialInstruction2 = currentRowFieldsZ[2],
-                                                                    CustomerOrderNumber = currentRowFieldsZ[3],
-                                                                    ThreePLRefNo = currentRowFieldsZ[4],
-                                                                    EOL = String.Format("{0}", filename),
-                                                                };
-                                                                context.SpecialInstructions.Add(sp);
+                                                                orderfileID = idAInserted,
+                                                                Type = currentRowFieldsZ[0],
+                                                                SpecialInstruction1 = currentRowFieldsZ[1],
+                                                                SpecialInstruction2 = currentRowFieldsZ[2],
+                                                                CustomerOrderNumber = currentRowFieldsZ[3],
+                                                                ThreePLRefNo = currentRowFieldsZ[4],
+                                                                EOL = String.Format("{0}", filename),
+                                                            };
+                                                            context.SpecialInstructions.Add(sp);
+                                                            context.SaveChanges();
+                                                            idZInserted = sp.ID;
+
+                                                            //Add to unique code if there are suposed to be short bails
+                                                            if (currentRowFieldsZ[1].ToLower().Contains("short"))
+                                                            {
+                                                                shortbails = currentRowFieldsZ[1];
+                                                                var upd = context.orderfiles.Where(o => o.ID == idAInserted).FirstOrDefault();
+                                                                string chg = upd.ClientItem + "|SB";
+                                                                flf.Replace(upd.ClientItem.PadRight(25, ' '), chg.PadRight(25, ' '));
+                                                                upd.ClientItem = upd.ClientItem + "|SB";
+                                                                //context.orderfiles.Add(upd);
                                                                 context.SaveChanges();
-                                                                idZInserted = sp.ID;
+                                                            }
 
-                                                                //Add to unique code if there are suposed to be short bails
-                                                                if (currentRowFieldsZ[1].ToLower().Contains("short"))
-                                                                {
-                                                                    shortbails = currentRowFieldsZ[1];
-                                                                    var upd = context.orderfiles.Where(o => o.ID == idAInserted).FirstOrDefault();
-                                                                    upd.ClientItem = upd.ClientItem + "|SB";
-                                                                    //context.orderfiles.Add(upd);
-                                                                    context.SaveChanges();
-                                                                }
-
-                                                                //Add to unique code if there is colour
-                                                                if (currentRowFieldsZ[2].ToLower().Contains("color"))
-                                                                {
-                                                                    color = currentRowFieldsZ[2].Split(',').ToString();
-                                                                    var upd = context.orderfiles.Where(o => o.ID == idAInserted).FirstOrDefault();
-                                                                    upd.ClientItem = upd.ClientItem + "|" + String.Format("{0}", color);
-                                                                    //context.orderfiles.Add(upd);
-                                                                    context.SaveChanges();
-                                                                }
+                                                            //Add to unique code if there is colour
+                                                            if (currentRowFieldsZ[2].ToLower().Contains("color"))
+                                                            {
+                                                                color = currentRowFieldsZ[2].Split(',').ToString();
+                                                                var upd = context.orderfiles.Where(o => o.ID == idAInserted).FirstOrDefault();
+                                                                string chg = upd.ClientItem + "|" + String.Format("{0}", color);
+                                                                flf.Replace(upd.ClientItem.PadRight(25, ' '), chg.PadRight(25, ' '));
+                                                                upd.ClientItem = upd.ClientItem + "|" + String.Format("{0}", color);
+                                                                //context.orderfiles.Add(upd);
+                                                                context.SaveChanges();
                                                             }
                                                         }
-                                                        catch (Exception ex)
+
+                                                        //Adding to the output file
+                                                        using (var context = new EDIEntities())
                                                         {
-                                                            _log.Error("File " + filename);
-                                                            _log.Error(ex.Message);
+                                                            var chgFileZ = context.SpecialInstructions.Where(s => s.orderfileID == idAInserted).ToList();
+
+                                                            flf.AppendLine(
+                                                                chgFileZ[0].Type.PadRight(1, ' ') +
+                                                                chgFileZ[0].SpecialInstruction1.PadRight(510, ' ') +
+                                                                chgFileZ[0].SpecialInstruction2.PadRight(510, ' ') +
+                                                                chgFileZ[0].CustomerOrderNumber.PadRight(50, ' ') +
+                                                                chgFileZ[0].ThreePLRefNo.PadRight(50, ' ')
+                                                                );
                                                         }
                                                     }
                                                 }
-
-                                                ////Checking if the order exists with a unique code to be able to update this record for re-use in Kiwiplan ESP
-                                                //using (var context = new EDIEntities())
-                                                //{
-
-                                                //    var eChk = (from o in context.orderfiles
-                                                //                join s in context.Scores
-                                                //                on o.ID equals s.orderfileID into r1
-                                                //                from s in r1.DefaultIfEmpty()
-                                                //                join si1 in context.SpecialInstructions
-                                                //                on o.ID equals si1.orderfileID into r2
-                                                //                from si1 in r2.DefaultIfEmpty()
-                                                //                join si2 in context.SpecialInstructions
-                                                //                on o.ID equals si2.orderfileID into r3
-                                                //                from si2 in r3.DefaultIfEmpty()
-                                                //                select new
-                                                //                {
-                                                //                    ClientItem = o.ClientItem,
-                                                //                    Flute = o.Flute,
-                                                //                    Width = o.Width,
-                                                //                    Grade = o.Grade,
-                                                //                    ScoresID = s.ID,
-                                                //                    Scores = s.Scores,
-                                                //                    SpecialInstruction1ID = si1.ID,
-                                                //                    SpecialInstruction1 = si1.SpecialInstruction1,
-                                                //                    SpecialInstruction2ID = si2.ID,
-                                                //                    SpecialInstruction2 = si2.SpecialInstruction2,
-
-                                                //                })
-                                                //             .Where(s => 
-                                                //             s.Flute == flute && 
-                                                //             s.Width == width && 
-                                                //             s.Grade == grade
-                                                //             ).AsQueryable();
-
-                                                //Requery the result set from above
-                                                //    if (scores.Length>0)
-                                                //    {
-                                                //        eChk = eChk.Where(s => s.Scores == scores);
-                                                //    }
-
-                                                //}
-                                                    
-                                                File.AppendAllText(fullReportOutput, csv.ToString());
-                                                _log.Debug($"Created the file {fullReportOutput}");
-                                                string NewFile = fullReportOutput + "_" + DateTime.Now.ToString("yyyyMMddHHmm_ss_fff") + ".csv";
-                                                File.Move(fullReportOutput, NewFile);
-                                                _log.Debug($"Moved the {fullReportOutput} file {NewFile}");
-                                                csv.Clear();
-                                                _log.Debug("Closed the stringbuilder");
-                                                if (Properties.Settings.Default.EmailCopy)
-                                                {
-                                                    //Send email of file
-                                                    ClsFunctions.NetEmail(Properties.Settings.Default.Emails, "CSC File",
-                                                              NewFile, Properties.Settings.Default.SMTPFROMEMAIL,
-                                                              Properties.Settings.Default.SMTPSERVER,
-                                                              Int32.Parse(Properties.Settings.Default.SMTPPort),
-                                                              Properties.Settings.Default.SMTPUser,
-                                                              Properties.Settings.Default.SMTPPassword);
-                                                    _log.Debug($"Emailed file {NewFile} copy to {Properties.Settings.Default.Emails}");
-                                                }
-
                                             }
-                                            catch (Exception ex)
+                                            catch (MalformedLineException ex)
                                             {
-                                                _log.Error("File " + filename);
+                                                _log.Error("Malformed file " + filename);
                                                 _log.Error(ex.Message);
+                                                //Adding the error to the database
+                                                using (var context = new EDIEntities())
+                                                {
+                                                    var sp = new SpecialInstruction()
+                                                    {
+                                                        orderfileID = idAInserted,
+                                                        Type = "Z",
+                                                        SpecialInstruction1 = "Error in file structure",
+                                                        SpecialInstruction2 = "",
+                                                        CustomerOrderNumber = "",
+                                                        ThreePLRefNo = "",
+                                                        EOL = String.Format("{0}", filename),
+                                                    };
+                                                    context.SpecialInstructions.Add(sp);
+                                                    context.SaveChanges();
+                                                    idZInserted = sp.ID;
+                                                }
+                                                //Adding the error to the file
+                                                flf.AppendLine("Z" +
+                                                        "Error in file structure".PadRight(510, ' ') +
+                                                        "".PadRight(510, ' ') +
+                                                        "".PadRight(50, ' ') +
+                                                        "".PadRight(50, ' ')
+                                                        );
+                                            }
+
+                                            string outFile = Out_Dir + "\\" + filename + "_" + DateTime.Now.ToString("yyyy_MM_dd_HHmm_ss_fff") + ".txt";
+                                            File.AppendAllText(outFile , flf.ToString());
+                                            _log.Debug($"Created the import file {outFile}");
+                                            flf.Clear();
+                                            _log.Debug("Closed the stringbuilder");
+                                                
+                                            File.AppendAllText(fullReportOutput, csv.ToString());
+                                            _log.Debug($"Created the file {fullReportOutput}");
+                                            string NewFile = fullReportOutput + "_" + DateTime.Now.ToString("yyyyMMddHHmm_ss_fff") + ".csv";
+                                            File.Move(fullReportOutput, NewFile);
+                                            _log.Debug($"Moved the {fullReportOutput} file {NewFile}");
+                                            csv.Clear();
+                                            _log.Debug("Closed the stringbuilder");
+                                            if (Properties.Settings.Default.EmailCopy)
+                                            {
+                                                //Send email of file
+                                                ClsFunctions.NetEmail(Properties.Settings.Default.Emails, "CSC File",
+                                                            NewFile, Properties.Settings.Default.SMTPFROMEMAIL,
+                                                            Properties.Settings.Default.SMTPSERVER,
+                                                            Int32.Parse(Properties.Settings.Default.SMTPPort),
+                                                            Properties.Settings.Default.SMTPUser,
+                                                            Properties.Settings.Default.SMTPPassword);
+                                                _log.Debug($"Emailed file {NewFile} copy to {Properties.Settings.Default.Emails}");
                                             }
 
                                         }
@@ -759,211 +854,6 @@ namespace CSCFileService
             }
 
             _log.Info("Finished processing files to store in the database");
-            base.Dispose();
-            Dispose(true);
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-        }
-#endregion
-
-#region ChangeFiles
-        public void ChangeFiles()
-        {
-            _log.Info("Start processing files to change the files for Kiwiplan");
-
-            FileInfo[] PickUpFiles = new System.IO.DirectoryInfo(Properties.Settings.Default.WorkFolder).GetFiles(Properties.Settings.Default.FilePatternToLookAt).OrderBy(p => p.CreationTime).ToArray();
-
-            if (PickUpFiles.Length > 0)
-            {
-                //Create a container to rebuild the file with the new field
-                var sbText = new StringBuilder();
-
-                foreach (FileInfo filename in PickUpFiles)
-                {
-
-                    string fullPath = Properties.Settings.Default.WorkFolder + "\\" + filename;
-                    _log.Debug("Picked Up filename: " + fullPath);
-
-                    var OutDirPath = Properties.Settings.Default.OutPutFolder;
-                    _log.Debug("Setting the " + OutDirPath + " out bound folder");
-
-                    var Out_Dir = new System.IO.DirectoryInfo(Properties.Settings.Default.OutPutFolder);
-                    _log.Debug("Getting directory infomation from: " + Out_Dir);
-
-                    int ordCount = 0;
-
-                    using (var fs = new FileStream(fullPath, FileMode.OpenOrCreate , FileAccess.ReadWrite, FileShare.ReadWrite))
-                    {
-                        _log.Debug("Calling the streamreader function");
-                        //var reader = File.OpenText(fullPath);
-                        using (var reader = new StreamReader(fs))
-                        {
-                            _log.Debug("Calling the textfieldparser function");
-                            // new Parser and Stream for every line
-                            using (var parser = new TextFieldParser(reader))
-                            {
-                                var newLine = "";
-                                //Set parser to Fixed Length Width
-                                parser.HasFieldsEnclosedInQuotes = false;
-                                parser.TextFieldType = FieldType.FixedWidth;
-                                string[] currentRowFields;
-                                while (parser.PeekChars(1) != null)
-                                {
-                                    try
-                                    {
-                                        //Parsing row with a A Record 
-                                        // This is to set the lenght of each field in the Fixed Length File
-                                        parser.SetFieldWidths(1, 25, 10, 10, 6, 6, 231, 25, -1);
-                                        //Read all the fields in the row
-                                        currentRowFields = parser.ReadFields();
-                                        if (!(currentRowFields == null))
-                                        {
-                                            if (currentRowFields[0].Contains('A'))
-                                            {
-                                                var f = currentRowFields[2];
-                                                var w = currentRowFields[5];
-                                                var g = currentRowFields[1];
-                                                                                                
-                                                //Get unique code from EDI database
-                                                using (var er = new EDIEntities())
-                                                {
-
-                                                    var err = (from o in er.orderfiles
-                                                               join s in er.Scores
-                                                               on o.ID equals s.orderfileID into r1
-                                                               from r in r1.DefaultIfEmpty()
-                                                               select new
-                                                               {
-                                                                   ClientItem = o.ClientItem,
-                                                                   Flute = o.Flute,
-                                                                   Width = o.Width,
-                                                                   Grade = o.Grade,
-                                                               })
-                                                               .Where(s => s.Flute == f && s.Width == w && s.Grade == g)
-                                                               .ToList();
-
-                                                    //var err = er.orderfiles.J(er.Scores, of => of.ID,
-                                                    //                            si => si.ID, (of, si) => new
-                                                    //                            {
-                                                    //                               ID = of.ID,
-                                                    //                               Flute = of.Flute,
-                                                    //                               Width = of.Width,
-                                                    //                               Grade = of.Grade,
-                                                    //                               ClientItem = of.ClientItem 
-                                                    //                            })
-                                                    //                        .Where(s => s.Flute == f && s.Width == w && s.Grade == g)
-                                                    //                        .Select(s => new orderfile()
-                                                    //                                {
-                                                    //                                    ClientItem = s.ClientItem
-                                                    //                                })
-                                                    //                        .ToList();
-                                                    //var err = er.orderfiles.SqlQuery("select o.ClientItem" +
-                                                    //"from orderfile o " +
-                                                    //"LEFT Join score s " +
-                                                    //"ON o.id = s.orderfileID " +
-                                                    //"LEFT Join SpecialInstruction sp" +
-                                                    //"ON o.id = sp.orderfileID" +
-                                                    //"where o.ClientItem like '" + f + "|" + g + "|" + w + "%'" +
-                                                    //"and s.Scores = s.Scores").ToList();
-
-                                                    //rText = err;
-                                                    currentRowFields[7] = err[0].ClientItem.PadRight(25).ToString();
-                                                }
-
-                                                newLine = currentRowFields[0]
-                                                    + currentRowFields[1].PadRight(25).ToString()
-                                                    + currentRowFields[2].PadRight(10).ToString()
-                                                    + currentRowFields[3].PadRight(10).ToString()
-                                                    + currentRowFields[4].PadRight(6).ToString()
-                                                    + currentRowFields[5].PadRight(6).ToString()
-                                                    + currentRowFields[6].PadRight(231).ToString()
-                                                    + currentRowFields[7]
-                                                    + currentRowFields[8].PadRight(81).ToString();
-                                                sbText.AppendLine(newLine);
-                                                newLine = "";
-
-
-                                            }
-
-                                            //Parsing row with a X Record
-                                            parser.SetFieldWidths(-1);
-                                            currentRowFields = parser.ReadFields();
-                                            if (!(currentRowFields == null))
-                                            {
-                                                if (currentRowFields[0].Contains('X'))
-                                                {
-                                                    foreach (var field in currentRowFields)
-                                                    {
-                                                        newLine = newLine + string.Format("{0}", field);
-                                                    }
-                                                    sbText.AppendLine(newLine);
-                                                    newLine = "";
-                                                }
-                                            }
-
-                                            //Parsing row with a Z Record
-                                            parser.SetFieldWidths(-1);
-                                            currentRowFields = parser.ReadFields();
-                                            if (!(currentRowFields == null))
-                                            {
-                                                if (currentRowFields[0].Contains('Z'))
-                                                {
-                                                    foreach (var field in currentRowFields)
-                                                    {
-                                                        newLine = newLine + string.Format("{0}", field.Replace(",", "") + ",");
-                                                    }
-                                                    sbText.AppendLine(newLine);
-                                                    newLine = "";
-                                                }
-                                            }
-
-                                        }
-
-                                        ordCount++;
-                                        if (ordCount == 1)
-                                        {
-                                            File.AppendAllText(Out_Dir + "\\" + filename + "_" + DateTime.Now.ToString("yyyy_MM_dd_HHmm_ss_fff") + ".txt", sbText.ToString());
-                                            _log.Debug("Created the file");
-                                            sbText.Clear();
-                                            _log.Debug("Closed the stringbuilder");
-                                            ordCount = 0;
-                                        }
-
-
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        _log.Error(ex.Message);
-                                        _log.Error("File " + filename + " has an issue");
-                                        sbText.Clear();
-                                        _log.Error("Closed the stringbuilder");
-                                        continue;
-                                    }
-                                    finally
-                                    {
-
-                                    }
-
-                                }
-                                parser.Close();
-                                _log.Debug("Closed the parser");
-                            }
-                            reader.Close();
-                            _log.Debug("Closed the reader");
-                        }
-                        fs.Close();
-                        fs.Close();
-                        _log.Debug("Closed the file stream");
-                    }
-                    if (File.Exists(fullPath))
-                    {
-                        File.Delete(fullPath);
-                        _log.Debug("Deleting working file");
-                    }
-                }
-
-            }
-            _log.Info("Finished processing files to change the files for Kiwiplan");
             base.Dispose();
             Dispose(true);
             GC.Collect();
