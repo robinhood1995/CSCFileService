@@ -603,8 +603,7 @@ namespace CSCFileService
                                                             //Look to see if any other orders had it before to re-use the code
                                                             var lookup = (from o in context.orderfiles
                                                                             join s in context.Scores
-                                                                            on o.ID equals s.orderfileID into r1
-                                                                            from s in r1.DefaultIfEmpty()
+                                                                            on o.ID equals s.orderfileID
                                                                             select new
                                                                             {
                                                                                 ClientItem = o.ClientItem,
@@ -623,10 +622,11 @@ namespace CSCFileService
                                                             var upd = context.orderfiles.Where(o => o.ID == idAInserted).FirstOrDefault();
                                                             if (lookup.Count > 1)
                                                             {
-                                                                flf.Replace(upd.ClientItem.PadRight(25,' '), lookup[0].ClientItem.PadRight(25,' '));
-                                                                upd.ClientItem = String.Format("{0}", lookup[0].ClientItem);
+                                                                string chg = upd.ClientItem + "|" + lookup[0].ScoresID;
+                                                                flf.Replace(upd.ClientItem.PadRight(25, ' '), chg.PadRight(25, ' '));
+                                                                upd.ClientItem = upd.ClientItem + "|" + lookup[0].ScoresID;
 
-                                                            }
+                                                                }
                                                             else
                                                             {
                                                                 upd.ClientItem = upd.ClientItem + "|" + String.Format("{0}", idXInserted);
