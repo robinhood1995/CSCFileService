@@ -17,9 +17,6 @@
     <Setting Name="FilesToImportAtOnce" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">25</Value>
     </Setting>
-    <Setting Name="EmailCopy" Type="System.Boolean" Scope="Application">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="PurgeFilesDays" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">7</Value>
     </Setting>
@@ -28,9 +25,6 @@
     </Setting>
     <Setting Name="Emails" Type="System.String" Scope="Application">
       <Value Profile="(Default)">steveling@fruitgrowers.com</Value>
-    </Setting>
-    <Setting Name="SMTPFROMEMAIL" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">sales@fruitgrowers.com</Value>
     </Setting>
     <Setting Name="SMTPSERVER" Type="System.String" Scope="Application">
       <Value Profile="(Default)">mail1.fgs1.local</Value>
@@ -46,6 +40,12 @@
     </Setting>
     <Setting Name="OutPutFolder" Type="System.String" Scope="Application">
       <Value Profile="(Default)">\\fgs1.local\fgsc\Apps\Kiwi\Prod\EDI\850FanfoldOrder</Value>
+    </Setting>
+    <Setting Name="EmailCopy" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SMTPFROMEMAIL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">usw2-k-p-app@fruitgrowers.com</Value>
     </Setting>
   </Settings>
 </SettingsFile>

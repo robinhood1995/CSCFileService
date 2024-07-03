@@ -12,7 +12,7 @@ namespace CSCFileService.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.10.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -70,15 +70,6 @@ namespace CSCFileService.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool EmailCopy {
-            get {
-                return ((bool)(this["EmailCopy"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("7")]
         public int PurgeFilesDays {
             get {
@@ -101,15 +92,6 @@ namespace CSCFileService.Properties {
         public string Emails {
             get {
                 return ((string)(this["Emails"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("sales@fruitgrowers.com")]
-        public string SMTPFROMEMAIL {
-            get {
-                return ((string)(this["SMTPFROMEMAIL"]));
             }
         }
         
@@ -155,6 +137,24 @@ namespace CSCFileService.Properties {
         public string OutPutFolder {
             get {
                 return ((string)(this["OutPutFolder"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool EmailCopy {
+            get {
+                return ((bool)(this["EmailCopy"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("usw2-k-p-app@fruitgrowers.com")]
+        public string SMTPFROMEMAIL {
+            get {
+                return ((string)(this["SMTPFROMEMAIL"]));
             }
         }
     }

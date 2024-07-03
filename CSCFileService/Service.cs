@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.SqlServer;
 using System.Diagnostics;
 using System.IO;
@@ -475,7 +476,7 @@ namespace CSCFileService
                                                                 CustomerPOLine = currentRowFieldsA[19],
                                                                 ClientItem = currentRowFieldsA[2] + "|" + currentRowFieldsA[1] + "|" + currentRowFieldsA[5],
                                                                 LoadTag = currentRowFieldsA[21],
-                                                                FirstMachineCode = currentRowFieldsA[22],
+                                                                FirstMachineCode = currentRowFieldsA[20],//currentRowFieldsA[22], Changed 7/2/2024
                                                                 PiecesPerPallet = currentRowFieldsA[23],
                                                                 FanFold = currentRowFieldsA[24],
                                                                 FanFoldSheetLength = currentRowFieldsA[25],
@@ -487,9 +488,18 @@ namespace CSCFileService
                                                                 AdhesiveCode = currentRowFieldsA[31],
                                                                 EOL = String.Format("{0}", filename),
                                                             };
-                                                            context.orderfiles.Add(ord);
-                                                            context.SaveChanges();
-                                                            idAInserted = ord.ID;
+                                                            try
+                                                            {
+                                                                context.orderfiles.Add(ord);
+                                                                context.SaveChanges();
+                                                                idAInserted = ord.ID;
+                                                            }
+                                                            catch (DbUpdateException ex)
+                                                            {
+                                                                _log.Error(ex.Message);
+                                                                _log.Error("Saving the orderfile to the database has an issue");
+                                                            }
+
                                                         }
 
                                                         //Adding the the output file
@@ -593,12 +603,20 @@ namespace CSCFileService
                                                             //FILLER = currentRowFieldsX[2],
                                                             EOL = String.Format("{0}", filename),
                                                         };
+                                                    try {
                                                         context.Scores.Add(scr);
                                                         context.SaveChanges();
                                                         idXInserted = scr.ID;
+                                                        }
+                                                    catch (DbUpdateException ex)
+                                                    {
+                                                        _log.Error(ex.Message);
+                                                        _log.Error("Saving the scores to the database has an issue");
+                                                    }
 
-                                                        //Add to unique code if there are scores
-                                                        if (currentRowFieldsX[1].Length > 0)
+
+                                                            //Add to unique code if there are scores
+                                                            if (currentRowFieldsX[1].Length > 0)
                                                         {
                                                             //Look to see if any other orders had it before to re-use the code
                                                             var lookup = (from o in context.orderfiles
